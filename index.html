@@ -73,8 +73,9 @@ section{padding:5rem 1.5rem}
 /* SYSTEMS */
 #systems{background:var(--navy)}
 .systems-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem}
-.system-card{background:linear-gradient(135deg,var(--navy2),var(--navy3));border:1px solid var(--muted2);border-radius:var(--radius);padding:2.2rem;transition:border-color 0.3s,box-shadow 0.3s}
-.system-card:hover{border-color:var(--blue);box-shadow:0 0 40px var(--blue-glow)}
+.system-card{background:linear-gradient(135deg,var(--navy2),var(--navy3));border:1px solid transparent;border-radius:var(--radius);padding:2.2rem;transition:box-shadow 0.3s;box-shadow:0 0 0 1px rgba(0,191,255,0.3),0 20px 40px rgba(0,191,255,0.1)}
+.system-card:hover{box-shadow:0 0 0 1px rgba(0,191,255,0.6),0 20px 60px rgba(0,191,255,0.2)}
+.system-icon{font-size:3rem;margin-bottom:1rem;display:block}
 .system-tag{display:inline-block;background:var(--blue-glow);border:1px solid rgba(37,99,235,0.4);color:var(--blue-light);font-size:0.72rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:100px;margin-bottom:1.2rem}
 .system-card h3{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:0.8rem}
 .system-card p{color:var(--muted);font-size:0.95rem;line-height:1.6;margin-bottom:1.5rem}
@@ -83,18 +84,24 @@ section{padding:5rem 1.5rem}
 
 /* HOW WE DELIVER */
 #deliver{background:var(--navy2)}
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.2rem;margin-top:3rem}
-.tool-badge{background:var(--navy3);border:1px solid var(--muted2);border-radius:var(--radius);padding:1.5rem 1rem;text-align:center;transition:border-color 0.3s,transform 0.3s}
-.tool-badge:hover{border-color:var(--blue-light);transform:translateY(-3px)}
-.tool-icon{font-size:2rem;margin-bottom:0.6rem}
-.tool-badge span{display:block;font-size:0.85rem;font-weight:600;color:var(--text)}
+.tools-grid{display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:3rem;justify-content:center}
+.tool-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;border-radius:100px;font-size:0.88rem;font-weight:700;letter-spacing:0.3px;transition:transform 0.2s,box-shadow 0.2s;cursor:default}
+.tool-badge:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.3)}
+.tool-badge .tool-icon{font-size:1.1rem}
+.tool-badge.purple{background:rgba(139,92,246,0.2);border:1px solid rgba(139,92,246,0.5);color:#c4b5fd}
+.tool-badge.green{background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);color:#86efac}
+.tool-badge.blue{background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);color:#93c5fd}
+.tool-badge.orange{background:rgba(249,115,22,0.2);border:1px solid rgba(249,115,22,0.4);color:#fdba74}
+.tool-badge.teal{background:rgba(20,184,166,0.2);border:1px solid rgba(20,184,166,0.4);color:#5eead4}
+.tool-badge.gold{background:rgba(240,192,64,0.15);border:1px solid rgba(240,192,64,0.4);color:#fcd34d}
 
 /* PROOF */
 #proof{background:var(--navy)}
 .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;margin:3rem 0}
-.stat-box{text-align:center;padding:2rem;background:var(--navy2);border:1px solid var(--muted2);border-radius:var(--radius)}
-.stat-num{font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800;color:var(--gold);display:block}
-.stat-label{color:var(--muted);font-size:0.9rem;margin-top:0.4rem}
+.stat-box{text-align:center;padding:2rem;background:var(--navy2);border:1px solid var(--muted2);border-radius:var(--radius);position:relative;overflow:hidden}
+.stat-watermark{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:120px;opacity:0.04;color:#fff;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;line-height:1}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800;color:var(--gold);display:block;position:relative;z-index:1}
+.stat-label{color:var(--muted);font-size:0.9rem;margin-top:0.4rem;position:relative;z-index:1}
 .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
 .testi-card{background:var(--navy2);border:1px solid var(--muted2);border-radius:var(--radius);padding:2rem}
 .testi-stars{color:var(--gold);font-size:1.1rem;margin-bottom:1rem}
@@ -116,7 +123,7 @@ section{padding:5rem 1.5rem}
 
 /* SVG LINE */
 .process-svg{display:block;width:100%;max-width:900px;margin:0 auto 3rem;overflow:visible}
-.process-line{fill:none;stroke:var(--blue);stroke-width:2;stroke-dasharray:1000;stroke-dashoffset:1000;transition:stroke-dashoffset 1.5s ease}
+.process-line{fill:none;stroke:#00BFFF;stroke-width:3;stroke-dasharray:1000;stroke-dashoffset:1000;transition:stroke-dashoffset 1.5s ease;filter:drop-shadow(0 0 6px rgba(0,191,255,0.7)) drop-shadow(0 0 12px rgba(0,191,255,0.4))}
 .process-line.drawn{stroke-dashoffset:0}
 
 /* FAQ */
@@ -135,7 +142,7 @@ section{padding:5rem 1.5rem}
 #pricing{background:var(--navy2)}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem}
 .price-card{background:var(--navy3);border:1px solid var(--muted2);border-radius:var(--radius);padding:2.5rem 2rem;position:relative;transition:transform 0.3s,box-shadow 0.3s}
-.price-card.featured{border-color:var(--blue);box-shadow:0 0 50px var(--blue-glow)}
+.price-card.featured{border-color:#00BFFF;box-shadow:0 0 0 1px rgba(0,191,255,0.4),0 0 50px rgba(0,191,255,0.2),0 20px 60px rgba(0,191,255,0.15)}
 .price-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:0.65rem;font-weight:700;letter-spacing:2px;padding:0.3rem 1rem;border-radius:100px}
 .price-card:hover{transform:translateY(-5px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
 .price-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-light);margin-bottom:1rem}
@@ -237,18 +244,21 @@ footer .footer-logo span{color:var(--gold)}
     </div>
     <div class="systems-grid">
       <div class="system-card fade-up">
+        <span class="system-icon">🎯</span>
         <div class="system-tag">System 01</div>
         <h3>AI Lead Generation</h3>
         <p>We build automated outreach pipelines using Apollo, PhantomBuster, and Instantly — targeting your ideal customers 24/7. Warm leads in your inbox daily.</p>
         <div class="system-price">$2,000 <span>– $4,000 / setup</span></div>
       </div>
       <div class="system-card fade-up">
+        <span class="system-icon">⭐</span>
         <div class="system-tag">System 02</div>
         <h3>Reputation Management</h3>
         <p>AI monitors, responds to, and generates 5-star reviews automatically. Protect and grow your online reputation without lifting a finger.</p>
         <div class="system-price">$1,500 <span>– $3,000 / setup</span></div>
       </div>
       <div class="system-card fade-up">
+        <span class="system-icon">📞</span>
         <div class="system-tag">System 03</div>
         <h3>AI Appointment Booking</h3>
         <p>Conversational AI qualifies leads and books them directly to your calendar. No more phone tag. Only serious, ready-to-buy prospects.</p>
@@ -267,30 +277,12 @@ footer .footer-logo span{color:var(--gold)}
       <p class="section-sub">We use enterprise-grade tools, assembled and managed by our team — so you get agency-level output without agency-level headaches.</p>
     </div>
     <div class="tools-grid">
-      <div class="tool-badge fade-up">
-        <div class="tool-icon">🤖</div>
-        <span>Claude Code</span>
-      </div>
-      <div class="tool-badge fade-up">
-        <div class="tool-icon">🚂</div>
-        <span>Railway</span>
-      </div>
-      <div class="tool-badge fade-up">
-        <div class="tool-icon">📘</div>
-        <span>Facebook API</span>
-      </div>
-      <div class="tool-badge fade-up">
-        <div class="tool-icon">👻</div>
-        <span>PhantomBuster</span>
-      </div>
-      <div class="tool-badge fade-up">
-        <div class="tool-icon">🎯</div>
-        <span>Apollo</span>
-      </div>
-      <div class="tool-badge fade-up">
-        <div class="tool-icon">⚡</div>
-        <span>Instantly</span>
-      </div>
+      <div class="tool-badge purple fade-up"><span class="tool-icon">🤖</span> Claude Code</div>
+      <div class="tool-badge green fade-up"><span class="tool-icon">🚂</span> Railway</div>
+      <div class="tool-badge blue fade-up"><span class="tool-icon">📘</span> Facebook API</div>
+      <div class="tool-badge orange fade-up"><span class="tool-icon">👻</span> PhantomBuster</div>
+      <div class="tool-badge teal fade-up"><span class="tool-icon">🎯</span> Apollo</div>
+      <div class="tool-badge gold fade-up"><span class="tool-icon">⚡</span> Instantly</div>
     </div>
   </div>
 </section>
@@ -304,18 +296,22 @@ footer .footer-logo span{color:var(--gold)}
     </div>
     <div class="stats-row">
       <div class="stat-box fade-up">
+        <div class="stat-watermark">137</div>
         <span class="stat-num" data-target="137">0</span>
         <div class="stat-label">Leads Generated / Month (avg)</div>
       </div>
       <div class="stat-box fade-up">
+        <div class="stat-watermark">4.9</div>
         <span class="stat-num" data-target="4.9" data-decimal="1">0</span>
         <div class="stat-label">Average Review Rating Achieved</div>
       </div>
       <div class="stat-box fade-up">
+        <div class="stat-watermark">3x</div>
         <span class="stat-num" data-target="3">0</span>
         <div class="stat-label">x ROI in First 90 Days</div>
       </div>
       <div class="stat-box fade-up">
+        <div class="stat-watermark">24</div>
         <span class="stat-num" data-target="24">0</span>
         <div class="stat-label">Hours / Day Running Automated</div>
       </div>
