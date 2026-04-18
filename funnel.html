@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Growth Audit — Target Digital</title>
+<meta name="description" content="Book your free AI Growth Audit. Target Digital maps your ICP, finds pipeline gaps, and deploys Claude Code agents — live in 48 hours.">
+<link rel="canonical" href="https://targetdigital.com.au/funnel.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#06091a;
+  --navy2:#0c1130;
+  --navy3:#111a3e;
+  --blue:#2563eb;
+  --blue-light:#3b82f6;
+  --blue-glow:rgba(37,99,235,0.3);
+  --gold:#f0c040;
+  --gold-dim:rgba(240,192,64,0.15);
+  --cyan:#00BFFF;
+  --red:#ef4444;
+  --text:#e8eaf6;
+  --muted:#7986b0;
+  --muted2:#3d4f7c;
+  --radius:14px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--navy);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--navy2)}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:3px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(14px);background:rgba(6,9,26,0.88);border-bottom:1px solid rgba(37,99,235,0.15)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:-0.5px;text-decoration:none}
+.nav-logo .gold{color:var(--gold)}
+.nav-logo .white{color:#fff}
+.nav-cta{background:var(--gold);color:#06091a;border:none;padding:0.55rem 1.4rem;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.2s;white-space:nowrap}
+.nav-cta:hover{background:#f5ca30;transform:translateY(-1px)}
+
+/* ── HERO (GSAP SCROLL-SCRUB) ── */
+#hero{position:relative;height:300vh}
+.hero-sticky{position:sticky;top:0;height:100vh;width:100%;overflow:hidden}
+#hero-video{position:absolute;inset:0;width:100vw;height:100vh;object-fit:cover;z-index:0;pointer-events:none}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,9,26,0.25),rgba(6,9,26,0.72));z-index:1}
+#hero-text{position:absolute;bottom:14%;left:0;right:0;text-align:center;z-index:10;padding:0 40px;opacity:0;transform:translateY(40px);pointer-events:none;transition:opacity 0.1s,transform 0.1s}
+.hero-badge{display:inline-block;background:rgba(240,192,64,0.15);border:1px solid rgba(240,192,64,0.5);color:var(--gold);font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:0.4rem 1.2rem;border-radius:100px;margin-bottom:1.5rem}
+.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,5vw,3.8rem);font-weight:800;line-height:1.08;letter-spacing:-1.5px;color:#fff;margin-bottom:1.2rem;text-shadow:0 0 60px rgba(0,0,0,0.95),0 2px 8px rgba(0,0,0,0.95)}
+.hero-h1 .accent{color:var(--gold)}
+.hero-sub{font-size:1.1rem;color:rgba(232,234,246,0.88);line-height:1.7;max-width:600px;margin:0 auto 2rem;text-shadow:0 1px 6px rgba(0,0,0,0.9)}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+.btn-gold{display:inline-block;background:var(--gold);color:#06091a;padding:1rem 2.2rem;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;border:none;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 0 30px rgba(240,192,64,0.4);font-family:'DM Sans',sans-serif;white-space:nowrap}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(240,192,64,0.65)}
+.btn-ghost{display:inline-block;background:transparent;color:#fff;padding:1rem 2rem;border-radius:10px;font-weight:600;font-size:1rem;cursor:pointer;border:2px solid rgba(255,255,255,0.3);text-decoration:none;transition:border-color 0.2s,transform 0.2s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.7);transform:translateY(-2px)}
+.btn-blue{display:inline-block;background:var(--blue);color:#fff;padding:1rem 2.2rem;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;border:none;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 0 30px var(--blue-glow);font-family:'DM Sans',sans-serif;white-space:nowrap}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 0 50px var(--blue-glow)}
+.hero-trust{display:flex;align-items:center;justify-content:center;gap:1.2rem;flex-wrap:wrap}
+.hero-trust span{font-size:0.78rem;color:rgba(121,134,176,0.9);font-weight:500}
+.trust-dot{width:3px;height:3px;background:var(--muted2);border-radius:50%;flex-shrink:0}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:var(--navy2);border-top:1px solid rgba(37,99,235,0.12);border-bottom:1px solid rgba(37,99,235,0.12);padding:1.8rem 2rem}
+.trust-bar-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
+.trust-stat{text-align:center}
+.trust-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--gold);line-height:1;display:block}
+.trust-label{font-size:0.68rem;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:0.25rem}
+.trust-divider{width:1px;height:44px;background:var(--muted2);flex-shrink:0}
+
+/* ── SHARED SECTION ── */
+section.s{padding:5.5rem 1.5rem}
+.container{max-width:860px;margin:0 auto}
+.container-wide{max-width:1100px;margin:0 auto}
+.s-label{font-size:0.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem;display:block}
+.s-label-red{color:#fca5a5}
+.s-h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;line-height:1.12;margin-bottom:1.2rem;letter-spacing:-0.5px}
+.s-h2 .gold{color:var(--gold)}
+.s-h2 .cyan{color:var(--cyan)}
+.lead{font-size:1.12rem;color:var(--muted);line-height:1.85;margin-bottom:1.5rem}
+.body{font-size:1rem;color:var(--muted);line-height:1.85;margin-bottom:1.2rem}
+.body strong,.lead strong{color:#fff}
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--muted2),transparent)}
+
+/* ── PROBLEM ── */
+.pull-quote{font-family:'Syne',sans-serif;font-size:clamp(1.15rem,2.5vw,1.55rem);font-weight:700;color:#fff;line-height:1.45;border-left:4px solid var(--gold);padding:1.2rem 1.5rem;margin:2.5rem 0;background:rgba(240,192,64,0.04);border-radius:0 8px 8px 0}
+.problem-list{list-style:none;margin:1.5rem 0 2rem}
+.problem-list li{padding:1rem 0 1rem 2.2rem;border-bottom:1px solid rgba(61,79,124,0.35);color:var(--muted);font-size:0.98rem;line-height:1.7;position:relative}
+.problem-list li:last-child{border-bottom:none}
+.problem-list li::before{content:'✗';position:absolute;left:0;color:var(--red);font-weight:700;font-size:1rem}
+
+/* ── VILLAIN ── */
+.villain-box{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.22);border-radius:var(--radius);padding:2rem 2.5rem;margin:2rem 0}
+.villain-label{font-size:0.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:0.8rem;display:block}
+.villain-text{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;color:#fff;line-height:1.5}
+.platform-badges{display:flex;gap:0.8rem;flex-wrap:wrap;margin:2rem 0}
+.pbadge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.1rem;border-radius:100px;font-size:0.8rem;font-weight:700}
+.pbadge-meta{background:rgba(24,119,242,0.12);border:1px solid rgba(24,119,242,0.35);color:#60a5fa}
+.pbadge-google{background:rgba(234,67,53,0.1);border:1px solid rgba(234,67,53,0.3);color:#fca5a5}
+.pbadge-railway{background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.3);color:var(--cyan)}
+
+/* ── SHIFT ── */
+.shift-wrap{text-align:center;max-width:700px;margin:0 auto;padding:2rem 0}
+.shift-quote{font-family:'Syne',sans-serif;font-size:clamp(1.25rem,2.8vw,1.85rem);font-weight:700;color:#fff;line-height:1.4;position:relative;padding:0 2rem}
+.shift-quote::before,.shift-quote::after{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:var(--gold);opacity:0.25;position:absolute;line-height:0.8}
+.shift-quote::before{content:'\201C';top:0.5rem;left:-0.5rem}
+.shift-quote::after{content:'\201D';bottom:-1rem;right:-0.5rem}
+.shift-attr{color:var(--muted);font-size:0.85rem;font-weight:600;letter-spacing:0.5px;margin-top:2.5rem}
+
+/* ── GUIDE / EMPATHY ── */
+.empathy-box{background:var(--navy3);border:1px solid rgba(37,99,235,0.2);border-left:4px solid var(--blue);border-radius:var(--radius);padding:2.2rem 2.5rem;margin:2rem 0}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem;margin:2.5rem 0}
+.stat-box{background:var(--navy3);border:1px solid var(--muted2);border-radius:var(--radius);padding:1.6rem 1.2rem;text-align:center;position:relative;overflow:hidden}
+.stat-wm{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:90px;opacity:0.04;color:#fff;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;line-height:1}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--gold);line-height:1}
+.stat-l{color:var(--muted);font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;margin-top:0.3rem}
+
+/* ── SOLUTION ── */
+.sys-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem}
+.sys-card{background:var(--navy2);border:1px solid rgba(0,191,255,0.18);border-radius:var(--radius);padding:2.2rem;transition:border-color 0.3s,box-shadow 0.3s}
+.sys-card:hover{border-color:rgba(0,191,255,0.5);box-shadow:0 0 35px rgba(0,191,255,0.1)}
+.sys-icon{font-size:2.4rem;margin-bottom:1rem;display:block}
+.sys-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;margin-bottom:0.5rem}
+.sys-desc{color:var(--muted);font-size:0.9rem;line-height:1.7;margin-bottom:1.2rem}
+.sys-price{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--gold);margin-bottom:1rem}
+.sys-tools{display:flex;flex-wrap:wrap;gap:0.4rem}
+.sys-tool{background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.3);color:var(--blue-light);font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:0.22rem 0.65rem;border-radius:100px}
+
+/* ── PROCESS ── */
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;margin-top:3rem}
+.p-step{text-align:center;padding:2rem 1.5rem;position:relative}
+.p-step:not(:last-child)::after{content:'';position:absolute;top:3rem;right:0;width:1px;height:50px;background:linear-gradient(to bottom,var(--blue),transparent)}
+.p-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--gold);line-height:1;display:block}
+.p-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;color:#fff;letter-spacing:1.5px;text-transform:uppercase;margin:0.4rem 0 0.6rem}
+.p-desc{color:var(--muted);font-size:0.84rem;line-height:1.65}
+
+/* ── SOCIAL PROOF ── */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:2.5rem}
+.testi-card{background:var(--navy3);border:1px solid var(--muted2);border-radius:var(--radius);padding:2.5rem}
+.testi-stars{color:#F59E0B;font-size:1.1rem;letter-spacing:3px;margin-bottom:1.2rem;display:block}
+.testi-quote{color:var(--text);font-size:1rem;line-height:1.8;margin-bottom:1.5rem;font-style:italic}
+.result-tag{background:rgba(240,192,64,0.08);border:1px solid rgba(240,192,64,0.22);border-radius:8px;padding:0.7rem 1.1rem;margin-bottom:1.5rem}
+.result-label{font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);font-weight:700;margin-bottom:0.2rem}
+.result-value{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#fff}
+.testi-author{display:flex;align-items:center;gap:1rem}
+.testi-photo{width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0}
+.testi-name{font-weight:700;color:#fff;font-size:0.92rem}
+.testi-loc{color:var(--muted);font-size:0.78rem}
+
+/* ── OFFER BOX ── */
+.offer-wrap{background:var(--navy2);border:2px solid var(--gold);border-radius:20px;padding:3rem 2.5rem;margin:2.5rem 0;position:relative}
+.offer-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#06091a;font-family:'Syne',sans-serif;font-weight:700;font-size:0.72rem;letter-spacing:2.5px;text-transform:uppercase;padding:0.3rem 1.5rem;border-radius:100px;white-space:nowrap}
+.offer-h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1.7rem;color:#fff;margin-bottom:0.4rem;text-align:center}
+.offer-sub{text-align:center;color:var(--muted);font-size:0.95rem;margin-bottom:2.5rem}
+.offer-list{list-style:none;margin:0 0 2rem}
+.offer-list li{padding:1rem 0 1rem 2.5rem;border-bottom:1px solid rgba(61,79,124,0.35);color:var(--text);font-size:0.97rem;line-height:1.7;position:relative}
+.offer-list li:last-child{border-bottom:none}
+.offer-list li::before{content:'✓';position:absolute;left:0;color:var(--gold);font-weight:700;font-size:1.1rem;top:1.05rem}
+.value-stack{text-align:center;margin:2rem 0}
+.value-was{color:var(--muted);font-size:0.88rem;margin-bottom:0.3rem}
+.value-price{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--muted);line-height:1;text-decoration:line-through}
+.value-now-label{color:var(--muted);font-size:0.88rem;margin:0.5rem 0 0.2rem}
+.value-free{font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;color:var(--gold)}
+.objection-note{text-align:center;color:var(--muted);font-size:0.82rem;margin-top:1rem;font-style:italic}
+
+/* ── STAKES ── */
+.stakes-box{background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.18);border-radius:var(--radius);padding:2.5rem;margin:2rem 0}
+
+/* ── SUCCESS ── */
+.success-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin:2.5rem 0}
+.success-item{background:var(--navy3);border:1px solid rgba(0,191,255,0.18);border-radius:var(--radius);padding:1.8rem;display:flex;gap:1rem;align-items:flex-start}
+.s-icon{font-size:1.8rem;flex-shrink:0;margin-top:0.1rem}
+.s-text h4{font-family:'Syne',sans-serif;font-weight:700;color:#fff;font-size:0.98rem;margin-bottom:0.4rem}
+.s-text p{color:var(--muted);font-size:0.85rem;line-height:1.65}
+
+/* ── FAQ ── */
+.faq-list{margin-top:2.5rem}
+.faq-item{border-bottom:1px solid var(--muted2);overflow:hidden}
+.faq-q{width:100%;background:none;border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;text-align:left;padding:1.4rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color 0.2s}
+.faq-q:hover{color:var(--gold)}
+.faq-icon{color:var(--gold);font-size:1.3rem;flex-shrink:0;transition:transform 0.3s;line-height:1}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.faq-a p{color:var(--muted);font-size:0.95rem;line-height:1.85;padding-bottom:1.5rem}
+.faq-item.open .faq-a{max-height:320px}
+
+/* ── FINAL CTA ── */
+#final-cta{padding:6rem 1.5rem;position:relative;overflow:hidden;background:var(--navy)}
+#final-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,0.12) 0%,transparent 70%);pointer-events:none}
+.final-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.scarcity-badge{display:inline-block;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.35);color:#fca5a5;font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:0.4rem 1.2rem;border-radius:100px;margin-bottom:1.8rem;animation:pulse-red 2s infinite}
+@keyframes pulse-red{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.25)}50%{box-shadow:0 0 0 8px rgba(239,68,68,0)}}
+.final-h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;line-height:1.12;margin-bottom:1rem;letter-spacing:-0.5px}
+.final-sub{color:var(--muted);font-size:1.05rem;line-height:1.75;margin-bottom:2.5rem}
+.cta-trust-row{margin-top:1.5rem;display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;font-size:0.8rem;color:var(--muted)}
+.cta-trust-row span::before{content:'✓ ';color:var(--gold)}
+
+/* ── FOOTER ── */
+footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem 1.5rem;text-align:center;color:var(--muted);font-size:0.82rem}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:0.8rem}
+.footer-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin:0.8rem 0 1rem}
+.footer-links a{color:var(--muted);text-decoration:none;transition:color 0.2s;font-size:0.82rem}
+.footer-links a:hover{color:var(--gold)}
+
+/* ── MOBILE STICKY CTA ── */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--blue);padding:0.85rem 1.5rem;text-align:center;transform:translateY(100%);transition:transform 0.4s ease;box-shadow:0 -4px 24px rgba(0,0,0,0.5);display:none}
+.sticky-cta.visible{transform:translateY(0)}
+.sticky-cta a{color:#fff;font-weight:700;font-size:0.95rem;text-decoration:none;display:block}
+.sticky-cta-sub{color:rgba(255,255,255,0.7);font-size:0.7rem;margin-top:0.15rem}
+
+/* ── FADE UP ── */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ── CTA UNDER SECTION ── */
+.section-cta{text-align:center;margin-top:3rem}
+.under-cta-note{color:var(--muted);font-size:0.82rem;margin-top:0.9rem;font-style:italic}
+
+@media(max-width:768px){
+  nav{padding:0.8rem 1rem}
+  .nav-logo{font-size:1rem}
+  #hero-text{padding:0 1.2rem;bottom:10%}
+  .hero-h1{font-size:clamp(1.7rem,7vw,2.5rem);letter-spacing:-0.5px}
+  .hero-sub{font-size:1rem}
+  .hero-ctas{flex-direction:column;align-items:center}
+  .btn-gold,.btn-ghost,.btn-blue{width:100%;max-width:320px;text-align:center}
+  .trust-bar-inner{gap:1.5rem}
+  .trust-divider{display:none}
+  .offer-wrap{padding:2rem 1.2rem}
+  .p-step:not(:last-child)::after{display:none}
+  .shift-quote{padding:0 1rem}
+  .shift-quote::before,.shift-quote::after{font-size:3rem}
+  .sticky-cta{display:block}
+  .process-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:420px){
+  .process-grid{grid-template-columns:1fr}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Target Digital",
+  "url": "https://targetdigital.com.au",
+  "description": "Book your free AI Growth Audit. Target Digital deploys Claude Code agents to fill your pipeline in 48 hours.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brisbane",
+    "addressRegion": "QLD",
+    "addressCountry": "AU"
+  },
+  "email": "rop@targetdigital.com.au"
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo"><span class="gold">Target</span><span class="white">Digital</span></a>
+  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="nav-cta">Book Free Audit</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-sticky">
+    <video id="hero-video" autoplay muted loop playsinline preload="auto" style="pointer-events:none;">
+      <source src="target-digital-hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div id="hero-text">
+      <div class="hero-badge">Free AI Growth Audit — 3 Spots Available This Month</div>
+      <h1 class="hero-h1">Your Competitors Are Running<br><span class="accent">Claude Code Agents.</span><br>You're Still Running Campaigns.</h1>
+      <p class="hero-sub">We map your pipeline gaps, build the AI system that fills them, and push it to Railway — running 24/7. Not another agency. The actual machine.</p>
+      <div class="hero-ctas">
+        <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold">Claim Your Free Growth Audit →</a>
+        <a href="#problem" class="btn-ghost">See How It Works ↓</a>
+      </div>
+      <div class="hero-trust">
+        <span>No agency retainer</span>
+        <div class="trust-dot"></div>
+        <span>Live in 48 hours</span>
+        <div class="trust-dot"></div>
+        <span>Results in 30 days</span>
+        <div class="trust-dot"></div>
+        <span>99% Railway uptime</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar fade-up">
+  <div class="trust-bar-inner">
+    <div class="trust-stat"><span class="trust-num">$10.5K</span><div class="trust-label">Max Client Revenue /Mo</div></div>
+    <div class="trust-divider"></div>
+    <div class="trust-stat"><span class="trust-num">48hr</span><div class="trust-label">Avg Deployment Time</div></div>
+    <div class="trust-divider"></div>
+    <div class="trust-stat"><span class="trust-num">99%</span><div class="trust-label">Railway Uptime</div></div>
+    <div class="trust-divider"></div>
+    <div class="trust-stat"><span class="trust-num">3</span><div class="trust-label">AI Systems Running 24/7</div></div>
+    <div class="trust-divider"></div>
+    <div class="trust-stat"><span class="trust-num">30</span><div class="trust-label">Days to First Results</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ── PROBLEM ── -->
+<section class="s" id="problem">
+  <div class="container">
+    <span class="s-label fade-up">The Real Problem</span>
+    <h2 class="s-h2 fade-up">You're Not Losing Because of Budget.<br><span class="gold">You're Losing Because of Speed.</span></h2>
+    <p class="lead fade-up">Right now, your competitors aren't outspending you. They're out-automating you. They've replaced slow, manual marketing with AI systems that prospect, follow up, book, and convert — while their team is asleep.</p>
+
+    <div class="pull-quote fade-up">"I'm running Meta and Google ads but the results are inconsistent. One month it's great. The next month I'm burning cash for nothing."</div>
+
+    <p class="body fade-up">Sound familiar? This isn't a targeting problem. It's not your creative. It's not even your offer. It's a <strong>pipeline architecture problem</strong> — and no amount of ad spend fixes broken plumbing.</p>
+    <p class="body fade-up">Here's what's actually happening at three levels:</p>
+
+    <ul class="problem-list fade-up">
+      <li><strong>External:</strong> Leads come in inconsistently. Some months are great. Others are dead. You can't predict revenue — and you can't scale what you can't predict.</li>
+      <li><strong>Internal:</strong> You feel like you're guessing. You're not sure if it's the ad creative, the landing page, the follow-up, or the offer. Every month feels like starting over.</li>
+      <li><strong>Philosophical:</strong> It shouldn't take a $10,000/month agency, a full-time hire, and three years of testing to build a predictable pipeline. There's a better way — and your competitors have already found it.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── AGITATION ── -->
+<section class="s" id="agitation" style="background:var(--navy3)">
+  <div class="container">
+    <span class="s-label fade-up">The Villain</span>
+    <h2 class="s-h2 fade-up">The Agency Model Was Built for<br><span class="gold">Their Recurring Revenue. Not Yours.</span></h2>
+
+    <div class="villain-box fade-up">
+      <span class="villain-label">The Real Enemy</span>
+      <p class="villain-text">Bloated retainers. Monthly strategy decks. "We're optimising" reports that never show actual numbers. Agencies designed to keep you dependent — not to build you something you own.</p>
+    </div>
+
+    <p class="body fade-up">Every month you stay on the agency treadmill, you're paying for their team's salaries, their overhead, their account managers — and getting a fraction of the output that 10 Claude Code instances running simultaneously would deliver.</p>
+    <p class="body fade-up">Cody Schneider didn't just reduce his marketing team. He <strong>replaced a team of dozens</strong> with 10 Claude Code instances running simultaneously. The output? More than his entire previous team combined. At a fraction of the cost. Running 24 hours a day.</p>
+    <p class="body fade-up">That's not the future. That's happening right now. And the businesses that figure this out first will own their market by the time their competitors notice what happened.</p>
+
+    <div class="platform-badges fade-up">
+      <span class="pbadge pbadge-meta">📘 Meta Ads — Primary Channel</span>
+      <span class="pbadge pbadge-google">🔍 Google Ads — Secondary Channel</span>
+      <span class="pbadge pbadge-railway">🚀 Railway Infrastructure</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── THE SHIFT ── -->
+<section class="s" id="shift">
+  <div class="container">
+    <span class="s-label fade-up" style="text-align:center;display:block">The Shift</span>
+    <div class="shift-wrap fade-up">
+      <div class="shift-quote">Cody Schneider replaced a team of dozens with 10 Claude Code instances running simultaneously.</div>
+      <p class="shift-attr">— The model that Target Digital deploys for your business</p>
+    </div>
+    <p class="lead fade-up" style="text-align:center;max-width:600px;margin:2rem auto 0">We are the agent jockeys. You get the results. You don't manage a single AI instance. You just watch the pipeline fill.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── GUIDE ── -->
+<section class="s" id="guide" style="background:var(--navy2)">
+  <div class="container">
+    <span class="s-label fade-up">Who We Are</span>
+    <h2 class="s-h2 fade-up">We've Watched Good Businesses Burn Budget<br><span class="gold">on Broken Systems. We Built the Fix.</span></h2>
+
+    <div class="empathy-box fade-up">
+      <p class="body" style="margin:0;color:var(--text);font-size:1.05rem">We know what it's like to sit in an agency review meeting where they show you a 40-slide deck, three graphs going up-and-to-the-right, and a bill for $8,000 — while your actual lead count stayed flat. We've been there. It's why we built Target Digital as the antithesis of that model.</p>
+    </div>
+
+    <p class="body fade-up">Target Digital doesn't sell you a retainer and a strategy. We build you a machine — Claude Code agents deployed on Railway, running your lead generation, reputation management, and appointment booking simultaneously, 24 hours a day, 7 days a week.</p>
+    <p class="body fade-up">We're not an agency. We're <strong>agent jockeys</strong> — operators who configure, deploy, and optimise the AI systems that run your growth. You keep the machine. You own the results.</p>
+
+    <div class="stats-row fade-up">
+      <div class="stat-box"><div class="stat-wm">10K</div><div class="stat-n">$10.5K</div><div class="stat-l">Max Revenue /Mo</div></div>
+      <div class="stat-box"><div class="stat-wm">48</div><div class="stat-n">48hr</div><div class="stat-l">Avg Deploy Time</div></div>
+      <div class="stat-box"><div class="stat-wm">99</div><div class="stat-n">99%</div><div class="stat-l">Railway Uptime</div></div>
+      <div class="stat-box"><div class="stat-wm">3</div><div class="stat-n">3</div><div class="stat-l">Systems 24/7</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SOLUTION ── -->
+<section class="s" id="solution" style="background:var(--navy3)">
+  <div class="container-wide">
+    <div style="max-width:860px;margin:0 auto">
+      <span class="s-label fade-up">The AI Revenue Stack</span>
+      <h2 class="s-h2 fade-up">Three Systems. One Unified <span class="cyan">Growth Machine.</span></h2>
+      <p class="lead fade-up">We don't sell individual tools. We build an integrated AI stack — three systems that talk to each other, feed each other, and compound your results over time. Each one running 24/7 on Railway without you touching it.</p>
+    </div>
+    <div class="sys-grid">
+      <div class="sys-card fade-up">
+        <span class="sys-icon">🎯</span>
+        <div class="sys-name">AI Lead Generation</div>
+        <p class="sys-desc">Automated outreach pipelines targeting your ICP across Meta and Google. Warm leads in your inbox daily — without cold calling or manual prospecting.</p>
+        <div class="sys-price">$2,000 – $4,000/month</div>
+        <div class="sys-tools">
+          <span class="sys-tool">Apollo</span><span class="sys-tool">PhantomBuster</span><span class="sys-tool">Instantly</span><span class="sys-tool">Meta Ads</span><span class="sys-tool">Google Ads</span>
+        </div>
+      </div>
+      <div class="sys-card fade-up">
+        <span class="sys-icon">⭐</span>
+        <div class="sys-name">Reputation Management</div>
+        <p class="sys-desc">AI monitors, responds to, and generates 5-star reviews automatically across Google and Facebook. Protect your reputation and build trust at scale.</p>
+        <div class="sys-price">$2,000 – $4,000/month</div>
+        <div class="sys-tools">
+          <span class="sys-tool">Google Reviews</span><span class="sys-tool">Facebook</span><span class="sys-tool">24/7 Monitor</span>
+        </div>
+      </div>
+      <div class="sys-card fade-up">
+        <span class="sys-icon">📅</span>
+        <div class="sys-name">AI Appointment Booking</div>
+        <p class="sys-desc">Conversational AI qualifies leads and books them directly to your calendar. No phone tag. Only serious, ready-to-buy prospects in your schedule.</p>
+        <div class="sys-price">$2,000 – $4,000/month</div>
+        <div class="sys-tools">
+          <span class="sys-tool">Calendly</span><span class="sys-tool">GoHighLevel</span><span class="sys-tool">Claude Code</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bundle pricing -->
+    <div style="max-width:680px;margin:2.5rem auto 0;background:linear-gradient(135deg,#0c1130,#111a3e);border:2px solid var(--gold);border-radius:16px;padding:2rem 2.5rem;text-align:center" class="fade-up">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.12em;color:var(--gold);margin-bottom:0.5rem">GROWTH BUNDLE — ALL 3 SYSTEMS</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--white);line-height:1"><span style="font-size:1.4rem;vertical-align:top;margin-top:0.6rem;display:inline-block">$</span>4,000<span style="font-size:1.2rem">/month</span></div>
+      <div style="color:var(--muted);font-size:0.95rem;margin:0.5rem 0 1rem">Save $1,500/mo vs. purchasing systems individually</div>
+      <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold" style="font-size:0.95rem;padding:0.9rem 2rem">Claim Your Free Audit — See If You Qualify →</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="s" id="process">
+  <div class="container-wide">
+    <div style="max-width:860px;margin:0 auto">
+      <span class="s-label fade-up">Your 4-Step Plan</span>
+      <h2 class="s-h2 fade-up">We Handle Everything.<br><span class="gold">You Just Approve the Results.</span></h2>
+      <p class="lead fade-up">Getting started is simple. Here's exactly how we go from your first audit call to AI agents running your pipeline.</p>
+    </div>
+    <div class="process-grid fade-up">
+      <div class="p-step">
+        <span class="p-num">01</span>
+        <div class="p-name">AUDIT</div>
+        <p class="p-desc">We map your ICP, pain points, and channels. Every gap, every opportunity — before a single line of code is written.</p>
+      </div>
+      <div class="p-step">
+        <span class="p-num">02</span>
+        <div class="p-name">BUILD</div>
+        <p class="p-desc">Claude Code agents built for your exact workflow — not templates. Wired to your tools, your data, your customers.</p>
+      </div>
+      <div class="p-step">
+        <span class="p-num">03</span>
+        <div class="p-name">DEPLOY</div>
+        <p class="p-desc">Everything pushed to Railway — running 24/7. No babysitting. No downtime. Just pipeline flowing while you sleep.</p>
+      </div>
+      <div class="p-step">
+        <span class="p-num">04</span>
+        <div class="p-name">OPTIMIZE</div>
+        <p class="p-desc">Graph MCP analyzes data, turns off losers, promotes winners. The machine gets smarter every week without you touching it.</p>
+      </div>
+    </div>
+    <div class="section-cta fade-up">
+      <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold">Start With Step 1 — Book Your Free Audit →</a>
+      <p class="under-cta-note">No commitment required. The audit is free, specific, and takes 45 minutes.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SOCIAL PROOF ── -->
+<section class="s" id="proof" style="background:var(--navy2)">
+  <div class="container-wide">
+    <div style="max-width:860px;margin:0 auto">
+      <span class="s-label fade-up">Real Results</span>
+      <h2 class="s-h2 fade-up">Don't Take Our Word for It.<br><span class="gold">Here's What Clients Say.</span></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <span class="testi-stars">★★★★★</span>
+        <p class="testi-quote">"Within 6 weeks of launching the AI lead gen system, we had 3 new commercial contracts worth over $80K. I honestly didn't believe it would work this fast. These guys are the real deal."</p>
+        <div class="result-tag">
+          <div class="result-label">Verified Result</div>
+          <div class="result-value">$80K+ in New Contracts — 6 Weeks</div>
+        </div>
+        <div class="testi-author">
+          <img src="Joanne.JFIF" alt="Joan R. — Imani Mental Health Arizona" class="testi-photo" style="border:2px solid #F59E0B">
+          <div>
+            <div class="testi-name">Joan R.</div>
+            <div class="testi-loc">Imani Mental Health — Arizona</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <span class="testi-stars">★★★★★</span>
+        <p class="testi-quote">"The reputation system cleaned up our Google profile and got us 40 new 5-star reviews in 30 days. Our appointment bookings doubled. Target Digital delivered exactly what they promised."</p>
+        <div class="result-tag">
+          <div class="result-label">Verified Result</div>
+          <div class="result-value">40 Five-Star Reviews + 2× Bookings — 30 Days</div>
+        </div>
+        <div class="testi-author">
+          <img src="Brijesh.PNG" alt="Brijesh Singh — Robotics For Sure Brisbane" class="testi-photo" style="border:2px solid #00BFFF">
+          <div>
+            <div class="testi-name">Brijesh Singh</div>
+            <div class="testi-loc">Robotics For Sure — Brisbane</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── THE OFFER ── -->
+<section class="s" id="offer" style="background:var(--navy3)">
+  <div class="container">
+    <span class="s-label fade-up">What You Get</span>
+    <h2 class="s-h2 fade-up">Your Free AI Growth Audit:<br><span class="gold">Everything We'll Cover in 45 Minutes.</span></h2>
+    <p class="lead fade-up">This isn't a discovery call. It's not a sales pitch disguised as a free session. It's a working audit — you'll leave with a specific, actionable map of exactly how AI agents will grow your business.</p>
+
+    <div class="offer-wrap fade-up">
+      <div class="offer-badge">FREE SESSION</div>
+      <h3 class="offer-h3">The AI Growth Audit</h3>
+      <p class="offer-sub">45 minutes. Specific to your business. Zero obligation.</p>
+      <ul class="offer-list">
+        <li><strong>ICP &amp; Channel Map</strong> — We identify your ideal customer profile and the exact Meta/Google channels where they're most reachable right now.</li>
+        <li><strong>Pipeline Gap Analysis</strong> — We map your current lead flow and find exactly where prospects are dropping out — ad click, landing page, follow-up, or booking.</li>
+        <li><strong>AI Stack Blueprint</strong> — You'll see which of the 3 systems will generate the fastest ROI for your specific business.</li>
+        <li><strong>Competitor Intelligence</strong> — We show you what your top 3 competitors are running for AI automation — and where you can take market share in 90 days.</li>
+        <li><strong>48-Hour Deployment Plan</strong> — Step-by-step breakdown of what gets built, in what order, and when you'll see first results.</li>
+        <li><strong>Railway Infrastructure Review</strong> — We assess your current tech stack and confirm how the AI system integrates without disrupting what's working.</li>
+      </ul>
+      <div class="value-stack">
+        <div class="value-was">Typical consulting value of this session</div>
+        <div class="value-price">$1,200</div>
+        <div class="value-now-label">Your investment today</div>
+        <div class="value-free">FREE</div>
+      </div>
+      <div style="text-align:center">
+        <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold" style="font-size:1.05rem;padding:1.1rem 2.5rem">Claim Your Free Audit Session →</a>
+        <p class="objection-note">No credit card. No commitment. Just 45 minutes that could change your pipeline.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FAILURE STAKES ── -->
+<section class="s" id="stakes">
+  <div class="container">
+    <span class="s-label s-label-red fade-up">The Cost of Waiting</span>
+    <h2 class="s-h2 fade-up">Every Month Without This System,<br><span class="gold">a Competitor Is Taking Your Customers.</span></h2>
+    <div class="stakes-box fade-up">
+      <p class="body" style="color:var(--text);margin-bottom:1rem">Here's the uncomfortable truth: AI automation is not coming to marketing. It's already here. Right now, there are businesses in your market running Claude Code agents on Railway that are prospecting, following up, and booking 24 hours a day.</p>
+      <p class="body" style="color:var(--text);margin-bottom:1rem">Every week you wait, those systems are compounding. More data. Better targeting. More reviews. More booked appointments. The gap between you and a business running full AI automation grows every single day — and it's very hard to close once it's wide enough.</p>
+      <p class="body" style="color:var(--text);margin:0">The audit is free. The only cost is 45 minutes. The only risk is staying exactly where you are for another month while a competitor doesn't.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SUCCESS PICTURE ── -->
+<section class="s" id="success" style="background:var(--navy2)">
+  <div class="container-wide">
+    <div style="max-width:860px;margin:0 auto">
+      <span class="s-label fade-up">Your Future State</span>
+      <h2 class="s-h2 fade-up">Imagine Opening Your Inbox to<br><span class="cyan">Qualified Leads Every Morning.</span></h2>
+      <p class="lead fade-up">Here's what your business looks like 90 days after we deploy the AI Revenue Stack:</p>
+    </div>
+    <div class="success-grid">
+      <div class="success-item fade-up"><span class="s-icon">🎯</span><div class="s-text"><h4>Predictable Lead Flow</h4><p>Warm, qualified leads arriving daily from Meta and Google pipelines — without touching a single campaign.</p></div></div>
+      <div class="success-item fade-up"><span class="s-icon">⭐</span><div class="s-text"><h4>5-Star Reputation on Autopilot</h4><p>40+ new reviews collected automatically. Your Google profile becomes your best sales asset.</p></div></div>
+      <div class="success-item fade-up"><span class="s-icon">📅</span><div class="s-text"><h4>Calendar Full of Serious Buyers</h4><p>Only pre-qualified prospects reaching your calendar. AI handles the screening. You handle the close.</p></div></div>
+      <div class="success-item fade-up"><span class="s-icon">📈</span><div class="s-text"><h4>Compounding Intelligence</h4><p>Graph MCP analyzes what's working weekly. ROI compounds without extra effort from you.</p></div></div>
+      <div class="success-item fade-up"><span class="s-icon">🚀</span><div class="s-text"><h4>24/7 Railway Infrastructure</h4><p>99% uptime. No babysitting. Running while you sleep, work, and take holidays.</p></div></div>
+      <div class="success-item fade-up"><span class="s-icon">💰</span><div class="s-text"><h4>Revenue You Can Predict</h4><p>No more feast-or-famine months. Consistent pipeline means consistent revenue — finally.</p></div></div>
+    </div>
+    <div class="section-cta fade-up">
+      <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-blue">I Want This — Book My Free Audit →</a>
+      <p class="under-cta-note">No commitment. No credit card. 45 minutes. Specific to your business.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FAQ ── -->
+<section class="s" id="faq" style="background:var(--navy3)">
+  <div class="container">
+    <span class="s-label fade-up">Common Questions</span>
+    <h2 class="s-h2 fade-up">Everything You're Wondering<br><span class="gold">Before You Book.</span></h2>
+    <div class="faq-list fade-up">
+      <div class="faq-item">
+        <button class="faq-q">How is this different from a marketing agency? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Agencies sell you ad spend and monthly reports. We build you a machine you own — Claude Code agents running 24/7 on Railway. No hourly fees. No retainer bloat. No monthly PDF. You own the system and keep the results even if you stop working with us.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How is this different from hiring a marketing team? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Cody Schneider replaced a team of dozens with 10 Claude Code instances running simultaneously. We do the same for your business — but you don't manage any of it. We are the agent jockeys. You get the results. No salaries, no HR, no sick days. Just output, 24 hours a day.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How fast will I see results? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>We deploy in 48 hours from the audit. Most clients see their first automated leads, reviews, or bookings within 7–14 days of launch. Full ROI typically shows within 30–60 days depending on your market size and current baseline. The audit gives you a specific timeline for your business.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I need to be on Meta AND Google? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>We lead with Meta (Facebook and Instagram) as the primary channel — it gives us the best targeting for most SaaS founders and SME owners. Google is a powerful secondary channel for intent-based capture. The audit will confirm the right mix for your specific ICP and market — some businesses only need one.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What does the monthly retainer actually cover? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Your monthly retainer covers ongoing management, monitoring, optimisation, and iteration of your AI systems. We're constantly improving targeting, refining agent behaviour, and reporting results. Tool costs (Apollo, Instantly, Railway, etc.) are typically $150–300/month paid directly to those platforms — we never mark these up.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if it doesn't work for my industry? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>The audit confirms fit before you spend a dollar. We've deployed across healthcare, professional services, SaaS, real estate, education, and B2B services. If we can't generate clear ROI for your business, we'll tell you in the audit — not after you've paid. We don't take clients we can't deliver for.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FINAL CTA ── -->
+<section id="final-cta">
+  <div class="final-inner">
+    <div class="scarcity-badge fade-up">⚡ 3 Audit Spots Remaining This Month</div>
+    <h2 class="final-h2 fade-up">Ready to Stop Running Campaigns<br>and Start Running <span style="color:var(--gold)">Machines?</span></h2>
+    <p class="final-sub fade-up">Book your free 45-minute AI Growth Audit. We'll map your ICP, identify your biggest pipeline gaps, and show you exactly how Claude Code agents will fill them — specific to your business, with a 48-hour deployment plan included.</p>
+    <div class="fade-up">
+      <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold" style="font-size:1.1rem;padding:1.2rem 3rem">Claim Your Free AI Growth Audit →</a>
+    </div>
+    <div class="cta-trust-row fade-up">
+      <span>No credit card</span>
+      <span>No commitment</span>
+      <span>45 minutes</span>
+      <span>Specific to your business</span>
+    </div>
+    <p class="objection-note fade-up" style="margin-top:1.2rem">Questions? Email <a href="mailto:rop@targetdigital.com.au" style="color:var(--gold)">rop@targetdigital.com.au</a></p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo"><span style="color:var(--gold)">Target</span><span style="color:#fff">Digital</span></div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="lead-generation.html">Lead Generation</a>
+    <a href="reputation.html">Reputation</a>
+    <a href="appointment-booking.html">Appointment Booking</a>
+    <a href="mailto:rop@targetdigital.com.au">rop@targetdigital.com.au</a>
+  </div>
+  <p>© 2026 Target Digital. All rights reserved. | AI Growth Systems built on Railway + Claude Code.</p>
+</footer>
+
+<!-- ── MOBILE STICKY CTA ── -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener">
+    Claim Your Free Audit →
+    <div class="sticky-cta-sub">45 minutes · No commitment</div>
+  </a>
+</div>
+
+<script>
+// ── GSAP SCROLLTRIGGER HERO ──
+gsap.registerPlugin(ScrollTrigger);
+(function(){
+  const video = document.getElementById('hero-video');
+  const hero  = document.getElementById('hero');
+  const text  = document.getElementById('hero-text');
+  let ready = false;
+
+  function init() {
+    if (ready) return;
+    ready = true;
+    video.pause();
+    video.currentTime = 0;
+
+    ScrollTrigger.create({
+      trigger: hero,
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate(s) {
+        const p = s.progress;
+        if (video.duration) video.currentTime = p * video.duration;
+        if (p > 0.6) {
+          const t = (p - 0.6) / 0.4;
+          text.style.opacity = t;
+          text.style.transform = 'translateY(' + ((1 - t) * 40) + 'px)';
+          text.style.pointerEvents = 'auto';
+        } else {
+          text.style.opacity = 0;
+          text.style.transform = 'translateY(40px)';
+          text.style.pointerEvents = 'none';
+        }
+      }
+    });
+  }
+
+  video.addEventListener('loadedmetadata', init);
+  video.addEventListener('canplay', init);
+  if (video.readyState >= 1) init();
+})();
+
+// ── LENIS SMOOTH SCROLL ──
+const lenis = new Lenis({ lerp: 0.08, smooth: true });
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add(time => lenis.raf(time * 1000));
+gsap.ticker.lagSmoothing(0);
+
+// ── FADE UP OBSERVER ──
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// ── MOBILE STICKY CTA ──
+const stickyCta = document.getElementById('sticky-cta');
+window.addEventListener('scroll', () => {
+  stickyCta.classList.toggle('visible', window.scrollY > 500);
+}, { passive: true });
+
+// ── FAQ ACCORDION ──
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ── SMOOTH ANCHOR SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -80 }); }
+  });
+});
+</script>
+</body>
+</html>
