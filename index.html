@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Target Digital — AI Growth Machines That Run 24/7</title>
+<meta name="description" content="We build AI-powered lead gen, reputation, and appointment systems for local businesses. 24/7 growth on autopilot.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#06091a;
+  --navy2:#0c1130;
+  --navy3:#111a3e;
+  --blue:#2563eb;
+  --blue-light:#3b82f6;
+  --blue-glow:rgba(37,99,235,0.3);
+  --gold:#f0c040;
+  --gold-dim:rgba(240,192,64,0.15);
+  --text:#e8eaf6;
+  --muted:#7986b0;
+  --muted2:#3d4f7c;
+  --radius:14px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--navy);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--navy2)}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px);background:rgba(6,9,26,0.8);border-bottom:1px solid rgba(37,99,235,0.15)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:#fff;letter-spacing:-0.5px}
+.nav-logo span{color:var(--gold)}
+.nav-cta{background:var(--blue);color:#fff;border:none;padding:0.55rem 1.3rem;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;cursor:pointer;transition:background 0.2s}
+.nav-cta:hover{background:var(--blue-light)}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:860px;padding:0 1.5rem}
+.hero-badge{display:inline-block;background:var(--gold-dim);border:1px solid rgba(240,192,64,0.4);color:var(--gold);font-size:0.78rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:0.4rem 1rem;border-radius:100px;margin-bottom:1.5rem}
+.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:#fff;margin-bottom:1.5rem}
+.hero-h1 .accent{color:var(--gold)}
+.hero-sub{font-size:1.15rem;color:var(--muted);line-height:1.7;max-width:580px;margin:0 auto 2.5rem}
+.btn-primary{display:inline-block;background:var(--blue);color:#fff;padding:1rem 2.2rem;border-radius:10px;font-weight:600;font-size:1rem;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 0 30px var(--blue-glow);font-family:'DM Sans',sans-serif}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px var(--blue-glow)}
+.hero-trust{margin-top:3rem;display:flex;align-items:center;justify-content:center;gap:1rem;color:var(--muted);font-size:0.85rem}
+.hero-trust-dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+/* SECTIONS SHARED */
+section{padding:5rem 1.5rem}
+.section-label{font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--blue-light);margin-bottom:1rem}
+.section-h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;line-height:1.2;margin-bottom:1rem}
+.section-sub{color:var(--muted);font-size:1.05rem;line-height:1.7;max-width:580px}
+.container{max-width:1100px;margin:0 auto}
+.text-center{text-align:center}
+.text-center .section-sub{margin:0 auto}
+
+/* PROBLEM */
+#problem{background:var(--navy2)}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
+.pain-card{background:var(--navy3);border:1px solid var(--muted2);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s}
+.pain-card:hover{border-color:var(--blue);transform:translateY(-4px)}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-light))}
+.pain-icon{font-size:2.2rem;margin-bottom:1rem}
+.pain-card h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:0.6rem}
+.pain-card p{color:var(--muted);font-size:0.95rem;line-height:1.6}
+
+/* SYSTEMS */
+#systems{background:var(--navy)}
+.systems-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem}
+.system-card{background:linear-gradient(135deg,var(--navy2),var(--navy3));border:1px solid var(--muted2);border-radius:var(--radius);padding:2.2rem;transition:border-color 0.3s,box-shadow 0.3s}
+.system-card:hover{border-color:var(--blue);box-shadow:0 0 40px var(--blue-glow)}
+.system-tag{display:inline-block;background:var(--blue-glow);border:1px solid rgba(37,99,235,0.4);color:var(--blue-light);font-size:0.72rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:100px;margin-bottom:1.2rem}
+.system-card h3{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:0.8rem}
+.system-card p{color:var(--muted);font-size:0.95rem;line-height:1.6;margin-bottom:1.5rem}
+.system-price{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--gold)}
+.system-price span{font-size:0.9rem;font-weight:400;color:var(--muted)}
+
+/* HOW WE DELIVER */
+#deliver{background:var(--navy2)}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.2rem;margin-top:3rem}
+.tool-badge{background:var(--navy3);border:1px solid var(--muted2);border-radius:var(--radius);padding:1.5rem 1rem;text-align:center;transition:border-color 0.3s,transform 0.3s}
+.tool-badge:hover{border-color:var(--blue-light);transform:translateY(-3px)}
+.tool-icon{font-size:2rem;margin-bottom:0.6rem}
+.tool-badge span{display:block;font-size:0.85rem;font-weight:600;color:var(--text)}
+
+/* PROOF */
+#proof{background:var(--navy)}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;margin:3rem 0}
+.stat-box{text-align:center;padding:2rem;background:var(--navy2);border:1px solid var(--muted2);border-radius:var(--radius)}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800;color:var(--gold);display:block}
+.stat-label{color:var(--muted);font-size:0.9rem;margin-top:0.4rem}
+.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+.testi-card{background:var(--navy2);border:1px solid var(--muted2);border-radius:var(--radius);padding:2rem}
+.testi-stars{color:var(--gold);font-size:1.1rem;margin-bottom:1rem}
+.testi-quote{color:var(--text);font-size:1rem;line-height:1.7;margin-bottom:1.5rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:0.8rem}
+.testi-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-light));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;color:#fff;font-size:1rem}
+.testi-name{font-weight:600;color:#fff;font-size:0.95rem}
+.testi-loc{color:var(--muted);font-size:0.82rem}
+
+/* PROCESS */
+#process{background:var(--navy2)}
+.process-track{position:relative;margin-top:4rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0}
+.process-step{text-align:center;padding:2rem 1.5rem;position:relative}
+.process-step:not(:last-child)::after{content:'';position:absolute;top:2.8rem;right:0;width:100%;height:2px;background:linear-gradient(90deg,var(--blue),transparent);z-index:0}
+.step-circle{width:56px;height:56px;border-radius:50%;background:var(--navy3);border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:var(--blue-light);position:relative;z-index:1;transition:background 0.3s,border-color 0.3s}
+.process-step.active .step-circle{background:var(--blue);color:#fff;box-shadow:0 0 25px var(--blue-glow)}
+.step-label{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;color:#fff;margin-bottom:0.5rem}
+.step-desc{color:var(--muted);font-size:0.88rem;line-height:1.6}
+
+/* SVG LINE */
+.process-svg{display:block;width:100%;max-width:900px;margin:0 auto 3rem;overflow:visible}
+.process-line{fill:none;stroke:var(--blue);stroke-width:2;stroke-dasharray:1000;stroke-dashoffset:1000;transition:stroke-dashoffset 1.5s ease}
+.process-line.drawn{stroke-dashoffset:0}
+
+/* FAQ */
+#faq{background:var(--navy)}
+.faq-list{margin-top:3rem;max-width:720px;margin-left:auto;margin-right:auto}
+.faq-item{border-bottom:1px solid var(--muted2);overflow:hidden}
+.faq-q{width:100%;background:none;border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:1.05rem;font-weight:600;text-align:left;padding:1.4rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q:hover{color:var(--blue-light)}
+.faq-icon{color:var(--blue-light);font-size:1.3rem;flex-shrink:0;transition:transform 0.3s}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s}
+.faq-a p{color:var(--muted);font-size:0.95rem;line-height:1.7;padding-bottom:1.2rem}
+.faq-item.open .faq-a{max-height:300px}
+
+/* PRICING */
+#pricing{background:var(--navy2)}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem}
+.price-card{background:var(--navy3);border:1px solid var(--muted2);border-radius:var(--radius);padding:2.5rem 2rem;position:relative;transition:transform 0.3s,box-shadow 0.3s}
+.price-card.featured{border-color:var(--blue);box-shadow:0 0 50px var(--blue-glow)}
+.price-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:0.65rem;font-weight:700;letter-spacing:2px;padding:0.3rem 1rem;border-radius:100px}
+.price-card:hover{transform:translateY(-5px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.price-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--blue-light);margin-bottom:1rem}
+.price-amount{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:0.3rem}
+.price-amount span{font-size:1rem;font-weight:400;color:var(--muted)}
+.price-desc{color:var(--muted);font-size:0.9rem;margin-bottom:1.8rem;line-height:1.5}
+.price-features{list-style:none;margin-bottom:2rem}
+.price-features li{color:var(--text);font-size:0.92rem;padding:0.5rem 0;border-bottom:1px solid var(--muted2);display:flex;align-items:center;gap:0.6rem}
+.price-features li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0}
+.btn-outline{width:100%;padding:0.9rem;border:1px solid var(--blue);background:transparent;color:var(--blue-light);border-radius:9px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.95rem;cursor:pointer;transition:background 0.2s,color 0.2s}
+.btn-outline:hover,.price-card.featured .btn-outline{background:var(--blue);color:#fff}
+
+/* FINAL CTA */
+#cta-final{position:relative;background:var(--navy);min-height:480px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#cta-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.6}
+.cta-inner{position:relative;z-index:2;text-align:center;padding:0 1.5rem;max-width:700px}
+.slots-badge{display:inline-block;background:rgba(240,192,64,0.15);border:1px solid rgba(240,192,64,0.5);color:var(--gold);font-size:0.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:0.5rem 1.2rem;border-radius:100px;margin-bottom:1.5rem;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(240,192,64,0.3)}50%{box-shadow:0 0 0 10px rgba(240,192,64,0)}}
+.cta-inner h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:#fff;margin-bottom:1rem;line-height:1.2}
+.cta-inner p{color:var(--muted);font-size:1.05rem;margin-bottom:2.5rem;line-height:1.7}
+
+/* FOOTER */
+footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:0.85rem}
+footer .footer-logo{font-family:'Syne',sans-serif;font-weight:800;color:#fff;margin-bottom:0.5rem}
+footer .footer-logo span{color:var(--gold)}
+
+/* FADE IN */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .process-step:not(:last-child)::after{display:none}
+  nav{padding:0.9rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Target<span>Digital</span></div>
+  <button class="nav-cta" onclick="document.getElementById('cta-final').scrollIntoView({behavior:'smooth'})">Get Growth Audit</button>
+</nav>
+
+<!-- 1. HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge">AI-Powered Growth Systems</div>
+    <h1 class="hero-h1">WE BUILD <span class="accent">AI GROWTH MACHINES</span> THAT RUN 24/7</h1>
+    <p class="hero-sub">Stop chasing leads. Stop fighting bad reviews. Stop losing bookings. We deploy AI systems that fill your pipeline, protect your reputation, and book appointments — around the clock.</p>
+    <button class="btn-primary" onclick="document.getElementById('cta-final').scrollIntoView({behavior:'smooth'})">Get Your Growth Audit →</button>
+    <div class="hero-trust">
+      <span>No long-term contracts</span>
+      <div class="hero-trust-dot"></div>
+      <span>Results in 30 days</span>
+      <div class="hero-trust-dot"></div>
+      <span>Done-for-you</span>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">The Problem</div>
+      <h2 class="section-h2">Sound familiar?</h2>
+      <p class="section-sub">Most local businesses are stuck in the same three traps — and they're bleeding revenue every single day.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card fade-up">
+        <div class="pain-icon">🧊</div>
+        <h3>Cold, Unresponsive Leads</h3>
+        <p>Your outreach gets ignored. You're spending money on ads or time on DMs with nothing to show. Your pipeline is dry and inconsistent.</p>
+      </div>
+      <div class="pain-card fade-up">
+        <div class="pain-icon">⭐</div>
+        <h3>Bad Reviews Killing Trust</h3>
+        <p>One or two negative reviews tanking your reputation. Competitors with 4.9 stars are taking your customers before you even get a chance.</p>
+      </div>
+      <div class="pain-card fade-up">
+        <div class="pain-icon">📞</div>
+        <h3>Unqualified Calls Wasting Time</h3>
+        <p>Spending hours on the phone with tire-kickers who never buy. Your calendar is full — but your revenue isn't growing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. THREE SYSTEMS -->
+<section id="systems">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">Our Solutions</div>
+      <h2 class="section-h2">Three AI Systems. One Growth Engine.</h2>
+      <p class="section-sub">Each system is fully automated, custom-built for your business, and designed to pay for itself in the first month.</p>
+    </div>
+    <div class="systems-grid">
+      <div class="system-card fade-up">
+        <div class="system-tag">System 01</div>
+        <h3>AI Lead Generation</h3>
+        <p>We build automated outreach pipelines using Apollo, PhantomBuster, and Instantly — targeting your ideal customers 24/7. Warm leads in your inbox daily.</p>
+        <div class="system-price">$2,000 <span>– $4,000 / setup</span></div>
+      </div>
+      <div class="system-card fade-up">
+        <div class="system-tag">System 02</div>
+        <h3>Reputation Management</h3>
+        <p>AI monitors, responds to, and generates 5-star reviews automatically. Protect and grow your online reputation without lifting a finger.</p>
+        <div class="system-price">$1,500 <span>– $3,000 / setup</span></div>
+      </div>
+      <div class="system-card fade-up">
+        <div class="system-tag">System 03</div>
+        <h3>AI Appointment Booking</h3>
+        <p>Conversational AI qualifies leads and books them directly to your calendar. No more phone tag. Only serious, ready-to-buy prospects.</p>
+        <div class="system-price">$2,000 <span>– $3,500 / setup</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. HOW WE DELIVER -->
+<section id="deliver">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">Our Stack</div>
+      <h2 class="section-h2">How We Deliver Results</h2>
+      <p class="section-sub">We use enterprise-grade tools, assembled and managed by our team — so you get agency-level output without agency-level headaches.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-badge fade-up">
+        <div class="tool-icon">🤖</div>
+        <span>Claude Code</span>
+      </div>
+      <div class="tool-badge fade-up">
+        <div class="tool-icon">🚂</div>
+        <span>Railway</span>
+      </div>
+      <div class="tool-badge fade-up">
+        <div class="tool-icon">📘</div>
+        <span>Facebook API</span>
+      </div>
+      <div class="tool-badge fade-up">
+        <div class="tool-icon">👻</div>
+        <span>PhantomBuster</span>
+      </div>
+      <div class="tool-badge fade-up">
+        <div class="tool-icon">🎯</div>
+        <span>Apollo</span>
+      </div>
+      <div class="tool-badge fade-up">
+        <div class="tool-icon">⚡</div>
+        <span>Instantly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PROOF -->
+<section id="proof">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">Results</div>
+      <h2 class="section-h2">Numbers Don't Lie</h2>
+    </div>
+    <div class="stats-row">
+      <div class="stat-box fade-up">
+        <span class="stat-num" data-target="137">0</span>
+        <div class="stat-label">Leads Generated / Month (avg)</div>
+      </div>
+      <div class="stat-box fade-up">
+        <span class="stat-num" data-target="4.9" data-decimal="1">0</span>
+        <div class="stat-label">Average Review Rating Achieved</div>
+      </div>
+      <div class="stat-box fade-up">
+        <span class="stat-num" data-target="3">0</span>
+        <div class="stat-label">x ROI in First 90 Days</div>
+      </div>
+      <div class="stat-box fade-up">
+        <span class="stat-num" data-target="24">0</span>
+        <div class="stat-label">Hours / Day Running Automated</div>
+      </div>
+    </div>
+    <div class="testimonials">
+      <div class="testi-card fade-up">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Within 6 weeks of launching the AI lead gen system, we had 3 new commercial contracts worth over $80K. I honestly didn't believe it would work this fast. These guys are the real deal."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JR</div>
+          <div>
+            <div class="testi-name">Joan R.</div>
+            <div class="testi-loc">Phoenix, Arizona — Property Services</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"The reputation system cleaned up our Google profile and got us 40 new 5-star reviews in 30 days. Our appointment bookings doubled. Target Digital delivered exactly what they promised."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">BS</div>
+          <div>
+            <div class="testi-name">Brijesh Singh</div>
+            <div class="testi-loc">Dallas, Texas — Med Spa Owner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-h2">From Zero to Automated in 4 Steps</h2>
+      <p class="section-sub">Our proven delivery framework gets you live in under 30 days — no guesswork, no delays.</p>
+    </div>
+
+    <svg class="process-svg fade-up" viewBox="0 0 900 60" preserveAspectRatio="xMidYMid meet">
+      <path id="process-line" class="process-line" d="M 50 30 Q 225 10 450 30 Q 675 50 850 30"/>
+      <circle cx="50" cy="30" r="8" fill="var(--blue)"/>
+      <circle cx="316" cy="30" r="8" fill="var(--blue)"/>
+      <circle cx="583" cy="30" r="8" fill="var(--blue)"/>
+      <circle cx="850" cy="30" r="8" fill="var(--blue)"/>
+    </svg>
+
+    <div class="process-track">
+      <div class="process-step fade-up" id="step-1">
+        <div class="step-circle">01</div>
+        <div class="step-label">Audit</div>
+        <div class="step-desc">We analyze your current pipeline, reputation, and booking flow. Identify every gap and opportunity.</div>
+      </div>
+      <div class="process-step fade-up" id="step-2">
+        <div class="step-circle">02</div>
+        <div class="step-label">Design</div>
+        <div class="step-desc">We map the custom AI system architecture — tools, workflows, integrations, and automations — built for your business.</div>
+      </div>
+      <div class="process-step fade-up" id="step-3">
+        <div class="step-circle">03</div>
+        <div class="step-label">Build</div>
+        <div class="step-desc">Our team deploys and connects every component. You get a full walkthrough before we go live.</div>
+      </div>
+      <div class="process-step fade-up" id="step-4">
+        <div class="step-circle">04</div>
+        <div class="step-label">Launch</div>
+        <div class="step-desc">Your AI growth machine goes live. Leads, reviews, and bookings start flowing automatically — while you focus on your business.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-h2">Common Questions</h2>
+    </div>
+    <div class="faq-list fade-up">
+      <div class="faq-item">
+        <button class="faq-q">How long until I see results? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Most clients see their first automated leads, reviews, or bookings within 7–14 days of launch. Full ROI typically shows within 30–60 days depending on your market size and current baseline.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I need any technical knowledge? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>None at all. We handle everything — setup, integrations, monitoring, and optimization. You just review the results in a simple dashboard we provide. If you can check email, you can manage this.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if it doesn't work for my industry? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>We've deployed systems across home services, med spas, dental, legal, real estate, and B2B services. Before we start, we run a free audit to confirm fit — we won't take you on if we can't deliver.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Are there ongoing monthly fees? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>The setup fee covers build and launch. Ongoing management (monitoring, optimization, support) is available as an optional retainer starting at $500/month. Tool costs (Apollo, Instantly, etc.) are typically $150–300/month paid directly.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What makes this different from hiring a marketing agency? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Traditional agencies sell you ad spend and reports. We build you a machine you own — AI systems that run 24/7 without hourly fees or retainer bloat. Your ROI compounds over time instead of disappearing the moment you stop paying.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-h2">Simple, Transparent Pricing</h2>
+      <p class="section-sub">One-time setup fee. No hidden costs. No long-term lock-in. Pick the system that fits where you are right now.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card fade-up">
+        <div class="price-name">Starter</div>
+        <div class="price-amount">$2,000 <span>one-time</span></div>
+        <div class="price-desc">Perfect for businesses new to AI automation — get one system live and generating results fast.</div>
+        <ul class="price-features">
+          <li>1 AI System of your choice</li>
+          <li>Full setup & integration</li>
+          <li>30-day onboarding support</li>
+          <li>Performance dashboard</li>
+          <li>1 revision round</li>
+        </ul>
+        <button class="btn-outline" onclick="document.getElementById('cta-final').scrollIntoView({behavior:'smooth'})">Get Started</button>
+      </div>
+      <div class="price-card featured fade-up">
+        <div class="price-name">Growth</div>
+        <div class="price-amount">$4,500 <span>one-time</span></div>
+        <div class="price-desc">The full lead-gen and reputation stack. Most popular for businesses ready to scale predictably.</div>
+        <ul class="price-features">
+          <li>Lead Gen + Reputation Systems</li>
+          <li>Full setup & integration</li>
+          <li>60-day onboarding support</li>
+          <li>Advanced analytics dashboard</li>
+          <li>2 revision rounds</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="btn-outline" onclick="document.getElementById('cta-final').scrollIntoView({behavior:'smooth'})">Get Started</button>
+      </div>
+      <div class="price-card fade-up">
+        <div class="price-name">Scale</div>
+        <div class="price-amount">$7,500 <span>one-time</span></div>
+        <div class="price-desc">All three systems deployed and integrated into a single, unified growth engine for maximum output.</div>
+        <ul class="price-features">
+          <li>All 3 AI Systems</li>
+          <li>Full setup & integration</li>
+          <li>90-day onboarding support</li>
+          <li>Custom reporting & KPIs</li>
+          <li>Unlimited revisions (90 days)</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <button class="btn-outline" onclick="document.getElementById('cta-final').scrollIntoView({behavior:'smooth'})">Get Started</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. FINAL CTA -->
+<section id="cta-final">
+  <canvas id="cta-canvas"></canvas>
+  <div class="cta-inner">
+    <div class="slots-badge">⚠ Only 3 Slots Remaining This Month</div>
+    <h2>Ready to Build Your AI Growth Machine?</h2>
+    <p>Book a free 30-minute Growth Audit. We'll map exactly which system will generate the fastest ROI for your business — no sales pressure, just a clear plan.</p>
+    <button class="btn-primary" style="font-size:1.05rem;padding:1.1rem 2.5rem">Get Your Free Growth Audit →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Target<span>Digital</span></div>
+  <p>© 2025 Target Digital. AI growth systems for local businesses.</p>
+</footer>
+
+<script>
+// ── LENIS SMOOTH SCROLL ──
+const lenis = new Lenis({ lerp: 0.08, smooth: true });
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+
+// ── THREE.JS HERO PARTICLE NETWORK ──
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 80;
+
+  function resize() {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COUNT = 180;
+  const positions = new Float32Array(COUNT * 3);
+  const velocities = [];
+  for (let i = 0; i < COUNT; i++) {
+    positions[i * 3]     = (Math.random() - 0.5) * 200;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 120;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 60;
+    velocities.push(
+      (Math.random() - 0.5) * 0.06,
+      (Math.random() - 0.5) * 0.06,
+      (Math.random() - 0.5) * 0.02
+    );
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  const mat = new THREE.PointsMaterial({ color: 0x2563eb, size: 1.2, transparent: true, opacity: 0.7 });
+  const points = new THREE.Points(geo, mat);
+  scene.add(points);
+
+  // Line mesh for connections
+  const lineMat = new THREE.LineBasicMaterial({ color: 0x2563eb, transparent: true, opacity: 0.12 });
+  let linesMesh;
+
+  function buildLines() {
+    const pos = geo.attributes.position.array;
+    const lineVerts = [];
+    const thresh = 35;
+    for (let i = 0; i < COUNT; i++) {
+      for (let j = i + 1; j < COUNT; j++) {
+        const dx = pos[i*3] - pos[j*3];
+        const dy = pos[i*3+1] - pos[j*3+1];
+        const dz = pos[i*3+2] - pos[j*3+2];
+        const d = Math.sqrt(dx*dx + dy*dy + dz*dz);
+        if (d < thresh) {
+          lineVerts.push(pos[i*3], pos[i*3+1], pos[i*3+2], pos[j*3], pos[j*3+1], pos[j*3+2]);
+        }
+      }
+    }
+    if (linesMesh) scene.remove(linesMesh);
+    const lg = new THREE.BufferGeometry();
+    lg.setAttribute('position', new THREE.BufferAttribute(new Float32Array(lineVerts), 3));
+    linesMesh = new THREE.LineSegments(lg, lineMat);
+    scene.add(linesMesh);
+  }
+
+  let frame = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    const pos = geo.attributes.position.array;
+    for (let i = 0; i < COUNT; i++) {
+      pos[i*3]     += velocities[i*3];
+      pos[i*3 + 1] += velocities[i*3 + 1];
+      pos[i*3 + 2] += velocities[i*3 + 2];
+      if (Math.abs(pos[i*3]) > 100)     velocities[i*3]     *= -1;
+      if (Math.abs(pos[i*3+1]) > 60)    velocities[i*3+1]   *= -1;
+      if (Math.abs(pos[i*3+2]) > 30)    velocities[i*3+2]   *= -1;
+    }
+    geo.attributes.position.needsUpdate = true;
+    if (frame % 3 === 0) buildLines();
+    frame++;
+    points.rotation.y += 0.0005;
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+
+// ── THREE.JS CTA PARTICLE CANVAS ──
+(function() {
+  const canvas = document.getElementById('cta-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, canvas.parentElement.offsetWidth / canvas.parentElement.offsetHeight, 0.1, 1000);
+  camera.position.z = 60;
+
+  function resize() {
+    const w = canvas.parentElement.offsetWidth;
+    const h = canvas.parentElement.offsetHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COUNT = 100;
+  const geoC = new THREE.BufferGeometry();
+  const posC = new Float32Array(COUNT * 3);
+  const velC = [];
+  for (let i = 0; i < COUNT; i++) {
+    posC[i*3]   = (Math.random() - 0.5) * 160;
+    posC[i*3+1] = (Math.random() - 0.5) * 80;
+    posC[i*3+2] = (Math.random() - 0.5) * 40;
+    velC.push((Math.random()-0.5)*0.04,(Math.random()-0.5)*0.04,0);
+  }
+  geoC.setAttribute('position', new THREE.BufferAttribute(posC, 3));
+  const matC = new THREE.PointsMaterial({ color: 0xf0c040, size: 1.0, transparent: true, opacity: 0.5 });
+  scene.add(new THREE.Points(geoC, matC));
+
+  function animateCTA() {
+    requestAnimationFrame(animateCTA);
+    const p = geoC.attributes.position.array;
+    for (let i = 0; i < COUNT; i++) {
+      p[i*3]   += velC[i*3];
+      p[i*3+1] += velC[i*3+1];
+      if (Math.abs(p[i*3]) > 80)   velC[i*3]   *= -1;
+      if (Math.abs(p[i*3+1]) > 40) velC[i*3+1] *= -1;
+    }
+    geoC.attributes.position.needsUpdate = true;
+    renderer.render(scene, camera);
+  }
+  animateCTA();
+})();
+
+// ── SCROLL FADE-UP OBSERVER ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── SVG PROCESS LINE DRAW ──
+const lineEl = document.getElementById('process-line');
+const lineObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) lineEl.classList.add('drawn'); });
+}, { threshold: 0.3 });
+lineObs.observe(lineEl);
+
+// Process step active highlight on scroll
+const steps = document.querySelectorAll('.process-step');
+const stepObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+}, { threshold: 0.5 });
+steps.forEach(s => stepObs.observe(s));
+
+// ── COUNTER ANIMATION ──
+function animateCounter(el) {
+  const target = parseFloat(el.dataset.target);
+  const decimal = parseInt(el.dataset.decimal || 0);
+  const duration = 2000;
+  const start = performance.now();
+  function tick(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const val = target * eased;
+    el.textContent = decimal ? val.toFixed(decimal) : Math.floor(val);
+    if (progress < 1) requestAnimationFrame(tick);
+    else el.textContent = decimal ? target.toFixed(decimal) : target;
+  }
+  requestAnimationFrame(tick);
+}
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(e.target);
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObs.observe(el));
+
+// ── FAQ ACCORDION ──
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
