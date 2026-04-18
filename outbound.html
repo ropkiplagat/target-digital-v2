@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Outbound Engine — Stop Chasing Leads | Target Digital</title>
+<meta name="description" content="Stop chasing cold leads manually. The Automated Outbound Engine finds, verifies and contacts your ICP 24/7 — from $4,000/month.">
+<link rel="canonical" href="https://targetdigital.com.au/outbound.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Target Digital",
+  "url": "https://targetdigital.com.au",
+  "description": "Stop chasing cold leads manually. The Automated Outbound Engine finds, verifies and contacts your ICP 24/7.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brisbane",
+    "addressRegion": "QLD",
+    "addressCountry": "AU"
+  },
+  "email": "rop@targetdigital.com.au"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#06091a;
+  --navy2:#0c1130;
+  --navy3:#111a3e;
+  --blue:#2563eb;
+  --blue-light:#3b82f6;
+  --blue-glow:rgba(37,99,235,0.3);
+  --gold:#f0c040;
+  --cyan:#00BFFF;
+  --red:#ef4444;
+  --text:#e8eaf6;
+  --muted:#7986b0;
+  --muted2:#3d4f7c;
+  --radius:14px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--navy);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--navy2)}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(14px);background:rgba(6,9,26,0.88);border-bottom:1px solid rgba(37,99,235,0.15)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:-0.5px;text-decoration:none}
+.nav-logo .gold{color:var(--gold)}
+.nav-logo .white{color:#fff}
+.nav-cta{background:var(--gold);color:#06091a;border:none;padding:0.55rem 1.4rem;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.2s;white-space:nowrap}
+.nav-cta:hover{background:#f5ca30;transform:translateY(-1px)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 1.5rem 5rem;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(0,191,255,0.08) 0%,transparent 65%);pointer-events:none}
+.hero-badge{display:inline-block;background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.35);color:var(--cyan);font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:0.4rem 1.2rem;border-radius:100px;margin-bottom:1.5rem}
+.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5.5vw,4rem);font-weight:800;line-height:1.06;letter-spacing:-1.5px;color:#fff;margin-bottom:1.2rem;max-width:860px}
+.hero-h1 .accent{color:var(--gold)}
+.hero-h1 .cyan{color:var(--cyan)}
+.hero-sub{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:600px;margin:0 auto 2.5rem}
+.hero-sub strong{color:#fff}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+.btn-gold{display:inline-block;background:var(--gold);color:#06091a;padding:1rem 2.2rem;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;border:none;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 0 30px rgba(240,192,64,0.35);font-family:'DM Sans',sans-serif;white-space:nowrap}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(240,192,64,0.6)}
+.btn-ghost{display:inline-block;background:transparent;color:#fff;padding:1rem 2rem;border-radius:10px;font-weight:600;font-size:1rem;cursor:pointer;border:2px solid rgba(255,255,255,0.25);text-decoration:none;transition:border-color 0.2s,transform 0.2s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.65);transform:translateY(-2px)}
+.hero-trust{display:flex;align-items:center;justify-content:center;gap:1.2rem;flex-wrap:wrap}
+.hero-trust span{font-size:0.78rem;color:var(--muted);font-weight:500}
+.trust-dot{width:3px;height:3px;background:var(--muted2);border-radius:50%;flex-shrink:0}
+
+/* TRUST BAR */
+.trust-bar{background:var(--navy2);border-top:1px solid rgba(0,191,255,0.12);border-bottom:1px solid rgba(0,191,255,0.12);padding:1.8rem 2rem}
+.trust-bar-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
+.trust-stat{text-align:center}
+.trust-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--gold);line-height:1;display:block}
+.trust-label{font-size:0.68rem;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:0.25rem}
+.trust-divider{width:1px;height:44px;background:var(--muted2);flex-shrink:0}
+
+/* SHARED */
+section.s{padding:5.5rem 1.5rem}
+.container{max-width:860px;margin:0 auto}
+.container-wide{max-width:1100px;margin:0 auto}
+.s-label{font-size:0.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem;display:block}
+.s-label-red{color:#fca5a5}
+.s-h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;line-height:1.12;margin-bottom:1.2rem;letter-spacing:-0.5px}
+.s-h2 .gold{color:var(--gold)}
+.s-h2 .cyan{color:var(--cyan)}
+.lead{font-size:1.1rem;color:var(--muted);line-height:1.85;margin-bottom:1.5rem}
+.body{font-size:1rem;color:var(--muted);line-height:1.85;margin-bottom:1.2rem}
+.body strong,.lead strong{color:#fff}
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--muted2),transparent)}
+
+/* PROBLEM */
+.pull-quote{font-family:'Syne',sans-serif;font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:700;color:#fff;line-height:1.45;border-left:4px solid var(--gold);padding:1.2rem 1.5rem;margin:2.5rem 0;background:rgba(240,192,64,0.04);border-radius:0 8px 8px 0}
+.problem-list{list-style:none;margin:1.5rem 0 2rem}
+.problem-list li{padding:1rem 0 1rem 2.2rem;border-bottom:1px solid rgba(61,79,124,0.35);color:var(--muted);font-size:0.98rem;line-height:1.7;position:relative}
+.problem-list li:last-child{border-bottom:none}
+.problem-list li::before{content:'✗';position:absolute;left:0;color:var(--red);font-weight:700}
+.problem-list li strong{color:#fff}
+
+/* STACK CARDS */
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.5rem;margin-top:3rem}
+.stack-card{background:var(--navy2);border:1px solid rgba(0,191,255,0.15);border-radius:var(--radius);padding:1.8rem 1.6rem;transition:border-color 0.3s,box-shadow 0.3s;position:relative}
+.stack-card:hover{border-color:rgba(0,191,255,0.45);box-shadow:0 0 30px rgba(0,191,255,0.08)}
+.stack-arrow{position:absolute;right:-1px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:10px solid rgba(0,191,255,0.2);z-index:1;display:none}
+.stack-tool{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--cyan);letter-spacing:1px;margin-bottom:0.3rem}
+.stack-role{font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.6rem}
+.stack-desc{color:var(--muted);font-size:0.85rem;line-height:1.65}
+
+/* PROCESS STEPS */
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;margin-top:3rem}
+.p-step{text-align:center;padding:2rem 1.5rem;position:relative}
+.p-step:not(:last-child)::after{content:'';position:absolute;top:3rem;right:0;width:1px;height:50px;background:linear-gradient(to bottom,var(--cyan),transparent)}
+.p-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--gold);line-height:1;display:block}
+.p-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:#fff;letter-spacing:1.5px;text-transform:uppercase;margin:0.4rem 0 0.6rem}
+.p-desc{color:var(--muted);font-size:0.84rem;line-height:1.65}
+
+/* TESTIMONIAL */
+.testi-card{background:var(--navy3);border:1px solid var(--muted2);border-radius:var(--radius);padding:2.5rem;max-width:680px;margin:2.5rem auto 0}
+.testi-stars{color:#F59E0B;font-size:1.1rem;letter-spacing:3px;margin-bottom:1.2rem;display:block}
+.testi-quote{color:var(--text);font-size:1.05rem;line-height:1.85;margin-bottom:1.5rem;font-style:italic}
+.result-tag{background:rgba(0,191,255,0.07);border:1px solid rgba(0,191,255,0.22);border-radius:8px;padding:0.7rem 1.1rem;margin-bottom:1.5rem}
+.result-label{font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--cyan);font-weight:700;margin-bottom:0.2rem}
+.result-value{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#fff}
+.testi-author{display:flex;align-items:center;gap:1rem}
+.testi-photo{width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0}
+.testi-name{font-weight:700;color:#fff;font-size:0.92rem}
+.testi-loc{color:var(--muted);font-size:0.78rem}
+
+/* INVESTMENT */
+.price-box{background:var(--navy2);border:2px solid var(--gold);border-radius:20px;padding:3rem 2.5rem;max-width:620px;margin:2.5rem auto 0;text-align:center;position:relative}
+.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#06091a;font-family:'Syne',sans-serif;font-weight:700;font-size:0.72rem;letter-spacing:2.5px;text-transform:uppercase;padding:0.3rem 1.5rem;border-radius:100px;white-space:nowrap}
+.price-label{font-size:0.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem}
+.price-amount{font-family:'Bebas Neue',sans-serif;font-size:3.8rem;color:var(--gold);line-height:1;margin-bottom:0.3rem}
+.price-sub{color:var(--muted);font-size:0.9rem;margin-bottom:2rem}
+.price-includes{list-style:none;text-align:left;margin-bottom:2rem}
+.price-includes li{padding:0.7rem 0 0.7rem 2rem;border-bottom:1px solid rgba(61,79,124,0.25);color:var(--text);font-size:0.93rem;position:relative}
+.price-includes li:last-child{border-bottom:none}
+.price-includes li::before{content:'✓';position:absolute;left:0;color:var(--gold);font-weight:700}
+.objection-note{color:var(--muted);font-size:0.82rem;margin-top:1rem;font-style:italic}
+
+/* STAKES */
+.stakes-box{background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.18);border-radius:var(--radius);padding:2.5rem;margin:2rem 0}
+
+/* FAQ */
+.faq-list{margin-top:2.5rem}
+.faq-item{border-bottom:1px solid var(--muted2);overflow:hidden}
+.faq-q{width:100%;background:none;border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;text-align:left;padding:1.4rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color 0.2s}
+.faq-q:hover{color:var(--gold)}
+.faq-icon{color:var(--gold);font-size:1.3rem;flex-shrink:0;transition:transform 0.3s;line-height:1}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.faq-a p{color:var(--muted);font-size:0.95rem;line-height:1.85;padding-bottom:1.5rem}
+.faq-item.open .faq-a{max-height:340px}
+
+/* FINAL CTA */
+#final-cta{padding:6rem 1.5rem;position:relative;overflow:hidden;background:var(--navy)}
+#final-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(0,191,255,0.08) 0%,transparent 70%);pointer-events:none}
+.final-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.scarcity-badge{display:inline-block;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.35);color:#fca5a5;font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:0.4rem 1.2rem;border-radius:100px;margin-bottom:1.8rem;animation:pulse-red 2s infinite}
+@keyframes pulse-red{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.25)}50%{box-shadow:0 0 0 8px rgba(239,68,68,0)}}
+.final-h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;line-height:1.12;margin-bottom:1rem;letter-spacing:-0.5px}
+.final-sub{color:var(--muted);font-size:1.05rem;line-height:1.75;margin-bottom:2.5rem}
+.cta-trust-row{margin-top:1.5rem;display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;font-size:0.8rem;color:var(--muted)}
+.cta-trust-row span::before{content:'✓ ';color:var(--gold)}
+
+/* FOOTER */
+footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem 1.5rem;text-align:center;color:var(--muted);font-size:0.82rem}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:0.8rem}
+.footer-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin:0.8rem 0 1rem}
+.footer-links a{color:var(--muted);text-decoration:none;transition:color 0.2s;font-size:0.82rem}
+.footer-links a:hover{color:var(--gold)}
+
+/* MOBILE STICKY CTA */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--blue);padding:0.85rem 1.5rem;text-align:center;transform:translateY(100%);transition:transform 0.4s ease;box-shadow:0 -4px 24px rgba(0,0,0,0.5);display:none}
+.sticky-cta.visible{transform:translateY(0)}
+.sticky-cta a{color:#fff;font-weight:700;font-size:0.95rem;text-decoration:none;display:block}
+.sticky-cta-sub{color:rgba(255,255,255,0.7);font-size:0.7rem;margin-top:0.15rem}
+
+/* FADE UP — Intersection Observer only */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+.section-cta{text-align:center;margin-top:3rem}
+.under-cta-note{color:var(--muted);font-size:0.82rem;margin-top:0.9rem;font-style:italic}
+
+@media(max-width:768px){
+  nav{padding:0.8rem 1rem}
+  .nav-logo{font-size:1rem}
+  #hero{padding:7rem 1.2rem 4rem}
+  .hero-h1{font-size:clamp(1.8rem,7vw,2.6rem);letter-spacing:-0.5px}
+  .hero-sub{font-size:1rem}
+  .hero-ctas{flex-direction:column;align-items:center}
+  .btn-gold,.btn-ghost{width:100%;max-width:320px;text-align:center}
+  .trust-bar-inner{gap:1.5rem}
+  .trust-divider{display:none}
+  .price-box{padding:2rem 1.2rem}
+  .sticky-cta{display:block}
+  .p-step:not(:last-child)::after{display:none}
+}
+@media(max-width:480px){
+  .stack-grid{grid-template-columns:1fr 1fr}
+  .process-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:360px){
+  .stack-grid{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo"><span class="gold">Target</span><span class="white">Digital</span></a>
+  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="nav-cta">Book Free Audit</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div style="max-width:880px;margin:0 auto">
+    <div class="hero-badge fade-up">The Automated Outbound Engine — Target Digital</div>
+    <h1 class="hero-h1 fade-up">
+      YOUR SALES TEAM IS SPENDING <span class="accent">80%</span> OF THEIR TIME<br>ON LEADS THAT WILL <span class="cyan">NEVER BUY.</span>
+    </h1>
+    <p class="hero-sub fade-up">The Automated Outbound Engine finds your exact ICP, verifies every contact, and sends personalised sequences that book meetings — without a single cold call. <strong>PhantomBuster scrapes. Apollo enriches. Million Verifier cleans. Instantly sends. Railway runs it 24/7.</strong></p>
+    <div class="hero-ctas fade-up">
+      <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold">Claim Your Free Growth Audit →</a>
+      <a href="#how-it-works" class="btn-ghost">See How The Stack Works</a>
+    </div>
+    <div class="hero-trust fade-up">
+      <span>No cold calling</span>
+      <span class="trust-dot"></span>
+      <span>Verified contacts only</span>
+      <span class="trust-dot"></span>
+      <span>48hr deployment</span>
+      <span class="trust-dot"></span>
+      <span>Cancel anytime</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-stat">
+      <span class="trust-num">80%</span>
+      <div class="trust-label">Of outbound time wasted on unverified leads</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-stat">
+      <span class="trust-num">94%</span>
+      <div class="trust-label">Email deliverability with Million Verifier</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-stat">
+      <span class="trust-num">24/7</span>
+      <div class="trust-label">Outbound agents running on Railway</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-stat">
+      <span class="trust-num">48 HRS</span>
+      <div class="trust-label">From audit to first sequence live</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- THE PROBLEM -->
+<section class="s" id="problem">
+  <div class="container">
+    <span class="s-label s-label-red fade-up">The Real Problem</span>
+    <h2 class="s-h2 fade-up">Your Best Leads Don't Know<br><span class="gold">You Exist. Yet.</span></h2>
+    <div class="pull-quote fade-up">"We had a good product and a sales team — but we were spending hours every week manually finding contacts, only to get 15% email open rates and zero replies. The list was dirty and the process was broken."</div>
+    <p class="body fade-up">Outbound is broken for most businesses — not because outbound doesn't work, but because the execution is manual, slow, and inconsistent. Your sales team spends 3–4 hours a day finding contacts on LinkedIn, exporting lists, and guessing email formats. Then they send from a domain that isn't warmed up, to emails that bounce, and wonder why nobody replies.</p>
+    <ul class="problem-list fade-up">
+      <li><strong>Dirty contact lists</strong> — unverified emails mean 30–40% bounce rates, which destroys your sender reputation and gets you flagged as spam permanently.</li>
+      <li><strong>Generic sequences</strong> — copy-paste outreach that reads like it was written for everyone gets ignored by everyone. Your ICP can smell a template from the subject line.</li>
+      <li><strong>No volume, no consistency</strong> — a human can send 30–50 personalised emails a day. The Outbound Engine sends 500. The math is not comparable.</li>
+      <li><strong>Zero pipeline visibility</strong> — you don't know your reply rate, bounce rate, or which sequence variant is winning. You're flying blind.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- THE STACK -->
+<section class="s" id="the-stack" style="background:var(--navy2)">
+  <div class="container-wide">
+    <div style="max-width:860px;margin:0 auto">
+      <span class="s-label fade-up">The Stack</span>
+      <h2 class="s-h2 fade-up">Five Tools. One Automated Pipeline.<br><span class="cyan">Zero Manual Work.</span></h2>
+      <p class="lead fade-up">Every tool in the Outbound Engine is purpose-built for one job. Together they form a pipeline that finds, verifies, personalises and contacts your ICP — continuously, without you touching it.</p>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-card fade-up">
+        <div class="stack-tool">PhantomBuster</div>
+        <div class="stack-role">Contact Scraping</div>
+        <p class="stack-desc">Scrapes LinkedIn, Sales Navigator, and directories to build a targeted list of your exact ICP — by job title, company size, industry, location, and technology stack.</p>
+      </div>
+      <div class="stack-card fade-up">
+        <div class="stack-tool">Apollo</div>
+        <div class="stack-role">Data Enrichment</div>
+        <p class="stack-desc">Enriches every contact with verified email, phone, company revenue, tech stack, and intent signals. You know exactly who you're emailing before you send a word.</p>
+      </div>
+      <div class="stack-card fade-up">
+        <div class="stack-tool">Million Verifier</div>
+        <div class="stack-role">List Cleaning</div>
+        <p class="stack-desc">Every email address is verified before it enters your sending queue. Bounces, catch-alls, and spam traps are removed. You send only to real inboxes — 94%+ deliverability.</p>
+      </div>
+      <div class="stack-card fade-up">
+        <div class="stack-tool">Instantly</div>
+        <div class="stack-role">Sequence Sending</div>
+        <p class="stack-desc">Sends personalised outreach sequences from warmed-up domains at optimal send times. A/B tests subject lines, body copy, and CTAs automatically. Tracks opens, replies, and meetings booked.</p>
+      </div>
+      <div class="stack-card fade-up" style="border-color:rgba(240,192,64,0.25)">
+        <div class="stack-tool" style="color:var(--gold)">Railway</div>
+        <div class="stack-role">24/7 Infrastructure</div>
+        <p class="stack-desc">Claude Code agents run the entire pipeline on Railway — scraping, enriching, cleaning, and sending continuously. No cron jobs to manage. No server to maintain. It runs while you sleep.</p>
+      </div>
+    </div>
+
+    <!-- Pipeline flow indicator -->
+    <div style="max-width:760px;margin:3rem auto 0;display:flex;align-items:center;justify-content:center;gap:0.5rem;flex-wrap:wrap" class="fade-up">
+      <span style="background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.3);color:var(--cyan);padding:0.4rem 1rem;border-radius:100px;font-size:0.78rem;font-weight:700;white-space:nowrap">PhantomBuster</span>
+      <span style="color:var(--muted);font-size:1.2rem">→</span>
+      <span style="background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.3);color:var(--cyan);padding:0.4rem 1rem;border-radius:100px;font-size:0.78rem;font-weight:700;white-space:nowrap">Apollo</span>
+      <span style="color:var(--muted);font-size:1.2rem">→</span>
+      <span style="background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.3);color:var(--cyan);padding:0.4rem 1rem;border-radius:100px;font-size:0.78rem;font-weight:700;white-space:nowrap">Million Verifier</span>
+      <span style="color:var(--muted);font-size:1.2rem">→</span>
+      <span style="background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.3);color:var(--cyan);padding:0.4rem 1rem;border-radius:100px;font-size:0.78rem;font-weight:700;white-space:nowrap">Instantly</span>
+      <span style="color:var(--muted);font-size:1.2rem">→</span>
+      <span style="background:rgba(240,192,64,0.1);border:1px solid rgba(240,192,64,0.35);color:var(--gold);padding:0.4rem 1rem;border-radius:100px;font-size:0.78rem;font-weight:700;white-space:nowrap">Railway 24/7</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS — 5 STEPS -->
+<section class="s" id="how-it-works">
+  <div class="container-wide">
+    <div style="max-width:860px;margin:0 auto">
+      <span class="s-label fade-up">The Process</span>
+      <h2 class="s-h2 fade-up">How The Outbound Engine Runs<br><span class="gold">— Step by Step.</span></h2>
+    </div>
+    <div class="process-grid">
+      <div class="p-step fade-up">
+        <span class="p-num">01</span>
+        <div class="p-name">ICP Definition</div>
+        <p class="p-desc">We map your ideal customer: job title, seniority, company size, industry, tech stack, geography. The more specific the ICP, the higher the reply rate.</p>
+      </div>
+      <div class="p-step fade-up">
+        <span class="p-num">02</span>
+        <div class="p-name">Scrape + Enrich</div>
+        <p class="p-desc">PhantomBuster scrapes LinkedIn and directories daily. Apollo enriches every contact with verified email and intent data. New contacts are added to your pipeline automatically.</p>
+      </div>
+      <div class="p-step fade-up">
+        <span class="p-num">03</span>
+        <div class="p-name">Verify + Clean</div>
+        <p class="p-desc">Million Verifier cleans every address before it touches your sending domain. Invalid emails are removed. Your sender reputation stays pristine.</p>
+      </div>
+      <div class="p-step fade-up">
+        <span class="p-num">04</span>
+        <div class="p-name">Sequence + Send</div>
+        <p class="p-desc">Instantly sends a 4-step personalised sequence — initial email, two follow-ups, and a break-up — each with the contact's name, company, and a relevant hook. Subject lines A/B tested automatically.</p>
+      </div>
+      <div class="p-step fade-up">
+        <span class="p-num">05</span>
+        <div class="p-name">Reply + Book</div>
+        <p class="p-desc">Positive replies are flagged immediately. Interested leads are routed to your Calendly. The AI handles objections in the first reply, increasing meeting conversion.</p>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold">See How It Works For Your Business →</a>
+      <p class="under-cta-note">Free 45-minute audit. We'll show you how many contacts exist in your ICP right now.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SOCIAL PROOF -->
+<section class="s" id="proof" style="background:var(--navy2)">
+  <div class="container">
+    <span class="s-label fade-up">Client Result</span>
+    <h2 class="s-h2 fade-up">Real Outbound.<br><span class="gold">Real Pipeline.</span></h2>
+    <div class="testi-card fade-up">
+      <span class="testi-stars">★★★★★</span>
+      <div class="result-tag">
+        <div class="result-label">Verified Result</div>
+        <div class="result-value">500+ Live Qualification Systems — Running Now</div>
+      </div>
+      <p class="testi-quote">"Before Target Digital, our outbound was manual and inconsistent. We'd get a great week, then nothing for three weeks. The Outbound Engine runs every day — it doesn't have off days, it doesn't forget to follow up, and it doesn't send to a bounced address. Our pipeline is now predictable for the first time."</p>
+      <div class="testi-author">
+        <img src="Brijesh.PNG" alt="Brijesh Singh" class="testi-photo" style="border:2px solid #00BFFF">
+        <div>
+          <div class="testi-name">Brijesh Singh</div>
+          <div class="testi-loc">Robotics For Sure, Brisbane</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INVESTMENT -->
+<section class="s" id="investment">
+  <div class="container">
+    <span class="s-label fade-up">Investment</span>
+    <h2 class="s-h2 fade-up">Simple Pricing.<br><span class="gold">No Surprises. No Contracts.</span></h2>
+    <p class="lead fade-up">One flat monthly retainer covers everything — full stack build, deployment, management, optimisation, and reporting. No setup fees. No lock-in. Cancel with 30 days' notice.</p>
+    <div class="price-box fade-up">
+      <div class="price-badge">Automated Outbound Engine</div>
+      <div class="price-label">Monthly Retainer</div>
+      <div class="price-amount">$4,000 – $6,000</div>
+      <div class="price-sub">/month — scoped to contact volume, sequence complexity, and number of sending domains</div>
+      <ul class="price-includes">
+        <li>Full stack build: PhantomBuster + Apollo + Million Verifier + Instantly + Railway</li>
+        <li>ICP definition session + targeting setup</li>
+        <li>4-step personalised email sequences (A/B tested)</li>
+        <li>Domain warming — minimum 3 dedicated sending domains</li>
+        <li>Daily contact scraping and enrichment</li>
+        <li>List verification before every send</li>
+        <li>Live reply dashboard and weekly reporting</li>
+        <li>Monthly sequence optimisation and ICP refinement</li>
+        <li>Direct strategist access — no account managers</li>
+      </ul>
+      <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold" style="width:100%;display:block;text-align:center">Get Your Custom Quote →</a>
+      <p class="objection-note">Most clients start at $4,000/month. Pricing confirmed during your free audit based on volume and complexity.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STAKES -->
+<section class="s" id="stakes">
+  <div class="container">
+    <span class="s-label s-label-red fade-up">The Cost of Waiting</span>
+    <h2 class="s-h2 fade-up">Every Day Without This System, a Competitor<br><span class="gold">Is Emailing Your Prospects.</span></h2>
+    <div class="stakes-box fade-up">
+      <p class="body" style="color:var(--text);margin-bottom:1rem">Right now, businesses in your market are running automated outbound sequences to the same ICP you're trying to reach. They're emailing Monday through Friday, A/B testing subject lines, and booking meetings while you're manually searching LinkedIn.</p>
+      <p class="body" style="color:var(--text);margin-bottom:1rem">The gap compounds. The contacts get touched by them first. And first contact wins — in outbound, recency is everything. By the time you reach a prospect who already heard from your competitor two weeks ago, you're playing catch-up.</p>
+      <p class="body" style="color:var(--text);margin:0">The audit is free. The only cost is 45 minutes. The only risk is staying exactly where you are — while someone else builds the relationship you should have started today.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="s" id="faq" style="background:var(--navy2)">
+  <div class="container">
+    <span class="s-label fade-up">FAQ</span>
+    <h2 class="s-h2 fade-up">Questions About<br><span class="cyan">The Outbound Engine.</span></h2>
+    <div class="faq-list fade-up">
+      <div class="faq-item">
+        <button class="faq-q">Will this get my domain blacklisted? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>No. We use dedicated, freshly warmed sending domains — never your primary domain. Million Verifier removes all invalid addresses before sending. Sequences are spaced at human-like intervals and sent from separate infrastructure. Your primary domain is never touched.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How many emails does the system send per day? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Typically 300–500 per day across 3 sending domains, scaling up as domains warm over the first 2–3 weeks. This is calibrated to maximise deliverability while maintaining volume. Cold-calling at this scale would require a team of 10 full-time reps.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What happens when someone replies? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Positive replies are flagged in real time and routed directly to you or your sales team. The AI handles the first response to interested leads and offers a Calendly booking link. You take over once the meeting is confirmed — the hard part is already done.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I need a sales team to use this? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>No. The Outbound Engine generates booked meetings. Whether you handle them yourself or have a small team, the system works either way. Many of our clients are founder-led businesses with no dedicated sales function — the system does the prospecting and first contact, you handle the close.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What industries does this work for? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Best results for B2B companies with a clearly definable ICP: SaaS, professional services, recruitment, engineering, logistics, and technology. If you can describe who you want to reach — job title, company size, industry — we can build a scraping and sequencing system to reach them at scale.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FINAL CTA -->
+<section id="final-cta">
+  <div class="final-inner">
+    <div class="scarcity-badge fade-up">3 Audit Spots Remaining This Month</div>
+    <h2 class="final-h2 fade-up">Your ICP Is Out There. They Just Haven't Heard From You Yet.</h2>
+    <p class="final-sub fade-up">The contacts exist. The technology exists. The only thing missing is a system that runs it consistently, at volume, every day. Book your free audit and we'll show you exactly how many contacts we can reach in your market within 48 hours of going live.</p>
+    <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold fade-up" style="font-size:1.1rem;padding:1.2rem 3rem">Claim Your Free Growth Audit →</a>
+    <div class="cta-trust-row fade-up">
+      <span>No cold calling required</span>
+      <span>Verified contacts only</span>
+      <span>48hr to first send</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span style="color:var(--gold)">Target</span><span style="color:#fff">Digital</span></div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="mailto:rop@targetdigital.com.au">rop@targetdigital.com.au</a>
+  </div>
+  <p>© 2026 Target Digital AI. All rights reserved. | Automated Outbound Engine built on Railway + Claude Code.</p>
+</footer>
+
+<!-- MOBILE STICKY CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener">
+    Claim Your Free Growth Audit →
+    <div class="sticky-cta-sub">Automated outbound — live in 48 hours</div>
+  </a>
+</div>
+
+<script>
+// Intersection Observer scroll reveals — NOT GSAP
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+// 1500ms failsafe — ensure all fade-up elements visible regardless
+setTimeout(() => {
+  document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+}, 1500);
+
+// Mobile sticky CTA
+const stickyCta = document.getElementById('sticky-cta');
+window.addEventListener('scroll', () => {
+  stickyCta.classList.toggle('visible', window.scrollY > 500);
+}, { passive: true });
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
