@@ -248,21 +248,21 @@ footer .footer-logo span{color:var(--gold)}
         <div class="system-tag">System 01</div>
         <h3>AI Lead Generation</h3>
         <p>We build automated outreach pipelines using Apollo, PhantomBuster, and Instantly — targeting your ideal customers 24/7. Warm leads in your inbox daily.</p>
-        <div class="system-price">$2,000 <span>– $4,000 / setup</span></div>
+        <div class="system-price">$2,000 <span>– $4,000 / month</span></div>
       </div>
       <div class="system-card fade-up">
         <span class="system-icon">⭐</span>
         <div class="system-tag">System 02</div>
         <h3>Reputation Management</h3>
         <p>AI monitors, responds to, and generates 5-star reviews automatically. Protect and grow your online reputation without lifting a finger.</p>
-        <div class="system-price">$1,500 <span>– $3,000 / setup</span></div>
+        <div class="system-price">$1,500 <span>– $3,000 / month</span></div>
       </div>
       <div class="system-card fade-up">
         <span class="system-icon">📞</span>
         <div class="system-tag">System 03</div>
         <h3>AI Appointment Booking</h3>
         <p>Conversational AI qualifies leads and books them directly to your calendar. No more phone tag. Only serious, ready-to-buy prospects.</p>
-        <div class="system-price">$2,000 <span>– $3,500 / setup</span></div>
+        <div class="system-price">$2,000 <span>– $3,500 / month</span></div>
       </div>
     </div>
   </div>
@@ -296,24 +296,24 @@ footer .footer-logo span{color:var(--gold)}
     </div>
     <div class="stats-row">
       <div class="stat-box fade-up">
-        <div class="stat-watermark">137</div>
-        <span class="stat-num" data-target="137">0</span>
-        <div class="stat-label">Leads Generated / Month (avg)</div>
+        <div class="stat-watermark">$10K</div>
+        <span class="stat-num" data-target="10500" data-prefix="$" data-suffix="/mo">0</span>
+        <div class="stat-label">Max Client Revenue</div>
       </div>
       <div class="stat-box fade-up">
-        <div class="stat-watermark">4.9</div>
-        <span class="stat-num" data-target="4.9" data-decimal="1">0</span>
-        <div class="stat-label">Average Review Rating Achieved</div>
+        <div class="stat-watermark">48</div>
+        <span class="stat-num" data-target="48" data-suffix="hr">0</span>
+        <div class="stat-label">Avg Deployment Time</div>
       </div>
       <div class="stat-box fade-up">
-        <div class="stat-watermark">3x</div>
-        <span class="stat-num" data-target="3">0</span>
-        <div class="stat-label">x ROI in First 90 Days</div>
+        <div class="stat-watermark">99%</div>
+        <span class="stat-num" data-target="99" data-suffix="%">0</span>
+        <div class="stat-label">Railway Uptime</div>
       </div>
       <div class="stat-box fade-up">
-        <div class="stat-watermark">24</div>
-        <span class="stat-num" data-target="24">0</span>
-        <div class="stat-label">Hours / Day Running Automated</div>
+        <div class="stat-watermark">3</div>
+        <span class="stat-num" data-target="3" data-suffix=" Systems">0</span>
+        <div class="stat-label">Running 24/7</div>
       </div>
     </div>
     <div class="testimonials">
@@ -324,7 +324,7 @@ footer .footer-logo span{color:var(--gold)}
           <div class="testi-avatar">JR</div>
           <div>
             <div class="testi-name">Joan R.</div>
-            <div class="testi-loc">Phoenix, Arizona — Property Services</div>
+            <div class="testi-loc">Imani Mental Health — Arizona</div>
           </div>
         </div>
       </div>
@@ -335,18 +335,7 @@ footer .footer-logo span{color:var(--gold)}
           <div class="testi-avatar">BS</div>
           <div>
             <div class="testi-name">Brijesh Singh</div>
-            <div class="testi-loc">Dallas, Texas — Med Spa Owner</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card fade-up">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"The GTM strategy alone was worth 10x the investment. Finally a marketing partner who actually understands technology companies."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">BA</div>
-          <div>
-            <div class="testi-name">Bane A.</div>
-            <div class="testi-loc">SaaS Founder — B2B Technology</div>
+            <div class="testi-loc">Robotics For Sure — Brisbane</div>
           </div>
         </div>
       </div>
@@ -662,15 +651,20 @@ steps.forEach(s => stepObs.observe(s));
 function animateCounter(el) {
   const target = parseFloat(el.dataset.target);
   const decimal = parseInt(el.dataset.decimal || 0);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
   const duration = 2000;
   const start = performance.now();
+  function fmt(val) {
+    const n = decimal ? val.toFixed(decimal) : Math.floor(val);
+    return prefix + n + suffix;
+  }
   function tick(now) {
     const progress = Math.min((now - start) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
-    const val = target * eased;
-    el.textContent = decimal ? val.toFixed(decimal) : Math.floor(val);
+    el.textContent = fmt(target * eased);
     if (progress < 1) requestAnimationFrame(tick);
-    else el.textContent = decimal ? target.toFixed(decimal) : target;
+    else el.textContent = fmt(target);
   }
   requestAnimationFrame(tick);
 }
