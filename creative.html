@@ -271,6 +271,84 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
       <span class="trust-dot"></span>
       <span>Cancel anytime</span>
     </div>
+
+    <!-- AD GRID ANIMATION -->
+    <div class="hero-anim" id="ad-grid-anim" aria-hidden="true">
+      <style>
+        @media(max-width:640px){#ad-grid-anim{display:none}}
+        #ad-grid-anim .adgrid-wrap{max-width:380px;margin:0 auto;position:relative}
+        #ad-grid-anim .adgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+        #ad-grid-anim .ad-card{border-radius:8px;aspect-ratio:4/3;opacity:0;transform:scale(0.85);transition:opacity 0.2s ease,transform 0.2s ease;position:relative;overflow:hidden}
+        #ad-grid-anim .ad-card.show{opacity:1;transform:scale(1)}
+        #ad-grid-anim .ad-card.swap{opacity:0.3;transform:scale(0.9)}
+        #ad-grid-anim .ad-inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:6px;border-radius:8px}
+        #ad-grid-anim .ad-bar{height:4px;border-radius:2px;background:rgba(255,255,255,0.3);margin-bottom:4px;width:60%}
+        #ad-grid-anim .ad-bar2{height:3px;border-radius:2px;background:rgba(255,255,255,0.15);width:40%}
+        #ad-grid-anim .ad-counter{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--purple);letter-spacing:1px}
+        #ad-grid-anim .ad-counter span{color:var(--white)}
+        #ad-grid-anim .ad-winner{position:absolute;top:4px;right:4px;background:var(--gold);color:#000;font-size:8px;font-weight:700;padding:2px 5px;border-radius:3px;opacity:0;transition:opacity 0.3s}
+        #ad-grid-anim .ad-winner.show{opacity:1}
+      </style>
+      <div class="adgrid-wrap">
+        <div class="adgrid" id="adgrid"></div>
+        <div class="ad-counter"><span>Variations: </span><span id="ad-count">0</span><span>+</span></div>
+      </div>
+    </div>
+    <script>
+    (function(){
+      var colors=[
+        ['#1e0a3c','#a855f7'],['#0a1a3c','#2563eb'],['#0a2a1c','#10b981'],
+        ['#3c0a1a','#f43f5e'],['#1a1a0a','#f0c040'],['#0a2a3c','#00BFFF'],
+        ['#2a0a3c','#c026d3'],['#0a3c2a','#06d6a0'],['#3c1a0a','#fb923c']
+      ];
+      var grid=document.getElementById('adgrid');
+      var countEl=document.getElementById('ad-count');
+      var cards=[];
+      for(var i=0;i<9;i++){
+        var c=document.createElement('div');
+        c.className='ad-card';
+        c.style.background='linear-gradient(135deg,'+colors[i][0]+','+colors[i][1]+'22)';
+        c.style.border='1px solid '+colors[i][1]+'44';
+        c.innerHTML='<div class="ad-inner"><div class="ad-bar" style="background:'+colors[i][1]+'55"></div><div class="ad-bar2"></div></div><div class="ad-winner" id="aw'+i+'">WIN</div>';
+        grid.appendChild(c);
+        cards.push(c);
+      }
+      var count=0;
+      function resetGrid(){
+        cards.forEach(function(c,i){
+          c.className='ad-card';
+          document.getElementById('aw'+i).classList.remove('show');
+        });
+        count=0;countEl.textContent='0';
+      }
+      function runGrid(){
+        resetGrid();
+        var i=0;
+        function showNext(){
+          if(i>=9){
+            setTimeout(function(){
+              var winIdx=[2,5,7];
+              winIdx.forEach(function(w){document.getElementById('aw'+w).classList.add('show');});
+              setTimeout(function(){
+                cards.forEach(function(c,idx){
+                  if([0,1,3,4,6,8].indexOf(idx)>-1){c.classList.add('swap');}
+                });
+                setTimeout(runGrid,1800);
+              },1000);
+            },400);
+            return;
+          }
+          cards[i].classList.add('show');
+          count+=12;if(count>100)count=100;
+          countEl.textContent=count;
+          i++;
+          setTimeout(showNext,120);
+        }
+        setTimeout(showNext,300);
+      }
+      setTimeout(runGrid,800);
+    })();
+    </script>
   </div>
 </section>
 

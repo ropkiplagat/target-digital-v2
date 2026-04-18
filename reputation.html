@@ -254,6 +254,74 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
       <span class="trust-dot"></span>
       <span>Cancel anytime</span>
     </div>
+
+    <!-- STAR BUILDER ANIMATION -->
+    <div class="hero-anim" id="star-anim" aria-hidden="true">
+      <style>
+        @media(max-width:640px){#star-anim{display:none}}
+        #star-anim .star-wrap{max-width:480px;margin:0 auto;text-align:center}
+        #star-anim .stars-row{display:flex;justify-content:center;gap:12px;margin-bottom:14px}
+        #star-anim .star{font-size:38px;filter:grayscale(1) brightness(0.4);transition:filter 0.35s ease,transform 0.35s ease,text-shadow 0.35s ease;display:inline-block}
+        #star-anim .star.lit{filter:none;transform:scale(1.18);text-shadow:0 0 14px rgba(240,192,64,0.7)}
+        #star-anim .star.done{filter:none;transform:scale(1);text-shadow:0 0 8px rgba(240,192,64,0.4)}
+        #star-anim .rating-counter{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--gold);line-height:1;margin-bottom:16px;letter-spacing:1px;transition:color 0.3s}
+        #star-anim .review-cards{display:flex;flex-direction:column;gap:8px;max-width:360px;margin:0 auto}
+        #star-anim .rev-card{background:var(--navy2);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;transform:translateY(20px);opacity:0;transition:transform 0.4s ease,opacity 0.4s ease}
+        #star-anim .rev-card.show{transform:translateY(0);opacity:1}
+        #star-anim .rev-avatar{width:28px;height:28px;border-radius:50%;background:var(--navy3);border:1px solid rgba(240,192,64,0.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px}
+        #star-anim .rev-text{font-size:12px;color:var(--muted);text-align:left;line-height:1.4}
+        #star-anim .rev-text strong{color:var(--white);font-size:11px;display:block;margin-bottom:2px}
+        #star-anim .rev-stars{color:var(--gold);font-size:11px;letter-spacing:1px}
+      </style>
+      <div class="star-wrap">
+        <div class="stars-row">
+          <span class="star" id="st0">★</span>
+          <span class="star" id="st1">★</span>
+          <span class="star" id="st2">★</span>
+          <span class="star" id="st3">★</span>
+          <span class="star" id="st4">★</span>
+        </div>
+        <div class="rating-counter" id="rating-num">4.1</div>
+        <div class="review-cards">
+          <div class="rev-card" id="rc0"><div class="rev-avatar">😊</div><div class="rev-text"><strong>Sarah M. <span class="rev-stars">★★★★★</span></strong>"Incredibly responsive. Replied to my review within the hour."</div></div>
+          <div class="rev-card" id="rc1"><div class="rev-avatar">👍</div><div class="rev-text"><strong>James T. <span class="rev-stars">★★★★★</span></strong>"Best experience I've had. Would highly recommend."</div></div>
+          <div class="rev-card" id="rc2"><div class="rev-avatar">⭐</div><div class="rev-text"><strong>Priya K. <span class="rev-stars">★★★★★</span></strong>"Went from dreading reviews to loving them. Great system."</div></div>
+        </div>
+      </div>
+    </div>
+    <script>
+    (function(){
+      var ratings=['4.1','4.3','4.5','4.7','4.9'];
+      function resetStars(){
+        for(var i=0;i<5;i++){document.getElementById('st'+i).className='star';}
+        for(var i=0;i<3;i++){document.getElementById('rc'+i).classList.remove('show');}
+        document.getElementById('rating-num').textContent='4.1';
+      }
+      function runStars(){
+        resetStars();
+        var i=0;
+        function lightNext(){
+          if(i>=5){
+            setTimeout(function(){
+              document.getElementById('rc0').classList.add('show');
+              setTimeout(function(){document.getElementById('rc1').classList.add('show');},200);
+              setTimeout(function(){document.getElementById('rc2').classList.add('show');},400);
+              setTimeout(runStars,2400);
+            },400);
+            return;
+          }
+          var s=document.getElementById('st'+i);
+          s.classList.add('lit');
+          document.getElementById('rating-num').textContent=ratings[i];
+          setTimeout(function(){s.classList.remove('lit');s.classList.add('done');},350);
+          i++;
+          setTimeout(lightNext,500);
+        }
+        setTimeout(lightNext,400);
+      }
+      setTimeout(runStars,700);
+    })();
+    </script>
   </div>
 </section>
 
@@ -419,6 +487,14 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
         <div>
           <div class="testi-name">Joan R</div>
           <div class="testi-loc">Imani Mental Health Services, Arizona</div>
+        </div>
+      </div>
+      <div class="testi-author" style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.07)">
+        <img src="Brijesh.PNG" alt="Brijesh Singh" class="testi-photo" style="border:2px solid #00BFFF">
+        <div>
+          <div class="testi-name">Brijesh Singh</div>
+          <div class="testi-loc">Robotics For Sure — Brisbane</div>
+          <p style="color:var(--muted);font-size:0.9rem;margin-top:0.5rem;font-style:italic">"B2B clients rarely leave reviews. The trigger-based system changed that — we now get consistent reviews from clients who'd never have thought to post one."</p>
         </div>
       </div>
     </div>
