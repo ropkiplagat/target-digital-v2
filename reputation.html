@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Reputation Management — Own Your Reviews | Target Digital</title>
+<meta name="description" content="One bad review costs you 10 customers. The AI Reputation Management system monitors, responds and generates 5-star reviews 24/7 — from $1,500/month.">
+<link rel="canonical" href="https://targetdigital.com.au/reputation.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Target Digital",
+  "url": "https://targetdigital.com.au",
+  "description": "One bad review costs you 10 customers. The AI Reputation Management system monitors, responds and generates 5-star reviews 24/7.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brisbane",
+    "addressRegion": "QLD",
+    "addressCountry": "AU"
+  },
+  "email": "rop@targetdigital.com.au"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#06091a;
+  --navy2:#0c1130;
+  --navy3:#111a3e;
+  --blue:#2563eb;
+  --blue-light:#3b82f6;
+  --gold:#f0c040;
+  --cyan:#00BFFF;
+  --red:#ef4444;
+  --amber:#F59E0B;
+  --text:#e8eaf6;
+  --muted:#7986b0;
+  --muted2:#3d4f7c;
+  --radius:14px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--navy);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--navy2)}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(14px);background:rgba(6,9,26,0.88);border-bottom:1px solid rgba(37,99,235,0.15)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:-0.5px;text-decoration:none}
+.nav-logo .gold{color:var(--gold)}
+.nav-logo .white{color:#fff}
+.nav-cta{background:var(--gold);color:#06091a;border:none;padding:0.55rem 1.4rem;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.2s;white-space:nowrap}
+.nav-cta:hover{background:#f5ca30;transform:translateY(-1px)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 1.5rem 5rem;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(245,158,11,0.07) 0%,transparent 65%);pointer-events:none}
+.hero-badge{display:inline-block;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.35);color:var(--amber);font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:0.4rem 1.2rem;border-radius:100px;margin-bottom:1.5rem}
+.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5.5vw,4rem);font-weight:800;line-height:1.06;letter-spacing:-1.5px;color:#fff;margin-bottom:1.2rem;max-width:820px}
+.hero-h1 .accent{color:var(--gold)}
+.hero-h1 .red{color:#fca5a5}
+.hero-sub{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:600px;margin:0 auto 2.5rem}
+.hero-sub strong{color:#fff}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+.btn-gold{display:inline-block;background:var(--gold);color:#06091a;padding:1rem 2.2rem;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;border:none;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 0 30px rgba(240,192,64,0.35);font-family:'DM Sans',sans-serif;white-space:nowrap}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(240,192,64,0.6)}
+.btn-ghost{display:inline-block;background:transparent;color:#fff;padding:1rem 2rem;border-radius:10px;font-weight:600;font-size:1rem;cursor:pointer;border:2px solid rgba(255,255,255,0.25);text-decoration:none;transition:border-color 0.2s,transform 0.2s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.65);transform:translateY(-2px)}
+.hero-trust{display:flex;align-items:center;justify-content:center;gap:1.2rem;flex-wrap:wrap}
+.hero-trust span{font-size:0.78rem;color:var(--muted);font-weight:500}
+.trust-dot{width:3px;height:3px;background:var(--muted2);border-radius:50%;flex-shrink:0}
+
+/* TRUST BAR */
+.trust-bar{background:var(--navy2);border-top:1px solid rgba(245,158,11,0.12);border-bottom:1px solid rgba(245,158,11,0.12);padding:1.8rem 2rem}
+.trust-bar-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
+.trust-stat{text-align:center}
+.trust-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--gold);line-height:1;display:block}
+.trust-label{font-size:0.68rem;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:0.25rem}
+.trust-divider{width:1px;height:44px;background:var(--muted2);flex-shrink:0}
+
+/* SHARED */
+section.s{padding:5.5rem 1.5rem}
+.container{max-width:860px;margin:0 auto}
+.container-wide{max-width:1100px;margin:0 auto}
+.s-label{font-size:0.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber);margin-bottom:1rem;display:block}
+.s-label-red{color:#fca5a5}
+.s-h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;line-height:1.12;margin-bottom:1.2rem;letter-spacing:-0.5px}
+.s-h2 .gold{color:var(--gold)}
+.s-h2 .cyan{color:var(--cyan)}
+.s-h2 .amber{color:var(--amber)}
+.lead{font-size:1.1rem;color:var(--muted);line-height:1.85;margin-bottom:1.5rem}
+.body{font-size:1rem;color:var(--muted);line-height:1.85;margin-bottom:1.2rem}
+.body strong,.lead strong{color:#fff}
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--muted2),transparent)}
+
+/* PROBLEM */
+.pull-quote{font-family:'Syne',sans-serif;font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:700;color:#fff;line-height:1.45;border-left:4px solid var(--amber);padding:1.2rem 1.5rem;margin:2.5rem 0;background:rgba(245,158,11,0.04);border-radius:0 8px 8px 0}
+.problem-list{list-style:none;margin:1.5rem 0 2rem}
+.problem-list li{padding:1rem 0 1rem 2.2rem;border-bottom:1px solid rgba(61,79,124,0.35);color:var(--muted);font-size:0.98rem;line-height:1.7;position:relative}
+.problem-list li:last-child{border-bottom:none}
+.problem-list li::before{content:'✗';position:absolute;left:0;color:var(--red);font-weight:700}
+.problem-list li strong{color:#fff}
+
+/* STAR RATING VISUAL */
+.rating-compare{display:flex;align-items:center;justify-content:center;gap:3rem;margin:3rem 0;flex-wrap:wrap}
+.rating-box{text-align:center;padding:2rem 2.5rem;border-radius:var(--radius);flex:1;min-width:160px;max-width:220px}
+.rating-box.bad{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.2)}
+.rating-box.good{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25)}
+.rating-score{font-family:'Bebas Neue',sans-serif;font-size:4rem;line-height:1;margin-bottom:0.3rem}
+.rating-box.bad .rating-score{color:#fca5a5}
+.rating-box.good .rating-score{color:var(--amber)}
+.rating-stars{font-size:1rem;letter-spacing:2px;margin-bottom:0.5rem}
+.rating-box.bad .rating-stars{color:#ef4444}
+.rating-box.good .rating-stars{color:var(--amber)}
+.rating-label{color:var(--muted);font-size:0.78rem;text-transform:uppercase;letter-spacing:1px}
+.rating-arrow{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);flex-shrink:0}
+
+/* STACK CARDS */
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:3rem}
+.stack-card{background:var(--navy2);border:1px solid rgba(245,158,11,0.15);border-radius:var(--radius);padding:1.8rem 1.6rem;transition:border-color 0.3s,box-shadow 0.3s}
+.stack-card:hover{border-color:rgba(245,158,11,0.4);box-shadow:0 0 30px rgba(245,158,11,0.06)}
+.stack-tool{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;color:var(--amber);letter-spacing:1px;margin-bottom:0.3rem}
+.stack-role{font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.6rem}
+.stack-desc{color:var(--muted);font-size:0.85rem;line-height:1.65}
+
+/* PROCESS */
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;margin-top:3rem}
+.p-step{text-align:center;padding:2rem 1.5rem;position:relative}
+.p-step:not(:last-child)::after{content:'';position:absolute;top:3rem;right:0;width:1px;height:50px;background:linear-gradient(to bottom,var(--amber),transparent)}
+.p-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--gold);line-height:1;display:block}
+.p-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:#fff;letter-spacing:1.5px;text-transform:uppercase;margin:0.4rem 0 0.6rem}
+.p-desc{color:var(--muted);font-size:0.84rem;line-height:1.65}
+
+/* TESTIMONIAL */
+.testi-card{background:var(--navy3);border:1px solid var(--muted2);border-radius:var(--radius);padding:2.5rem;max-width:680px;margin:2.5rem auto 0}
+.testi-stars{color:var(--amber);font-size:1.1rem;letter-spacing:3px;margin-bottom:1.2rem;display:block}
+.testi-quote{color:var(--text);font-size:1.05rem;line-height:1.85;margin-bottom:1.5rem;font-style:italic}
+.result-tag{background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:0.7rem 1.1rem;margin-bottom:1.5rem}
+.result-label{font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--amber);font-weight:700;margin-bottom:0.2rem}
+.result-value{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#fff}
+.testi-author{display:flex;align-items:center;gap:1rem}
+.testi-photo{width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0}
+.testi-name{font-weight:700;color:#fff;font-size:0.92rem}
+.testi-loc{color:var(--muted);font-size:0.78rem}
+
+/* INVESTMENT */
+.price-box{background:var(--navy2);border:2px solid var(--gold);border-radius:20px;padding:3rem 2.5rem;max-width:620px;margin:2.5rem auto 0;text-align:center;position:relative}
+.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#06091a;font-family:'Syne',sans-serif;font-weight:700;font-size:0.72rem;letter-spacing:2.5px;text-transform:uppercase;padding:0.3rem 1.5rem;border-radius:100px;white-space:nowrap}
+.price-label{font-size:0.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem}
+.price-amount{font-family:'Bebas Neue',sans-serif;font-size:3.8rem;color:var(--gold);line-height:1;margin-bottom:0.3rem}
+.price-sub{color:var(--muted);font-size:0.9rem;margin-bottom:2rem}
+.price-includes{list-style:none;text-align:left;margin-bottom:2rem}
+.price-includes li{padding:0.7rem 0 0.7rem 2rem;border-bottom:1px solid rgba(61,79,124,0.25);color:var(--text);font-size:0.93rem;position:relative}
+.price-includes li:last-child{border-bottom:none}
+.price-includes li::before{content:'✓';position:absolute;left:0;color:var(--gold);font-weight:700}
+.objection-note{color:var(--muted);font-size:0.82rem;margin-top:1rem;font-style:italic}
+
+/* STAKES */
+.stakes-box{background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.18);border-radius:var(--radius);padding:2.5rem;margin:2rem 0}
+
+/* FAQ */
+.faq-list{margin-top:2.5rem}
+.faq-item{border-bottom:1px solid var(--muted2);overflow:hidden}
+.faq-q{width:100%;background:none;border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;text-align:left;padding:1.4rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color 0.2s}
+.faq-q:hover{color:var(--gold)}
+.faq-icon{color:var(--gold);font-size:1.3rem;flex-shrink:0;transition:transform 0.3s;line-height:1}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.faq-a p{color:var(--muted);font-size:0.95rem;line-height:1.85;padding-bottom:1.5rem}
+.faq-item.open .faq-a{max-height:340px}
+
+/* FINAL CTA */
+#final-cta{padding:6rem 1.5rem;position:relative;overflow:hidden;background:var(--navy)}
+#final-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(245,158,11,0.07) 0%,transparent 70%);pointer-events:none}
+.final-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.scarcity-badge{display:inline-block;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.35);color:#fca5a5;font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:0.4rem 1.2rem;border-radius:100px;margin-bottom:1.8rem;animation:pulse-red 2s infinite}
+@keyframes pulse-red{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.25)}50%{box-shadow:0 0 0 8px rgba(239,68,68,0)}}
+.final-h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;line-height:1.12;margin-bottom:1rem;letter-spacing:-0.5px}
+.final-sub{color:var(--muted);font-size:1.05rem;line-height:1.75;margin-bottom:2.5rem}
+.cta-trust-row{margin-top:1.5rem;display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;font-size:0.8rem;color:var(--muted)}
+.cta-trust-row span::before{content:'✓ ';color:var(--gold)}
+
+/* FOOTER */
+footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem 1.5rem;text-align:center;color:var(--muted);font-size:0.82rem}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:0.8rem}
+.footer-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin:0.8rem 0 1rem}
+.footer-links a{color:var(--muted);text-decoration:none;transition:color 0.2s;font-size:0.82rem}
+.footer-links a:hover{color:var(--gold)}
+
+/* MOBILE STICKY CTA */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--blue);padding:0.85rem 1.5rem;text-align:center;transform:translateY(100%);transition:transform 0.4s ease;box-shadow:0 -4px 24px rgba(0,0,0,0.5);display:none}
+.sticky-cta.visible{transform:translateY(0)}
+.sticky-cta a{color:#fff;font-weight:700;font-size:0.95rem;text-decoration:none;display:block}
+.sticky-cta-sub{color:rgba(255,255,255,0.7);font-size:0.7rem;margin-top:0.15rem}
+
+/* FADE UP — Intersection Observer only */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+.section-cta{text-align:center;margin-top:3rem}
+.under-cta-note{color:var(--muted);font-size:0.82rem;margin-top:0.9rem;font-style:italic}
+
+@media(max-width:768px){
+  nav{padding:0.8rem 1rem}
+  .nav-logo{font-size:1rem}
+  #hero{padding:7rem 1.2rem 4rem}
+  .hero-h1{font-size:clamp(1.8rem,7vw,2.6rem);letter-spacing:-0.5px}
+  .hero-sub{font-size:1rem}
+  .hero-ctas{flex-direction:column;align-items:center}
+  .btn-gold,.btn-ghost{width:100%;max-width:320px;text-align:center}
+  .trust-bar-inner{gap:1.5rem}
+  .trust-divider{display:none}
+  .price-box{padding:2rem 1.2rem}
+  .sticky-cta{display:block}
+  .p-step:not(:last-child)::after{display:none}
+  .rating-compare{gap:1.5rem}
+  .rating-arrow{font-size:1.8rem}
+}
+@media(max-width:420px){
+  .stack-grid{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo"><span class="gold">Target</span><span class="white">Digital</span></a>
+  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="nav-cta">Book Free Audit</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div style="max-width:820px;margin:0 auto">
+    <div class="hero-badge fade-up">AI Reputation Management — Target Digital</div>
+    <h1 class="hero-h1 fade-up">
+      ONE BAD REVIEW IS COSTING YOU<br><span class="red">10 CUSTOMERS</span> YOU'LL <span class="accent">NEVER MEET.</span>
+    </h1>
+    <p class="hero-sub fade-up">You can't be online 24/7 watching every platform. The AI Reputation Management system monitors Google, Facebook and every review channel — responds instantly, escalates problems, and generates a steady stream of 5-star reviews automatically. <strong>Claude API reads the sentiment. Twilio SMS requests the review. You own the narrative.</strong></p>
+    <div class="hero-ctas fade-up">
+      <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold">Claim Your Free Growth Audit →</a>
+      <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+    </div>
+    <div class="hero-trust fade-up">
+      <span>24/7 monitoring</span>
+      <span class="trust-dot"></span>
+      <span>Auto-response in minutes</span>
+      <span class="trust-dot"></span>
+      <span>No fake reviews</span>
+      <span class="trust-dot"></span>
+      <span>Cancel anytime</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-stat">
+      <span class="trust-num">94%</span>
+      <div class="trust-label">Of customers read reviews before making contact</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-stat">
+      <span class="trust-num">10x</span>
+      <div class="trust-label">Revenue impact of one unanswered negative review</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-stat">
+      <span class="trust-num">24/7</span>
+      <div class="trust-label">AI monitoring across Google + Facebook</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-stat">
+      <span class="trust-num">48 HRS</span>
+      <div class="trust-label">Average deployment time</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- THE PROBLEM -->
+<section class="s" id="problem">
+  <div class="container">
+    <span class="s-label s-label-red fade-up">The Real Problem</span>
+    <h2 class="s-h2 fade-up">Your Reputation Is Being Decided<br><span class="gold">Right Now. Without You.</span></h2>
+
+    <!-- Rating comparison visual -->
+    <div class="rating-compare fade-up">
+      <div class="rating-box bad">
+        <div class="rating-score">4.1</div>
+        <div class="rating-stars">★★★★☆</div>
+        <div class="rating-label">You — Today</div>
+      </div>
+      <div class="rating-arrow">→</div>
+      <div class="rating-box good">
+        <div class="rating-score">4.9</div>
+        <div class="rating-stars">★★★★★</div>
+        <div class="rating-label">You — 90 Days</div>
+      </div>
+    </div>
+
+    <div class="pull-quote fade-up">"We had a 4.1-star rating and couldn't figure out why new enquiries had dropped. It turned out two negative reviews from six months ago were sitting unanswered on the first page of Google. That's what every new customer was seeing first."</div>
+    <p class="body fade-up">Every day, people in your market are Googling your business before they call. A 4.1 is the difference between chosen and skipped. An unanswered complaint signals to every reader that you don't care. A competitor sitting at 4.9 with 200 reviews while you're at 4.2 with 30 reviews isn't winning on product — they're winning on perception. And perception is the only thing a prospect has to go on before they make contact.</p>
+    <ul class="problem-list fade-up">
+      <li><strong>Negative reviews go unanswered</strong> — every hour a complaint sits without a response, more prospects read it and choose someone else. You never knew it was there.</li>
+      <li><strong>Happy customers never leave reviews</strong> — satisfied clients don't think to review you unless you ask at exactly the right moment. Most businesses never ask. AI never forgets.</li>
+      <li><strong>No visibility across platforms</strong> — your rating on Google, Facebook, and directories can change overnight. Without monitoring, you find out weeks later when the damage is done.</li>
+      <li><strong>Manual response is inconsistent</strong> — when your team does respond, it's rushed, defensive, or delayed. AI responds with the right tone, every time, within minutes.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- THE STACK -->
+<section class="s" id="the-stack" style="background:var(--navy2)">
+  <div class="container-wide">
+    <div style="max-width:860px;margin:0 auto">
+      <span class="s-label fade-up">The Stack</span>
+      <h2 class="s-h2 fade-up">Four Integrations. One Reputation Machine.<br><span class="amber">Always On.</span></h2>
+      <p class="lead fade-up">Each tool in the system handles one layer of your reputation — monitoring, responding, requesting, and escalating. Together they run continuously without you needing to log in to a single platform.</p>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-card fade-up">
+        <div class="stack-tool">Claude API</div>
+        <div class="stack-role">Sentiment Analysis + Response</div>
+        <p class="stack-desc">Reads every new review for sentiment, urgency, and tone. Writes personalised responses that match your brand voice — empathetic for complaints, warm for praise. No templates. No copy-paste.</p>
+      </div>
+      <div class="stack-card fade-up">
+        <div class="stack-tool">Google My Business API</div>
+        <div class="stack-role">Google Review Management</div>
+        <p class="stack-desc">Monitors your Google profile in real time. Posts responses the moment a review lands. Flags anything below 3 stars for immediate human escalation. Tracks your rating trend over time.</p>
+      </div>
+      <div class="stack-card fade-up">
+        <div class="stack-tool">Facebook Graph API</div>
+        <div class="stack-role">Facebook Review Management</div>
+        <p class="stack-desc">Watches your Facebook page for new reviews and recommendations. Responds automatically with contextual replies. Captures sentiment trends across both platforms in one dashboard.</p>
+      </div>
+      <div class="stack-card fade-up" style="border-color:rgba(240,192,64,0.2)">
+        <div class="stack-tool" style="color:var(--gold)">Twilio SMS</div>
+        <div class="stack-role">Review Request Automation</div>
+        <p class="stack-desc">Sends a personalised SMS review request to every customer 24–48 hours after their experience — at the moment they're most likely to respond positively. Response rate 3–5x higher than email alone.</p>
+      </div>
+    </div>
+
+    <!-- Stack flow -->
+    <div style="max-width:680px;margin:3rem auto 0;display:flex;align-items:center;justify-content:center;gap:0.5rem;flex-wrap:wrap" class="fade-up">
+      <span style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--amber);padding:0.4rem 1rem;border-radius:100px;font-size:0.78rem;font-weight:700;white-space:nowrap">Claude API</span>
+      <span style="color:var(--muted);font-size:1.2rem">+</span>
+      <span style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--amber);padding:0.4rem 1rem;border-radius:100px;font-size:0.78rem;font-weight:700;white-space:nowrap">Google My Business</span>
+      <span style="color:var(--muted);font-size:1.2rem">+</span>
+      <span style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--amber);padding:0.4rem 1rem;border-radius:100px;font-size:0.78rem;font-weight:700;white-space:nowrap">Facebook Graph</span>
+      <span style="color:var(--muted);font-size:1.2rem">+</span>
+      <span style="background:rgba(240,192,64,0.1);border:1px solid rgba(240,192,64,0.3);color:var(--gold);padding:0.4rem 1rem;border-radius:100px;font-size:0.78rem;font-weight:700;white-space:nowrap">Twilio SMS</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS — 4 STEPS -->
+<section class="s" id="how-it-works">
+  <div class="container-wide">
+    <div style="max-width:860px;margin:0 auto">
+      <span class="s-label fade-up">The Process</span>
+      <h2 class="s-h2 fade-up">How The Reputation System Runs<br><span class="gold">— Every Day, Automatically.</span></h2>
+    </div>
+    <div class="process-grid">
+      <div class="p-step fade-up">
+        <span class="p-num">01</span>
+        <div class="p-name">Monitor</div>
+        <p class="p-desc">Claude API and platform integrations scan Google My Business and Facebook every 15 minutes. The moment a new review lands — positive or negative — the system knows.</p>
+      </div>
+      <div class="p-step fade-up">
+        <span class="p-num">02</span>
+        <div class="p-name">Analyse + Respond</div>
+        <p class="p-desc">Claude reads the review, assesses sentiment, and posts a brand-voice response within minutes. Positive reviews get warm acknowledgement. Negative reviews get empathetic, de-escalating responses that show you care.</p>
+      </div>
+      <div class="p-step fade-up">
+        <span class="p-num">03</span>
+        <div class="p-name">Escalate</div>
+        <p class="p-desc">Reviews below 3 stars trigger an immediate alert to you. You see the review, the AI's draft response, and a recommended action — before the situation has time to compound.</p>
+      </div>
+      <div class="p-step fade-up">
+        <span class="p-num">04</span>
+        <div class="p-name">Request</div>
+        <p class="p-desc">24–48 hours after every customer interaction, Twilio SMS sends a personalised review request linking directly to your Google or Facebook page. Happy customers click. Your rating climbs.</p>
+      </div>
+    </div>
+    <div class="section-cta">
+      <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold">See What Your Reputation Looks Like Right Now →</a>
+      <p class="under-cta-note">Free 45-minute audit. We'll show you every unanswered review and exactly what it's costing you.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SOCIAL PROOF -->
+<section class="s" id="proof" style="background:var(--navy2)">
+  <div class="container">
+    <span class="s-label fade-up">Client Result</span>
+    <h2 class="s-h2 fade-up">From Invisible<br><span class="gold">to Undeniable.</span></h2>
+    <div class="testi-card fade-up">
+      <span class="testi-stars">★★★★★</span>
+      <div class="result-tag">
+        <div class="result-label">Verified Result</div>
+        <div class="result-value">4.1 → 4.9 Stars — 90 Days</div>
+      </div>
+      <p class="testi-quote">"We had no idea two old negative reviews were killing our enquiry rate. Target Digital deployed the reputation system, responded to everything we'd missed, and started getting reviews from customers we'd never thought to ask. Within 90 days we went from 4.1 to 4.9 stars and our inbound enquiries nearly doubled. It runs itself — I haven't logged into Google My Business in months."</p>
+      <div class="testi-author">
+        <img src="Joanne.JFIF" alt="Joan R" class="testi-photo" style="border:2px solid #F59E0B">
+        <div>
+          <div class="testi-name">Joan R</div>
+          <div class="testi-loc">Imani Mental Health Services, Arizona</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INVESTMENT -->
+<section class="s" id="investment">
+  <div class="container">
+    <span class="s-label fade-up">Investment</span>
+    <h2 class="s-h2 fade-up">Simple Pricing.<br><span class="gold">No Surprises. No Contracts.</span></h2>
+    <p class="lead fade-up">One flat monthly retainer covers everything — build, deployment, 24/7 monitoring, all responses, and reporting. No setup fees. No lock-in. Cancel with 30 days' notice.</p>
+    <div class="price-box fade-up">
+      <div class="price-badge">AI Reputation Management</div>
+      <div class="price-label">Monthly Retainer</div>
+      <div class="price-amount">$1,500 – $3,000</div>
+      <div class="price-sub">/month — scoped to number of locations, platforms monitored, and review request volume</div>
+      <ul class="price-includes">
+        <li>Claude API sentiment analysis + brand-voice response writing</li>
+        <li>Google My Business API integration (all locations)</li>
+        <li>Facebook Graph API integration</li>
+        <li>Twilio SMS review request automation</li>
+        <li>24/7 monitoring across all platforms</li>
+        <li>Sub-3-star escalation alerts — real time</li>
+        <li>Monthly reputation report — rating trends, response rate, review volume</li>
+        <li>Review request sequence setup and optimisation</li>
+        <li>Direct strategist access — no account managers</li>
+      </ul>
+      <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold" style="width:100%;display:block;text-align:center">Get Your Custom Quote →</a>
+      <p class="objection-note">Most single-location businesses start at $1,500/month. Multi-location pricing confirmed during your free audit.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STAKES -->
+<section class="s" id="stakes">
+  <div class="container">
+    <span class="s-label s-label-red fade-up">The Cost of Waiting</span>
+    <h2 class="s-h2 fade-up">Every Unanswered Review Is a Customer<br><span class="gold">Walking to Your Competitor.</span></h2>
+    <div class="stakes-box fade-up">
+      <p class="body" style="color:var(--text);margin-bottom:1rem">A prospect who finds an unanswered complaint on your Google profile doesn't call to ask for your side of the story. They click the next result. Your competitor — the one with 4.8 stars and responses on every review — gets the call instead.</p>
+      <p class="body" style="color:var(--text);margin-bottom:1rem">This isn't about reputation as a vanity metric. It's about the direct, measurable cost of every review that goes unanswered, every happy customer who was never asked, and every potential 5-star review that disappeared because the moment passed.</p>
+      <p class="body" style="color:var(--text);margin:0">The audit is free. We'll show you your exact rating across every platform, every unanswered review, and the revenue it's costing you — before you commit to anything.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="s" id="faq" style="background:var(--navy2)">
+  <div class="container">
+    <span class="s-label fade-up">FAQ</span>
+    <h2 class="s-h2 fade-up">Questions About<br><span class="amber">AI Reputation Management.</span></h2>
+    <div class="faq-list fade-up">
+      <div class="faq-item">
+        <button class="faq-q">Are the review responses AI-generated? Will they sound fake? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Claude API writes responses that match your brand voice specifically — not generic templates. We set up your tone profile during onboarding based on your existing communications. Every response reads like it was written by your best customer service person, at their best, every time.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can this get fake reviews removed? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>We flag suspicious reviews and prepare formal dispute submissions to Google and Facebook. We can't guarantee removal — that's the platform's decision — but we document and submit every case correctly, giving you the highest possible chance. We also track open disputes and follow up automatically.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if a complaint is serious and needs a human response? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Any review below 3 stars triggers an immediate escalation alert to you. The AI prepares a draft response, but you approve before it posts. You stay in control of anything sensitive — the AI handles the volume, you handle the edge cases. Nothing goes live on a critical review without your sign-off.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does it work for multiple locations? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Yes. The system monitors and responds across unlimited Google and Facebook profiles from a single dashboard. Multi-location pricing scales with the number of profiles — all confirmed in your free audit. Each location gets its own monitoring, response queue, and rating report.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How quickly will my rating improve? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Most clients see measurable movement within 30–45 days as new verified reviews start arriving via the Twilio SMS requests. The full compound effect typically shows clearly at 90 days. Joan R went from 4.1 to 4.9 stars in 90 days with a single-location business — and her inbound enquiries nearly doubled in the same period.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FINAL CTA -->
+<section id="final-cta">
+  <div class="final-inner">
+    <div class="scarcity-badge fade-up">3 Audit Spots Remaining This Month</div>
+    <h2 class="final-h2 fade-up">Your Next Customer Is Reading Your Reviews Right Now.</h2>
+    <p class="final-sub fade-up">Every minute without a reputation system is a minute your Google profile is making decisions on your behalf — without your input. Book your free audit and we'll show you exactly what your reputation looks like today, what it's costing you, and how the AI system fixes it in 48 hours.</p>
+    <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold fade-up" style="font-size:1.1rem;padding:1.2rem 3rem">Claim Your Free Growth Audit →</a>
+    <div class="cta-trust-row fade-up">
+      <span>No fake reviews</span>
+      <span>24/7 monitoring</span>
+      <span>Real responses in minutes</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span style="color:var(--gold)">Target</span><span style="color:#fff">Digital</span></div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="mailto:rop@targetdigital.com.au">rop@targetdigital.com.au</a>
+  </div>
+  <p>© 2026 Target Digital AI. All rights reserved. | AI Reputation Management built on Railway + Claude Code.</p>
+</footer>
+
+<!-- MOBILE STICKY CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener">
+    Claim Your Free Growth Audit →
+    <div class="sticky-cta-sub">Own your reputation — live in 48 hours</div>
+  </a>
+</div>
+
+<script>
+// Intersection Observer scroll reveals — NOT GSAP
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+// 1500ms failsafe
+setTimeout(() => {
+  document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+}, 1500);
+
+// Mobile sticky CTA
+const stickyCta = document.getElementById('sticky-cta');
+window.addEventListener('scroll', () => {
+  stickyCta.classList.toggle('visible', window.scrollY > 500);
+}, { passive: true });
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
