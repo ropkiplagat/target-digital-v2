@@ -58,21 +58,21 @@ nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:1rem 2rem;display
 .nav-cta:hover{background:#f5ca30;transform:translateY(-1px)}
 
 /* HERO */
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 1.5rem 5rem;position:relative;overflow:hidden}
-#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(168,85,247,0.09) 0%,transparent 65%);pointer-events:none}
+#hero{min-height:100vh;display:flex;align-items:stretch;padding:0;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 75% 50%,rgba(168,85,247,0.09) 0%,transparent 60%);pointer-events:none}
 .hero-badge{display:inline-block;background:var(--purple-dim);border:1px solid rgba(168,85,247,0.35);color:var(--purple);font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:0.4rem 1.2rem;border-radius:100px;margin-bottom:1.5rem}
-.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5.5vw,4rem);font-weight:800;line-height:1.06;letter-spacing:-1.5px;color:#fff;margin-bottom:1.2rem;max-width:860px}
+.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,3.4rem);font-weight:800;line-height:1.06;letter-spacing:-1.5px;color:#fff;margin-bottom:1.2rem;max-width:520px;transition:opacity 0.1s linear}
 .hero-h1 .accent{color:var(--gold)}
 .hero-h1 .red{color:#fca5a5}
 .hero-h1 .purple{color:var(--purple)}
-.hero-sub{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:640px;margin:0 auto 2.5rem}
+.hero-sub{font-size:1.1rem;color:var(--muted);line-height:1.8;max-width:460px;margin:0 0 2.5rem}
 .hero-sub strong{color:#fff}
-.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
 .btn-gold{display:inline-block;background:var(--gold);color:#06091a;padding:1rem 2.2rem;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;border:none;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 0 30px rgba(240,192,64,0.35);font-family:'DM Sans',sans-serif;white-space:nowrap}
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(240,192,64,0.6)}
 .btn-ghost{display:inline-block;background:transparent;color:#fff;padding:1rem 2rem;border-radius:10px;font-weight:600;font-size:1rem;cursor:pointer;border:2px solid rgba(255,255,255,0.25);text-decoration:none;transition:border-color 0.2s,transform 0.2s;font-family:'DM Sans',sans-serif;white-space:nowrap}
 .btn-ghost:hover{border-color:rgba(255,255,255,0.65);transform:translateY(-2px)}
-.hero-trust{display:flex;align-items:center;justify-content:center;gap:1.2rem;flex-wrap:wrap}
+.hero-trust{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:0.5rem}
 .hero-trust span{font-size:0.78rem;color:var(--muted);font-weight:500}
 .trust-dot{width:3px;height:3px;background:var(--muted2);border-radius:50%;flex-shrink:0}
 
@@ -243,16 +243,23 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
 </style>
 <style>
 #hero-canvas{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none;display:block}
-.hero-overlay{position:absolute;inset:0;z-index:2;background:rgba(6,9,26,0.58);pointer-events:none}
 .hero-bg-mobile{display:none;position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
-.hero-bg-mobile img{width:100%;height:100%;object-fit:cover;opacity:0.2}
-#hero::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:220px;background:linear-gradient(to bottom,transparent,#010D1F);z-index:3;pointer-events:none}
-.float-tag{position:absolute;z-index:5;background:rgba(6,9,26,0.88);border:1px solid rgba(255,255,255,0.18);color:#fff;padding:7px 16px;border-radius:100px;font-size:12px;font-weight:700;white-space:nowrap;backdrop-filter:blur(10px);animation:ftFloat 3s ease-in-out infinite;animation-delay:var(--delay,0s)}
-.float-tag.gold{border-color:rgba(240,192,64,0.45);color:var(--gold)}
-.float-tag.blue{border-color:rgba(37,99,235,0.45);color:#60a5fa}
-.float-tag.cyan{border-color:rgba(0,191,255,0.45);color:var(--cyan)}
-@keyframes ftFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-@media(max-width:640px){#hero-canvas{display:none}.hero-overlay{display:none}.hero-bg-mobile{display:block}}
+.hero-bg-mobile img{width:100%;height:100%;object-fit:cover;object-position:right center;opacity:0.2}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;width:100%;position:relative;z-index:3;align-items:center}
+.hero-left{padding:8rem 2rem 5rem 5vw;display:flex;flex-direction:column;justify-content:center}
+.hero-right{min-height:100vh}
+#hero::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:160px;background:linear-gradient(to bottom,transparent,#06091a);z-index:4;pointer-events:none}
+@media(max-width:768px){
+  #hero-canvas{display:none}
+  .hero-right{display:none}
+  .hero-bg-mobile{display:block}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-left{align-items:center;text-align:center;padding:7rem 1.5rem 4rem}
+  .hero-h1{text-align:center;max-width:none}
+  .hero-sub{text-align:center;max-width:none;margin:0 auto 2.5rem}
+  .hero-ctas{justify-content:center}
+  .hero-trust{justify-content:center}
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -268,32 +275,29 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
 <!-- HERO -->
 <section id="hero">
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
-  <div class="hero-overlay"></div>
   <div class="hero-bg-mobile"><img src="creative-hero.png" alt="The Creative Goldmine"></div>
-  <span class="float-tag gold" style="--delay:0s;top:15%;left:3%">100+ Variations</span>
-  <span class="float-tag" style="--delay:0.7s;top:15%;right:3%">CPL Down 47%</span>
-  <span class="float-tag blue" style="--delay:1.2s;top:45%;right:3%">Kling AI</span>
-  <span class="float-tag" style="--delay:0.4s;bottom:25%;right:8%">Zero Shoots</span>
-  <span class="float-tag gold" style="--delay:1.8s;bottom:25%;left:8%">Week 3 Winners</span>
-  <div style="max-width:860px;margin:0 auto;position:relative;z-index:4">
-    <div class="hero-badge fade-up">The Creative Goldmine — Target Digital</div>
-    <h1 class="hero-h1 fade-up">
-      YOUR ADS BURN OUT IN <span class="accent">7 DAYS.</span><br>FACEBOOK <span class="purple">ANDROMEDA</span> PUNISHES YOU FOR IT.
-    </h1>
-    <p class="hero-sub fade-up">Facebook's Andromeda algorithm now deprioritises ads it's seen before — meaning stale creative doesn't just underperform, it actively kills your entire account's reach. The Creative Goldmine produces <strong>100+ fresh ad variations every week</strong> using Kling AI and HeyGen. <strong>No photographers. No actors. No production costs.</strong> Just a machine that never runs out of creative.</p>
-    <div class="hero-ctas fade-up">
-      <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold">Claim Your Free Growth Audit →</a>
-      <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge fade-up">The Creative Goldmine — Target Digital</div>
+      <h1 class="hero-h1 fade-up" id="hero-h1">
+        YOUR ADS BURN OUT IN <span class="accent">7 DAYS.</span><br>FACEBOOK <span class="purple">ANDROMEDA</span> PUNISHES YOU FOR IT.
+      </h1>
+      <p class="hero-sub fade-up">Facebook's Andromeda algorithm now deprioritises ads it's seen before — meaning stale creative doesn't just underperform, it actively kills your entire account's reach. The Creative Goldmine produces <strong>100+ fresh ad variations every week</strong> using Kling AI and HeyGen. <strong>No photographers. No actors. No production costs.</strong> Just a machine that never runs out of creative.</p>
+      <div class="hero-ctas fade-up">
+        <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold">Claim Your Free Growth Audit →</a>
+        <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+      </div>
+      <div class="hero-trust fade-up">
+        <span>100+ variations/week</span>
+        <span class="trust-dot"></span>
+        <span>No production costs</span>
+        <span class="trust-dot"></span>
+        <span>48hr deployment</span>
+        <span class="trust-dot"></span>
+        <span>Cancel anytime</span>
+      </div>
     </div>
-    <div class="hero-trust fade-up">
-      <span>100+ variations/week</span>
-      <span class="trust-dot"></span>
-      <span>No production costs</span>
-      <span class="trust-dot"></span>
-      <span>48hr deployment</span>
-      <span class="trust-dot"></span>
-      <span>Cancel anytime</span>
-    </div>
+    <div class="hero-right" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -665,54 +669,59 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 </script>
 <script>
 (function(){
-  if(window.innerWidth<=640)return;
+  if(window.innerWidth<=768)return;
   gsap.registerPlugin(ScrollTrigger);
-  var COLS=10,ROWS=6;
   var canvas=document.getElementById('hero-canvas');
   if(!canvas)return;
   var ctx=canvas.getContext('2d');
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
-  var vw=canvas.width,vh=canvas.height;
-  var tileW=vw/COLS,tileH=vh/ROWS;
+  canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+  var vw=canvas.width,vh=canvas.height,halfW=vw/2;
+  var GOLDS=['#f0c040','#f5ca30','#ffd700','#e8b420','#ffed4e','#ffe066'];
+  var parts=[];
+  for(var i=0;i<200;i++){
+    var ang=Math.random()*Math.PI*2,spd=2+Math.random()*4;
+    parts.push({x:halfW+Math.random()*halfW,y:Math.random()*vh,
+      vx:Math.cos(ang)*spd-3,vy:Math.sin(ang)*spd*0.55,
+      size:1+Math.random()*3.5,color:GOLDS[Math.floor(Math.random()*GOLDS.length)],
+      op:0.55+Math.random()*0.45});
+  }
   var img=new Image();
   img.onload=function(){
     var off=document.createElement('canvas');
     off.width=vw;off.height=vh;
     var offCtx=off.getContext('2d');
-    var scale=Math.max(vw/img.naturalWidth,vh/img.naturalHeight);
+    var scale=Math.max(halfW/img.naturalWidth,vh/img.naturalHeight);
     var sw=img.naturalWidth*scale,sh=img.naturalHeight*scale;
-    var ox=(vw-sw)/2,oy=(vh-sh)/2;
+    var ox=halfW+(halfW-sw)/2,oy=(vh-sh)/2;
     offCtx.drawImage(img,ox,oy,sw,sh);
+    var COLS=10,ROWS=6,tW=halfW/COLS,tH=vh/ROWS;
     var tiles=[];
-    for(var r=0;r<ROWS;r++){
-      for(var c=0;c<COLS;c++){
-        var tcx=c*tileW+tileW/2,tcy=r*tileH+tileH/2;
-        tiles.push({sx:c*tileW,sy:r*tileH,x:c*tileW,y:r*tileH,
-          w:tileW,h:tileH,
-          dirX:Math.cos(Math.random()*Math.PI*2)*(0.7+Math.random()*0.6),dirY:Math.sin(Math.random()*Math.PI*2)*(0.7+Math.random()*0.6)});
-      }
+    for(var r=0;r<ROWS;r++)for(var c=0;c<COLS;c++){
+      var a=Math.random()*Math.PI*2,mag=0.8+Math.random()*0.9;
+      tiles.push({sx:halfW+c*tW,sy:r*tH,x:halfW+c*tW,y:r*tH,
+        w:tW,h:tH,dirX:Math.cos(a)*mag,dirY:Math.sin(a)*mag});
     }
+    var hlEl=document.getElementById('hero-h1');
     function draw(prog){
       ctx.clearRect(0,0,vw,vh);
       for(var i=0;i<tiles.length;i++){
-        var t=tiles[i];
-        var alpha=Math.max(0,1-prog*1.5);
-        if(alpha<=0)continue;
-        ctx.globalAlpha=alpha;
-        ctx.drawImage(off,t.sx,t.sy,t.w,t.h,
-          t.x+t.dirX*prog*vw*1.2,
-          t.y+t.dirY*prog*vh*1.2,
-          t.w,t.h);
+        var t=tiles[i],al=Math.max(0,1-prog*1.8);if(al<=0)continue;
+        ctx.globalAlpha=al;
+        ctx.drawImage(off,t.sx,t.sy,t.w,t.h,t.x+t.dirX*prog*vw*1.2,t.y+t.dirY*prog*vh*1.2,t.w,t.h);
+      }
+      var pp=Math.max(0,Math.min((prog-0.08)/0.7,1));
+      if(pp>0)for(var i=0;i<parts.length;i++){
+        var p=parts[i],px=p.x+p.vx*pp*300,py=p.y+p.vy*pp*100,pa=p.op*(1-pp*0.8);
+        if(pa<=0)continue;
+        ctx.globalAlpha=pa;ctx.beginPath();
+        ctx.arc(px,py,p.size,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill();
       }
       ctx.globalAlpha=1;
+      if(hlEl)hlEl.style.opacity=String(Math.max(0,1-prog*3));
     }
     draw(0);
-    ScrollTrigger.create({
-      trigger:'#hero',start:'top top',end:'+=600',
-      scrub:1.5,pin:true,
-      onUpdate:function(s){draw(s.progress);}
-    });
+    ScrollTrigger.create({trigger:'#hero',start:'top top',end:'+=600',
+      scrub:1.5,pin:true,onUpdate:function(s){draw(s.progress);}});
   };
   img.src='creative-hero.png';
   if(img.complete&&img.naturalWidth>0)img.onload();
