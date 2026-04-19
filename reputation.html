@@ -224,6 +224,17 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
   .process-grid{grid-template-columns:1fr 1fr}
 }
 </style>
+<style>
+.hero-bg{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.45}
+#hero::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:200px;background:linear-gradient(to bottom,transparent,#010D1F);z-index:2;pointer-events:none}
+.float-tag{position:absolute;z-index:4;background:rgba(6,9,26,0.88);border:1px solid rgba(255,255,255,0.18);color:#fff;padding:7px 16px;border-radius:100px;font-size:12px;font-weight:700;white-space:nowrap;backdrop-filter:blur(10px);animation:ftFloat 3s ease-in-out infinite;animation-delay:var(--delay,0s)}
+.float-tag.gold{border-color:rgba(240,192,64,0.45);color:var(--gold)}
+.float-tag.blue{border-color:rgba(37,99,235,0.45);color:#60a5fa}
+.float-tag.cyan{border-color:rgba(0,191,255,0.45);color:var(--cyan)}
+@keyframes ftFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@media(max-width:640px){.hero-bg img{opacity:0.25}}
+</style>
 </head>
 <body>
 
@@ -235,6 +246,12 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-bg"><img src="reputation-hero.png" alt="Reputation Builder"></div>
+  <span class="float-tag gold" style="--delay:0s;top:15%;left:3%">4.9 Stars</span>
+  <span class="float-tag" style="--delay:0.7s;top:15%;right:3%">90 Days</span>
+  <span class="float-tag gold" style="--delay:1.2s;top:45%;right:3%">24/7 Monitor</span>
+  <span class="float-tag" style="--delay:0.4s;bottom:25%;right:3%">AI Response</span>
+  <span class="float-tag cyan" style="--delay:1.8s;bottom:25%;left:3%">3x Reviews</span>
   <div style="max-width:820px;margin:0 auto">
     <div class="hero-badge fade-up">AI Reputation Management — Target Digital</div>
     <h1 class="hero-h1 fade-up">
@@ -253,26 +270,6 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
       <span>No fake reviews</span>
       <span class="trust-dot"></span>
       <span>Cancel anytime</span>
-    </div>
-
-    <!-- STAR BUILDER ANIMATION -->
-    <style>
-      .hero-img-wrap{position:relative;max-width:520px;margin:2.5rem auto 0}
-      .hero-img-wrap img{width:100%;border-radius:16px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 24px 80px rgba(0,0,0,0.5)}
-      .float-tag{position:absolute;background:rgba(6,9,26,0.88);border:1px solid rgba(255,255,255,0.18);color:#fff;padding:7px 16px;border-radius:100px;font-size:12px;font-weight:700;white-space:nowrap;backdrop-filter:blur(10px);animation:ftFloat 3s ease-in-out infinite;animation-delay:var(--delay,0s)}
-      .float-tag.gold{border-color:rgba(240,192,64,0.45);color:var(--gold)}
-      .float-tag.blue{border-color:rgba(37,99,235,0.45);color:#60a5fa}
-      .float-tag.cyan{border-color:rgba(0,191,255,0.45);color:var(--cyan)}
-      @keyframes ftFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-      @media(max-width:640px){.hero-img-wrap{display:none}}
-    </style>
-    <div class="hero-img-wrap">
-      <img src="reputation-hero.png" alt="Reputation Builder">
-      <span class="float-tag gold" style="--delay:0s;top:10%;left:-5%">4.9 Stars</span>
-      <span class="float-tag" style="--delay:0.7s;top:10%;right:-5%">90 Days</span>
-      <span class="float-tag gold" style="--delay:1.2s;top:45%;right:-10%">24/7 Monitor</span>
-      <span class="float-tag" style="--delay:0.4s;bottom:20%;right:-8%">AI Response</span>
-      <span class="float-tag cyan" style="--delay:1.8s;bottom:20%;left:-8%">3x Reviews</span>
     </div>
   </div>
 </section>
@@ -341,7 +338,7 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
 <!-- THE STACK -->
 <section class="s" id="the-stack" style="background:var(--navy2)">
   <div class="container-wide">
-    <div style="max-width:860px;margin:0 auto">
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:3">
       <span class="s-label fade-up">The Stack</span>
       <h2 class="s-h2 fade-up">Four Integrations. One Reputation Machine.<br><span class="amber">Always On.</span></h2>
       <p class="lead fade-up">Each tool in the system handles one layer of your reputation — monitoring, responding, requesting, and escalating. Together they run continuously without you needing to log in to a single platform.</p>
