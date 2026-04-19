@@ -610,7 +610,6 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   var vw=canvas.width,vh=canvas.height;
   var tileW=vw/COLS,tileH=vh/ROWS;
   var img=new Image();
-  img.src='reputation-hero.png';
   img.onload=function(){
     var off=document.createElement('canvas');
     off.width=vw;off.height=vh;
@@ -649,6 +648,8 @@ document.querySelectorAll('.faq-q').forEach(btn => {
       onUpdate:function(s){draw(s.progress);}
     });
   };
+  img.src='reputation-hero.png';
+  if(img.complete&&img.naturalWidth>0)img.onload();
 })();
 </script>
 </body>
