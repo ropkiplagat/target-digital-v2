@@ -2,10 +2,10 @@ import sys, re
 sys.stdout.reconfigure(encoding='utf-8')
 
 pages = [
-    ('funnel.html',     {'prices':['2,000','4,000'], 'extra': lambda h: 'hero-canvas' in h and 'ScrollTrigger' in h and 'funnel-hero.png' in h}),
-    ('outbound.html',   {'prices':['4,000','6,000'], 'extra': lambda h: 'hero-canvas' in h and 'ScrollTrigger' in h and 'outbound-hero.png' in h}),
-    ('reputation.html', {'prices':['1,500','3,000'], 'extra': lambda h: 'hero-canvas' in h and 'ScrollTrigger' in h and 'reputation-hero.png' in h}),
-    ('creative.html',   {'prices':['1,500','3,000'], 'extra': lambda h: 'hero-canvas' in h and 'ScrollTrigger' in h and 'creative-hero.png' in h}),
+    ('funnel.html',     {'prices':['2,000','4,000'], 'extra': lambda h: 'hero-canvas' in h and 'hero-overlay' in h and 'ScrollTrigger' in h and 'funnel-hero.png' in h}),
+    ('outbound.html',   {'prices':['4,000','6,000'], 'extra': lambda h: 'hero-canvas' in h and 'hero-overlay' in h and 'ScrollTrigger' in h and 'outbound-hero.png' in h}),
+    ('reputation.html', {'prices':['1,500','3,000'], 'extra': lambda h: 'hero-canvas' in h and 'hero-overlay' in h and 'ScrollTrigger' in h and 'reputation-hero.png' in h}),
+    ('creative.html',   {'prices':['1,500','3,000'], 'extra': lambda h: 'hero-canvas' in h and 'hero-overlay' in h and 'ScrollTrigger' in h and 'creative-hero.png' in h}),
 ]
 
 all_pass = True
