@@ -244,106 +244,24 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
     </div>
 
     <!-- OUTBOUND CHAIN ANIMATION -->
-    <div class="hero-anim" id="outbound-anim" aria-hidden="true">
-      <style>
-        #outbound-anim .ob-chain{display:flex;align-items:center;justify-content:center;gap:0;max-width:780px;margin:0 auto;flex-wrap:nowrap}
-        @media(max-width:640px){#outbound-anim{display:none}}
-        #outbound-anim .ob-node{display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0}
-        #outbound-anim .ob-circle{width:48px;height:48px;border-radius:10px;background:var(--navy3);border:2px solid rgba(0,191,255,0.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--muted);transition:border-color 0.3s,box-shadow 0.3s,color 0.3s,background 0.3s;letter-spacing:0;text-align:center;line-height:1.2;padding:4px}
-        #outbound-anim .ob-circle.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,191,255,0.1);box-shadow:0 0 16px rgba(0,191,255,0.35)}
-        #outbound-anim .ob-circle.done{border-color:rgba(0,191,255,0.4);color:rgba(0,191,255,0.6)}
-        #outbound-anim .ob-label{font-size:9px;color:var(--muted);font-weight:600;letter-spacing:0.3px;text-align:center;white-space:nowrap}
-        #outbound-anim .ob-label.active{color:var(--cyan)}
-        #outbound-anim .ob-track{flex:1;height:2px;background:rgba(255,255,255,0.07);position:relative;min-width:30px;max-width:70px;overflow:visible}
-        #outbound-anim .ob-fill{height:100%;width:0%;background:var(--cyan);transition:width 0.45s linear;box-shadow:0 0 5px rgba(0,191,255,0.6)}
-        #outbound-anim .ob-dot{width:10px;height:10px;border-radius:50%;background:var(--cyan);position:absolute;top:50%;transform:translateY(-50%);left:-5px;box-shadow:0 0 8px rgba(0,191,255,0.9);opacity:0;transition:left 0.45s linear,opacity 0.15s}
-        #outbound-anim .ob-dot.visible{opacity:1}
-        #outbound-anim .booked-tag{font-size:11px;font-weight:700;color:var(--gold);margin-top:2px;opacity:0;transition:opacity 0.4s;white-space:nowrap}
-        #outbound-anim .booked-tag.show{opacity:1}
-      </style>
-      <div class="ob-chain">
-        <div class="ob-node">
-          <div class="ob-circle" id="ob0">Phantom<br>Buster</div>
-          <div class="ob-label" id="obl0">Scrape ICP</div>
-        </div>
-        <div class="ob-track"><div class="ob-fill" id="obf0"></div><div class="ob-dot" id="obd0"></div></div>
-        <div class="ob-node">
-          <div class="ob-circle" id="ob1">Apollo</div>
-          <div class="ob-label" id="obl1">Enrich</div>
-        </div>
-        <div class="ob-track"><div class="ob-fill" id="obf1"></div><div class="ob-dot" id="obd1"></div></div>
-        <div class="ob-node">
-          <div class="ob-circle" id="ob2">Million<br>Verify</div>
-          <div class="ob-label" id="obl2">Verify</div>
-        </div>
-        <div class="ob-track"><div class="ob-fill" id="obf2"></div><div class="ob-dot" id="obd2"></div></div>
-        <div class="ob-node">
-          <div class="ob-circle" id="ob3">Instantly</div>
-          <div class="ob-label" id="obl3">Send</div>
-        </div>
-        <div class="ob-track"><div class="ob-fill" id="obf3"></div><div class="ob-dot" id="obd3"></div></div>
-        <div class="ob-node">
-          <div class="ob-circle" id="ob4">Railway</div>
-          <div class="ob-label" id="obl4">24/7 Run</div>
-          <div class="booked-tag" id="ob-booked">Meeting Booked ✓</div>
-        </div>
-      </div>
+    <style>
+      .hero-img-wrap{position:relative;max-width:520px;margin:2.5rem auto 0}
+      .hero-img-wrap img{width:100%;border-radius:16px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 24px 80px rgba(0,0,0,0.5)}
+      .float-tag{position:absolute;background:rgba(6,9,26,0.88);border:1px solid rgba(255,255,255,0.18);color:#fff;padding:7px 16px;border-radius:100px;font-size:12px;font-weight:700;white-space:nowrap;backdrop-filter:blur(10px);animation:ftFloat 3s ease-in-out infinite;animation-delay:var(--delay,0s)}
+      .float-tag.gold{border-color:rgba(240,192,64,0.45);color:var(--gold)}
+      .float-tag.blue{border-color:rgba(37,99,235,0.45);color:#60a5fa}
+      .float-tag.cyan{border-color:rgba(0,191,255,0.45);color:var(--cyan)}
+      @keyframes ftFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+      @media(max-width:640px){.hero-img-wrap{display:none}}
+    </style>
+    <div class="hero-img-wrap">
+      <img src="outbound-hero.png" alt="Automated Outbound Engine">
+      <span class="float-tag" style="--delay:0s;top:10%;left:-5%">PhantomBuster</span>
+      <span class="float-tag cyan" style="--delay:0.7s;top:10%;right:-5%">Apollo</span>
+      <span class="float-tag" style="--delay:1.2s;top:45%;right:-10%">Instantly</span>
+      <span class="float-tag cyan" style="--delay:0.4s;bottom:20%;right:-8%">Railway</span>
+      <span class="float-tag gold" style="--delay:1.8s;bottom:20%;left:-8%">3-8 Calls/Week</span>
     </div>
-    <script>
-    (function(){
-      function resetOb(){
-        for(var i=0;i<5;i++){
-          document.getElementById('ob'+i).className='ob-circle';
-          document.getElementById('obl'+i).className='ob-label';
-        }
-        for(var i=0;i<4;i++){
-          document.getElementById('obf'+i).style.width='0%';
-          var d=document.getElementById('obd'+i);
-          d.classList.remove('visible');
-          d.style.left='-5px';
-        }
-        document.getElementById('ob-booked').classList.remove('show');
-      }
-      function actOb(i){document.getElementById('ob'+i).classList.add('active');document.getElementById('obl'+i).classList.add('active');}
-      function doneOb(i){document.getElementById('ob'+i).classList.remove('active');document.getElementById('ob'+i).classList.add('done');}
-      function animOb(i,cb){
-        var fill=document.getElementById('obf'+i);
-        var dot=document.getElementById('obd'+i);
-        dot.classList.add('visible');
-        var start=null,dur=600;
-        function raf(ts){
-          if(!start)start=ts;
-          var p=Math.min((ts-start)/dur,1);
-          fill.style.width=(p*100)+'%';
-          dot.style.left='calc('+p*100+'% - 5px)';
-          if(p<1)requestAnimationFrame(raf);
-          else{dot.classList.remove('visible');if(cb)cb();}
-        }
-        requestAnimationFrame(raf);
-      }
-      function runOb(){
-        resetOb();actOb(0);
-        var delay=500;
-        function step(i){
-          setTimeout(function(){
-            doneOb(i);
-            animOb(i,function(){
-              actOb(i+1);
-              if(i+1<4){setTimeout(function(){step(i+1);},delay);}
-              else{
-                setTimeout(function(){
-                  document.getElementById('ob-booked').classList.add('show');
-                  setTimeout(runOb,2200);
-                },500);
-              }
-            });
-          },delay);
-        }
-        setTimeout(function(){step(0);},delay);
-      }
-      setTimeout(runOb,900);
-    })();
-    </script>
   </div>
 </section>
 

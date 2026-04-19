@@ -239,123 +239,24 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
       <span>Cancel anytime</span>
     </div>
 
-    <!-- FUNNEL PIPELINE ANIMATION -->
-    <div class="hero-anim" id="funnel-anim" aria-hidden="true">
-      <style>
-        .hero-anim{margin-top:2.5rem;padding:0 1rem}
-        @media(max-width:640px){.hero-anim{display:none}}
-        #funnel-anim .pipeline{display:flex;align-items:center;justify-content:center;gap:0;max-width:720px;margin:0 auto}
-        #funnel-anim .pipe-node{display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0}
-        #funnel-anim .node-circle{width:52px;height:52px;border-radius:50%;background:var(--navy3);border:2px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:18px;transition:border-color 0.3s,box-shadow 0.3s,background 0.3s}
-        #funnel-anim .node-circle.active{border-color:var(--gold);background:rgba(240,192,64,0.12);box-shadow:0 0 18px rgba(240,192,64,0.4)}
-        #funnel-anim .node-circle.done{border-color:var(--gold);background:rgba(240,192,64,0.08)}
-        #funnel-anim .node-label{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:0.5px;text-align:center;white-space:nowrap;transition:color 0.3s}
-        #funnel-anim .node-label.active{color:var(--gold)}
-        #funnel-anim .pipe-track{flex:1;height:2px;background:rgba(255,255,255,0.07);position:relative;min-width:60px;max-width:100px;overflow:visible}
-        #funnel-anim .pipe-fill{height:100%;width:0%;background:var(--gold);transition:width 0.5s linear;box-shadow:0 0 6px rgba(240,192,64,0.6)}
-        #funnel-anim .lead-dot{width:12px;height:12px;border-radius:50%;background:var(--gold);position:absolute;top:50%;transform:translateY(-50%);left:-6px;box-shadow:0 0 10px rgba(240,192,64,0.8);opacity:0;transition:left 0.5s linear,opacity 0.2s}
-        #funnel-anim .lead-dot.visible{opacity:1}
-        #funnel-anim .booked-label{font-size:12px;font-weight:700;color:var(--gold);margin-top:2px;opacity:0;transition:opacity 0.4s}
-        #funnel-anim .booked-label.show{opacity:1}
-      </style>
-      <div class="pipeline">
-        <div class="pipe-node">
-          <div class="node-circle" id="fn0">📥</div>
-          <div class="node-label" id="fl0">Lead In</div>
-        </div>
-        <div class="pipe-track" id="ft0"><div class="pipe-fill" id="ff0"></div><div class="lead-dot" id="fd0"></div></div>
-        <div class="pipe-node">
-          <div class="node-circle" id="fn1">⚡</div>
-          <div class="node-label" id="fl1">Instant Reply</div>
-        </div>
-        <div class="pipe-track" id="ft1"><div class="pipe-fill" id="ff1"></div><div class="lead-dot" id="fd1"></div></div>
-        <div class="pipe-node">
-          <div class="node-circle" id="fn2">🎯</div>
-          <div class="node-label" id="fl2">Qualified</div>
-        </div>
-        <div class="pipe-track" id="ft2"><div class="pipe-fill" id="ff2"></div><div class="lead-dot" id="fd2"></div></div>
-        <div class="pipe-node">
-          <div class="node-circle" id="fn3">🔄</div>
-          <div class="node-label" id="fl3">Nurtured</div>
-        </div>
-        <div class="pipe-track" id="ft3"><div class="pipe-fill" id="ff3"></div><div class="lead-dot" id="fd3"></div></div>
-        <div class="pipe-node">
-          <div class="node-circle" id="fn4">✓</div>
-          <div class="node-label" id="fl4">Meeting Booked</div>
-          <div class="booked-label" id="fbooked">Meeting Booked ✓</div>
-        </div>
-      </div>
+    <!-- HERO IMAGE -->
+    <style>
+      .hero-img-wrap{position:relative;max-width:520px;margin:2.5rem auto 0}
+      .hero-img-wrap img{width:100%;border-radius:16px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 24px 80px rgba(0,0,0,0.5)}
+      .float-tag{position:absolute;background:rgba(6,9,26,0.88);border:1px solid rgba(255,255,255,0.18);color:#fff;padding:7px 16px;border-radius:100px;font-size:12px;font-weight:700;white-space:nowrap;backdrop-filter:blur(10px);animation:ftFloat 3s ease-in-out infinite;animation-delay:var(--delay,0s)}
+      .float-tag.gold{border-color:rgba(240,192,64,0.45);color:var(--gold)}
+      .float-tag.blue{border-color:rgba(37,99,235,0.45);color:#60a5fa}
+      .float-tag.cyan{border-color:rgba(0,191,255,0.45);color:var(--cyan)}
+      @keyframes ftFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+      @media(max-width:640px){.hero-img-wrap{display:none}}
+    </style>
+    <div class="hero-img-wrap">
+      <img src="funnel-hero.png" alt="AI Lead Funnel">
+      <span class="float-tag gold" style="--delay:0s;top:10%;left:-5%">AI Qualified</span>
+      <span class="float-tag" style="--delay:0.7s;top:10%;right:-5%">24/7</span>
+      <span class="float-tag" style="--delay:1.2s;top:45%;right:-10%">Meeting Booked</span>
+      <span class="float-tag gold" style="--delay:1.8s;bottom:20%;left:-8%">Zero Manual Work</span>
     </div>
-    <script>
-    (function(){
-      var nodes=5,tracks=4;
-      var step=0;
-      function resetFunnel(){
-        for(var i=0;i<nodes;i++){
-          document.getElementById('fn'+i).className='node-circle';
-          document.getElementById('fl'+i).className='node-label';
-        }
-        for(var i=0;i<tracks;i++){
-          document.getElementById('ff'+i).style.width='0%';
-          var d=document.getElementById('fd'+i);
-          d.classList.remove('visible');
-          d.style.left='-6px';
-        }
-        document.getElementById('fbooked').classList.remove('show');
-        step=0;
-      }
-      function activateNode(i){
-        document.getElementById('fn'+i).classList.add('active');
-        document.getElementById('fl'+i).classList.add('active');
-      }
-      function doneNode(i){
-        document.getElementById('fn'+i).classList.remove('active');
-        document.getElementById('fn'+i).classList.add('done');
-      }
-      function animTrack(i,cb){
-        var fill=document.getElementById('ff'+i);
-        var dot=document.getElementById('fd'+i);
-        dot.classList.add('visible');
-        var start=null,dur=700;
-        function raf(ts){
-          if(!start)start=ts;
-          var p=Math.min((ts-start)/dur,1);
-          fill.style.width=(p*100)+'%';
-          dot.style.left='calc('+p*100+'% - 6px)';
-          if(p<1)requestAnimationFrame(raf);
-          else{dot.classList.remove('visible');if(cb)cb();}
-        }
-        requestAnimationFrame(raf);
-      }
-      function runFunnel(){
-        resetFunnel();
-        activateNode(0);
-        setTimeout(function(){
-          doneNode(0);animTrack(0,function(){
-            activateNode(1);
-            setTimeout(function(){
-              doneNode(1);animTrack(1,function(){
-                activateNode(2);
-                setTimeout(function(){
-                  doneNode(2);animTrack(2,function(){
-                    activateNode(3);
-                    setTimeout(function(){
-                      doneNode(3);animTrack(3,function(){
-                        activateNode(4);
-                        document.getElementById('fbooked').classList.add('show');
-                        setTimeout(runFunnel,2000);
-                      });
-                    },600);
-                  });
-                },600);
-              });
-            },600);
-          });
-        },600);
-      }
-      setTimeout(runFunnel,800);
-    })();
-    </script>
   </div>
 </section>
 
