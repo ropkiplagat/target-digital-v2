@@ -212,11 +212,79 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
   .steps-grid{grid-template-columns:1fr}
   .benefit-grid{grid-template-columns:1fr}
 }
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: #fff;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background: var(--navy);
+  padding: 2rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-bottom: 1px solid rgba(37,99,235,0.15);
+  z-index: 99;
+}
+.mobile-nav.open {
+  display: flex;
+}
+.mobile-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.mobile-cta {
+  background: var(--blue);
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff !important;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
 </style>
 <style>
 #hero-canvas{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none;display:block}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:rgba(6,9,26,0.62);pointer-events:none}
 .hero-bg-mobile{display:none;position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
 .hero-bg-mobile img{width:100%;height:100%;object-fit:cover;object-position:right center;opacity:0.2}
+@media(max-width:640px){#hero-canvas{display:none}.hero-overlay{display:none}.hero-bg-mobile{display:block}}
 .hero-inner{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;width:100%;position:relative;z-index:3;align-items:center}
 .hero-left{padding:8rem 2rem 5rem 5vw;display:flex;flex-direction:column;justify-content:center}
 .hero-right{min-height:100vh}
@@ -229,13 +297,39 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo"><span class="gold">Target</span><span class="white">Digital</span></a>
-  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="nav-cta">Book Free Audit</a>
+  <div class="nav-logo">🎯 Target<span>Digital</span></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/funnel.html">Lead Gen</a>
+    <a href="/outbound.html">Outbound</a>
+    <a href="/reputation.html">Reputation</a>
+    <a href="/lead-magnet-creative.html">Resources</a>
+  </div>
+  <button class="nav-cta">Book a Call</button>
+  <div class="hamburger" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/">Home</a>
+  <a href="/funnel.html">Lead Gen</a>
+  <a href="/outbound.html">Outbound</a>
+  <a href="/reputation.html">Reputation</a>
+  <a href="/lead-magnet-creative.html">Resources</a>
+  <a href="#cta" class="mobile-cta">Book a Call</a>
+</div>
+
+<script>
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  nav.classList.toggle('open');
+}
+</script>
 
 <!-- HERO -->
 <section id="hero">
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-overlay"></div>
   <div class="hero-bg-mobile"><img src="funnel-hero.png" alt="AI Lead Funnel"></div>
   <div class="hero-inner">
     <div class="hero-left">
