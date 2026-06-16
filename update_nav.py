@@ -11,32 +11,29 @@ from pathlib import Path
 # === CONFIG ===
 REPO_ROOT = Path(__file__).parent
 HTML_FILES = [
-    "index.html", "funnel.html", "outbound.html", "reputation.html",
-    "lead-magnet-creative.html", "lead-magnet-funnel.html",
-    "lead-magnet-outbound.html", "lead-magnet-reputation.html"
+    "index.html", "funnel.html", "outbound.html",
+    "lead-magnet-funnel.html", "lead-magnet-outbound.html"
 ]
+
+CALENDLY = "https://calendly.com/targetdigital/growth-audit"
 
 NEW_NAV = '''<nav>
   <div class="nav-logo">🎯 Target<span>Digital</span></div>
   <div class="nav-links">
     <a href="/">Home</a>
-    <a href="/funnel.html">Lead Gen</a>
-    <a href="/outbound.html">Outbound</a>
-    <a href="/reputation.html">Reputation</a>
-    <a href="/lead-magnet-creative.html">Resources</a>
+    <a href="/funnel.html">Lead Gen Engine</a>
+    <a href="/outbound.html">Outbound Call Engine</a>
   </div>
-  <button class="nav-cta">Book a Call</button>
+  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="nav-cta" style="text-decoration:none">Book a Call</a>
   <div class="hamburger" onclick="toggleMobileNav()">
     <span></span><span></span><span></span>
   </div>
 </nav>
 <div class="mobile-nav" id="mobileNav">
   <a href="/">Home</a>
-  <a href="/funnel.html">Lead Gen</a>
-  <a href="/outbound.html">Outbound</a>
-  <a href="/reputation.html">Reputation</a>
-  <a href="/lead-magnet-creative.html">Resources</a>
-  <a href="#cta" class="mobile-cta">Book a Call</a>
+  <a href="/funnel.html">Lead Gen Engine</a>
+  <a href="/outbound.html">Outbound Call Engine</a>
+  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="mobile-cta">Book a Call</a>
 </div>
 
 <script>
