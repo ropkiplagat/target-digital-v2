@@ -211,16 +211,82 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
   .stack-grid{grid-template-columns:1fr}
   .process-grid{grid-template-columns:1fr}
 }
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: #fff;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background: var(--navy);
+  padding: 2rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-bottom: 1px solid rgba(37,99,235,0.15);
+  z-index: 99;
+}
+.mobile-nav.open {
+  display: flex;
+}
+.mobile-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.mobile-cta {
+  background: var(--blue);
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff !important;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
 </style>
 <style>
-#hero-canvas{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none;display:block}
-.hero-overlay{position:absolute;inset:0;z-index:2;background:rgba(6,9,26,0.62);pointer-events:none}
+#hero-canvas{display:none}
+#hero{background-image:url('outbound-hero.png');background-size:cover;background-position:center right}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:rgba(6,9,26,0.68);pointer-events:none}
 .hero-bg-mobile{display:none;position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
 .hero-bg-mobile img{width:100%;height:100%;object-fit:cover;opacity:0.2}
 #hero::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:220px;background:linear-gradient(to bottom,transparent,#010D1F);z-index:3;pointer-events:none}
 .float-tag{position:absolute;z-index:5;background:rgba(6,9,26,0.88);border:1px solid rgba(255,255,255,0.18);color:#fff;padding:7px 16px;border-radius:100px;font-size:12px;font-weight:700;white-space:nowrap;backdrop-filter:blur(10px);animation:ftFloat 3s ease-in-out infinite;animation-delay:var(--delay,0s)}
 .float-tag.gold{border-color:rgba(240,192,64,0.45);color:var(--gold)}
-.float-tag.blue{border-color:rgba(37,99,235,0.45);color:#60a5fa}
 .float-tag.cyan{border-color:rgba(0,191,255,0.45);color:var(--cyan)}
 @keyframes ftFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 @media(max-width:640px){#hero-canvas{display:none}.hero-overlay{display:none}.hero-bg-mobile{display:block}}
@@ -232,9 +298,34 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo"><span class="gold">Target</span><span class="white">Digital</span></a>
-  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="nav-cta">Book Free Audit</a>
+  <div class="nav-logo">🎯 Target<span>Digital</span></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/funnel.html">Lead Gen</a>
+    <a href="/outbound.html">Outbound</a>
+    <a href="/reputation.html">Reputation</a>
+    <a href="/lead-magnet-creative.html">Resources</a>
+  </div>
+  <button class="nav-cta">Book a Call</button>
+  <div class="hamburger" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/">Home</a>
+  <a href="/funnel.html">Lead Gen</a>
+  <a href="/outbound.html">Outbound</a>
+  <a href="/reputation.html">Reputation</a>
+  <a href="/lead-magnet-creative.html">Resources</a>
+  <a href="#cta" class="mobile-cta">Book a Call</a>
+</div>
+
+<script>
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  nav.classList.toggle('open');
+}
+</script>
 
 <!-- HERO -->
 <section id="hero">
@@ -591,57 +682,7 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 });
 </script>
 <script>
-(function(){
-  if(window.innerWidth<=640)return;
-  gsap.registerPlugin(ScrollTrigger);
-  var COLS=10,ROWS=6;
-  var canvas=document.getElementById('hero-canvas');
-  if(!canvas)return;
-  var ctx=canvas.getContext('2d');
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
-  var vw=canvas.width,vh=canvas.height;
-  var tileW=vw/COLS,tileH=vh/ROWS;
-  var img=new Image();
-  img.onload=function(){
-    var off=document.createElement('canvas');
-    off.width=vw;off.height=vh;
-    var offCtx=off.getContext('2d');
-    var scale=Math.max(vw/img.naturalWidth,vh/img.naturalHeight);
-    var sw=img.naturalWidth*scale,sh=img.naturalHeight*scale;
-    var ox=(vw-sw)/2,oy=(vh-sh)/2;
-    offCtx.drawImage(img,ox,oy,sw,sh);
-    var tiles=[];
-    for(var r=0;r<ROWS;r++){
-      for(var c=0;c<COLS;c++){
-        tiles.push({sx:c*tileW,sy:r*tileH,x:c*tileW,y:r*tileH,
-          w:tileW,h:tileH,
-          dirX:Math.cos(Math.random()*Math.PI*2)*(0.7+Math.random()*0.6),dirY:Math.sin(Math.random()*Math.PI*2)*(0.7+Math.random()*0.6)});
-      }
-    }
-    function draw(prog){
-      ctx.clearRect(0,0,vw,vh);
-      for(var i=0;i<tiles.length;i++){
-        var t=tiles[i];
-        var alpha=Math.max(0,1-prog*1.5);
-        if(alpha<=0)continue;
-        ctx.globalAlpha=alpha;
-        ctx.drawImage(off,t.sx,t.sy,t.w,t.h,
-          t.x+t.dirX*prog*vw*1.2,
-          t.y+t.dirY*prog*vh*1.2,
-          t.w,t.h);
-      }
-      ctx.globalAlpha=1;
-    }
-    draw(0);
-    ScrollTrigger.create({trigger:'#hero',start:'top top',end:'+=600',
-      scrub:1.5,pin:true,
-      onUpdate:function(s){draw(s.progress);}
-    });
-  };
-  img.src='outbound-hero.png';
-  if(img.complete&&img.naturalWidth>0)img.onload();
-})();
+gsap.registerPlugin(ScrollTrigger);
 </script>
 </body>
 </html>

@@ -123,14 +123,105 @@ footer a{color:var(--gold);text-decoration:none}
   .leak-card{grid-template-columns:1fr}
   .leak-num{font-size:36px}
 }
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: #fff;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background: var(--navy);
+  padding: 2rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-bottom: 1px solid rgba(37,99,235,0.15);
+  z-index: 99;
+}
+.mobile-nav.open {
+  display: flex;
+}
+.mobile-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.mobile-cta {
+  background: var(--blue);
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff !important;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="logo">Target<span>Digital</span></a>
-  <a href="https://calendly.com/targetdigital/growth-audit" class="nav-cta">Book Free Audit →</a>
+  <div class="nav-logo">🎯 Target<span>Digital</span></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/funnel.html">Lead Gen</a>
+    <a href="/outbound.html">Outbound</a>
+    <a href="/reputation.html">Reputation</a>
+    <a href="/lead-magnet-creative.html">Resources</a>
+  </div>
+  <button class="nav-cta">Book a Call</button>
+  <div class="hamburger" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/">Home</a>
+  <a href="/funnel.html">Lead Gen</a>
+  <a href="/outbound.html">Outbound</a>
+  <a href="/reputation.html">Reputation</a>
+  <a href="/lead-magnet-creative.html">Resources</a>
+  <a href="#cta" class="mobile-cta">Book a Call</a>
+</div>
+
+<script>
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  nav.classList.toggle('open');
+}
+</script>
 
 <!-- HERO -->
 <section class="hero">
