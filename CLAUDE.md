@@ -12,7 +12,7 @@ Both are pitched as working for any industry. Conversion is a Calendly booking �
 
 ## Where it runs
 - **Source:** `C:\Users\HP\targetdigital-v2` (git, branch `main`).
-- **Hosting:** static HTML — deploy target is **TBD/confirm** (likely SiteGround/FTP per other Target Digital assets). ⚠️ Hosting is case-sensitive (Linux): asset filenames must match references exactly.
+- **Hosting:** **GitHub Pages** — repo `github.com/ropkiplagat/target-digital-v2`, custom domain **targetdigital.com.au** (via `CNAME`). Pushing to `main` deploys. ⚠️ GitHub Pages serves from Linux/case-sensitive storage: asset filenames must match references exactly or they 404.
 - **No build step.** Open the `.html` files directly; all CSS/JS is inline or via CDN (Three.js, GSAP, Lenis, Google Fonts).
 - **Booking:** all CTAs point to `https://calendly.com/targetdigital/growth-audit`.
 
