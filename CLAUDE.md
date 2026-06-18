@@ -1,0 +1,58 @@
+# Target Digital v2 — CLAUDE.md
+
+> Read this first, every session. If something here is wrong, fix it in the same commit as the code change — a doc that drifts is worse than no doc.
+
+## What this is
+Static marketing site for **Target Digital AI** — a GTM agency selling **two AI products** to direct customers (individual clients now, agencies later):
+
+1. **AI Lead Gen Engine** (`funnel.html`) — Discover → AI qualify → book sales calls.
+2. **AI Outbound Call Engine** (`outbound.html`) — Form submit → instant SMS → AI outbound voice call → AI qualifies → **HOT** live-transfer to sales / **WARM** appointment booking / **NO ANSWER** 3-day retry.
+
+Both are pitched as working for any industry. Conversion is a Calendly booking — there is **no backend and no forms** on this site.
+
+## Where it runs
+- **Source:** `C:\Users\HP\targetdigital-v2` (git, branch `main`).
+- **Hosting:** static HTML — deploy target is **TBD/confirm** (likely SiteGround/FTP per other Target Digital assets). ⚠️ Hosting is case-sensitive (Linux): asset filenames must match references exactly.
+- **No build step.** Open the `.html` files directly; all CSS/JS is inline or via CDN (Three.js, GSAP, Lenis, Google Fonts).
+- **Booking:** all CTAs point to `https://calendly.com/targetdigital/growth-audit`.
+
+## Pages (the only 5 that ship)
+| File | Purpose |
+|------|---------|
+| `index.html` | Homepage — both products side by side, proof, 3-tier pricing |
+| `funnel.html` | Lead Gen Engine product page |
+| `outbound.html` | Outbound Call Engine product page |
+| `lead-magnet-funnel.html` | Lead Gen lead magnet (AI Lead Leak Audit) |
+| `lead-magnet-outbound.html` | Outbound lead magnet (Cold Outbound Playbook) |
+
+`brand/competitor-intelligence.md` and `competitor-hero-research.md` are strategy docs, not pages.
+
+## Pricing (single source of truth — keep all pages consistent)
+One-time **setup** + monthly retainer:
+- **Starter** — $2,000 setup + $500/mo — one engine
+- **Growth** — $4,500 setup + $1,500/mo — both engines
+- **Scale** — $7,500 setup + $3,000/mo — both engines, max volume
+
+## Critical rules (don't break these)
+1. **Every CTA must resolve** — Calendly link or a real in-page anchor. No bare `<button>` that does nothing.
+2. **Nav links only point to the 5 pages above.** Never link to removed pages (reputation/creative are gone).
+3. **Asset references must match on-disk casing exactly** (`Joanne.jfif`, `Brijesh.png` — not `.JFIF`/`.PNG`).
+4. **Proof must match the brand doc:** Joan R. = Lead Gen result; Brijesh Singh = Outbound result.
+5. **Pricing must be identical** across index / funnel / outbound.
+6. Voice-stack tool names (Twilio + AI voice agent) are **placeholders** — confirm real vendors before claiming them publicly.
+
+## Known fragile points
+- **`update_nav.py`** regenerates nav across pages. Its CSS injection targets the **last** `</style>` only — re-running on a page with two `<style>` blocks used to double-inject (fixed). Prefer editing nav directly over re-running on already-updated pages (re-run duplicates the mobile menu).
+- **Skill mirroring:** the repo has the skills library duplicated into ~24 AI-tool dirs (`.claude/`, `.codebuddy/`, `.qwen/`…). There were ~3,168 uncommitted deletions of these mirrors — intentional cleanup, still pending a decision. Canonical copy lives in `.agents/skills/`.
+- Hero video `target-digital-hero.mp4` on the homepage is a placeholder (`pending Kling generation`).
+
+## How to test it works (run before shipping)
+```
+py check_site.py        # use:  PYTHONIOENCODING=utf-8 PYTHONUTF8=1 py check_site.py  on Windows
+```
+`check_site.py` is the boundary test. It fails the build on: broken internal links, dangling `#anchors`, missing/case-mismatched assets, dead CTA buttons, and duplicated nav/mobile-menu/CSS. Exit 0 = clear to ship.
+
+## Recent major changes
+1. **2026-06-16 — Restructured to the two-product GTM model.** Removed reputation/creative pages + their lead magnets; rewrote homepage (two engines, Joan/Brijesh proof, 3-tier setup+monthly pricing, all CTAs → Calendly); rewrote `outbound.html` from an email outbound engine into the AI Outbound Call Engine (form→SMS→AI call→qualify→hot transfer/warm booking/no-answer retry); aligned funnel pricing; nav reduced to Home / Lead Gen Engine / Outbound Call Engine + Book a Call. (commit `2b47aa8`)
+2. **2026-06-16 — Centralized nav + mobile menu** across pages via `update_nav.py` (commit `5bdf769`); fixed a double-CSS-injection bug.
+3. **2026-06-18 — Added `check_site.py` boundary test;** it caught 9 image case-mismatch bugs (`Joanne.JFIF`/`Brijesh.PNG` → lowercase) that would have 404'd on Linux hosting.
