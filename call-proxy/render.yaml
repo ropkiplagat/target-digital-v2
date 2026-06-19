@@ -1,0 +1,25 @@
+# Render Blueprint — deploy this folder as a web service.
+# In Render: New → Blueprint → point at this repo. Then set the 3 secret env
+# vars (sync:false) in the dashboard. https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: targetdigital-call-proxy
+    runtime: node
+    rootDir: call-proxy
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: VAPI_PRIVATE_KEY
+        sync: false
+      - key: VAPI_ASSISTANT_ID
+        sync: false
+      - key: VAPI_PHONE_NUMBER_ID
+        sync: false
+      - key: ALLOWED_ORIGIN
+        value: https://targetdigital.com.au
+      - key: RATE_LIMIT_MAX
+        value: "5"
+      - key: RATE_LIMIT_WINDOW_MS
+        value: "3600000"
