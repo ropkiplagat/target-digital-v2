@@ -315,6 +315,12 @@ function fmt(n){ return '$' + Math.round(n).toLocaleString(); }
 // reveals the number but capture FAILS LOUDLY in the console (never silently).
 const WEBHOOK_URL = 'https://your-n8n-webhook.com/lead-magnet-calculator';
 
+// Lead capture switches ON automatically once a real webhook is wired above.
+// Until then we DON'T gate the result behind an email we can't store — the
+// page just shows the full number and drives to the booking (the real
+// conversion on this no-backend site).
+const CAPTURE_ENABLED = !!WEBHOOK_URL && !WEBHOOK_URL.includes('your-n8n-webhook.com');
+
 let LTC = {}; // cache results for the email gate + webhook payload
 
 document.getElementById('ltc-form').addEventListener('submit', function(e){
@@ -336,8 +342,20 @@ document.getElementById('ltc-form').addEventListener('submit', function(e){
   document.getElementById('ltc-fast').textContent = fmt(fastMo);
   document.getElementById('ltc-mo').textContent   = addMo > 0 ? fmt(addMo) : '$0 — you already respond fast 🎯';
   document.getElementById('ltc-results').classList.remove('hidden');
+
+  if (!CAPTURE_ENABLED) {
+    // No webhook wired yet — don't ask for an email we can't store.
+    document.getElementById('ltc-gate').classList.add('hidden');
+    revealAnnual();
+  }
   document.getElementById('ltc-results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 });
+
+function revealAnnual(){
+  document.getElementById('ltc-yr').textContent = fmt(LTC.addYr);
+  document.getElementById('ltc-year').classList.remove('hidden');
+  document.getElementById('ltc-cta').classList.remove('hidden');
+}
 
 document.getElementById('ltc-unlock').addEventListener('submit', function(e){
   e.preventDefault();
@@ -358,9 +376,7 @@ document.getElementById('ltc-unlock').addEventListener('submit', function(e){
     }).catch(err => console.error('[LTC] capture failed:', err));
   }
 
-  document.getElementById('ltc-yr').textContent = fmt(LTC.addYr);
-  document.getElementById('ltc-year').classList.remove('hidden');
-  document.getElementById('ltc-cta').classList.remove('hidden');
+  revealAnnual();
   document.getElementById('ltc-gate').classList.add('hidden');
 });
 
