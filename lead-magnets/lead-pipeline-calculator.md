@@ -56,7 +56,7 @@ multiplier      = 1.0 if rt≤0.0833 ; 1.35 if rt≤1 ; 1.8 if rt≤24 ; 2.2 if 
 fastConvRate    = MIN(currentConvRate × multiplier, 75%)
 currentRevenue  = leads × currentConvRate × dealSize
 fastRevenue     = leads × fastConvRate × dealSize
-addPerMonth     = fastRevenue − currentRevenue
+addPerMonth     = MAX(0, fastRevenue − currentRevenue)   # floored — never negative
 addPerYear      = addPerMonth × 12
 ```
 
@@ -125,6 +125,11 @@ function ltcMultiplier(rt){
 }
 function fmt(n){ return '$' + Math.round(n).toLocaleString(); }
 
+// ⚠️ REQUIRED before launch. On a static host (GitHub Pages) there is NO /api —
+// leave this empty and the calculator reveals the number but captures NOTHING.
+// Set it to your ESP / Zapier / Make / Formspree webhook URL.
+const LTC_ENDPOINT = ''; // e.g. 'https://hooks.zapier.com/hooks/catch/123/abc'
+
 let LTC = {}; // cache results for the gate
 
 function calcPipeline(){
@@ -137,22 +142,28 @@ function calcPipeline(){
   const crFast   = Math.min(cr * m, 0.75);
   const curMo    = leads * cr * deal;
   const fastMo   = leads * crFast * deal;
-  const addMo    = fastMo - curMo;
+  const addMo    = Math.max(0, fastMo - curMo); // never show a negative "gain"
   const addYr    = addMo * 12;
   LTC = { curMo, fastMo, addMo, addYr };
 
   document.getElementById('ltc-cur').textContent  = fmt(curMo);
   document.getElementById('ltc-fast').textContent = fmt(fastMo);
-  document.getElementById('ltc-mo').textContent   = fmt(addMo);
+  document.getElementById('ltc-mo').textContent   = addMo > 0 ? fmt(addMo) : "$0 — you already respond fast 🎯";
   document.getElementById('ltc-results').hidden   = false;
 }
 
 function unlockPipeline(){
   const email = document.getElementById('ltc-email').value.trim();
   if (!/.+@.+\..+/.test(email)) { alert('Enter a valid email'); return; }
-  // → send {email, ...LTC} to your ESP/CRM webhook here
-  fetch('/api/ltc-lead', {method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ email, ...LTC })}).catch(()=>{});
+  // Capture the lead. Fails LOUDLY (console) if the endpoint isn't wired —
+  // never silently, so a broken capture can't ship unnoticed.
+  if (!LTC_ENDPOINT) {
+    console.warn('[LTC] LTC_ENDPOINT not set — lead NOT captured. Wire it before launch.');
+  } else {
+    fetch(LTC_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ email, ...LTC })})
+      .catch(err => console.error('[LTC] capture failed:', err));
+  }
   document.getElementById('ltc-yr').textContent  = fmt(LTC.addYr);
   document.getElementById('ltc-year').hidden = false;
   document.getElementById('ltc-cta').hidden  = false;
