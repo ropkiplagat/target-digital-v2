@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead-to-Call Pipeline Calculator — What's Slow Follow-Up Costing You?</title>
+<meta name="description" content="Plug in 4 numbers you already know and see how much revenue you lose every month and year because leads go cold before anyone calls. Free 60-second calculator by Target Digital.">
+<link rel="canonical" href="https://targetdigital.com.au/lead-pipeline-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Target Digital",
+  "url": "https://targetdigital.com.au",
+  "description": "AI marketing agency building precision lead-response and outbound systems for B2B businesses.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brisbane",
+    "addressRegion": "QLD",
+    "addressCountry": "AU"
+  },
+  "email": "rop@targetdigital.com.au"
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#06091a;--navy2:#0c1130;--navy3:#111a3e;
+  --blue:#2563eb;--gold:#f0c040;--cyan:#00BFFF;
+  --white:#ffffff;--muted:#94a3b8;--text:#cbd5e1;
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'DM Sans',sans-serif;font-size:17px;line-height:1.7}
+h1,h2,h3{font-family:'Syne',sans-serif;color:var(--white)}
+.bebas{font-family:'Bebas Neue',sans-serif}
+.accent{color:var(--cyan)}
+nav{background:var(--navy);border-bottom:1px solid rgba(255,255,255,0.06);padding:18px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--white)}
+.nav-logo span{color:var(--gold)}
+.nav-cta{background:var(--gold);color:#000;font-weight:700;padding:10px 22px;border-radius:6px;text-decoration:none;font-size:14px}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#050d1f 100%);padding:72px 24px 48px;text-align:center;border-bottom:1px solid rgba(0,191,255,0.15)}
+.hero-badge{display:inline-block;background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.3);color:var(--cyan);padding:8px 20px;border-radius:40px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:28px}
+.hero h1{font-size:clamp(28px,5vw,52px);font-weight:800;line-height:1.12;max-width:820px;margin:0 auto 22px}
+.hero-sub{font-size:18px;color:var(--muted);max-width:600px;margin:0 auto 18px}
+.hero-trust{font-size:13px;color:var(--muted);opacity:.8}
+section{padding:64px 24px}
+.container{max-width:860px;margin:0 auto}
+.section-label{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.section-h2{font-size:clamp(24px,4vw,38px);font-weight:800;margin-bottom:20px;line-height:1.2}
+.intro-box{background:var(--navy2);border:1px solid rgba(0,191,255,0.2);border-radius:12px;padding:32px;margin-bottom:8px}
+.intro-box p{font-size:17px;margin-bottom:14px;line-height:1.8}
+.intro-box p:last-child{margin-bottom:0}
+.intro-box strong{color:var(--white)}
+.btn-primary{display:inline-block;background:var(--gold);color:#000;font-weight:700;font-size:17px;padding:16px 36px;border-radius:8px;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(240,192,64,0.35)}
+
+/* Calculator widget */
+.ltc-calc{max-width:560px;margin:0 auto;background:var(--navy2);border:1px solid rgba(0,191,255,.2);border-radius:16px;padding:2rem}
+.ltc-calc h3{font-size:22px;margin-bottom:6px}
+.ltc-calc .ltc-help{color:var(--muted);font-size:14px;margin-bottom:20px}
+.ltc-calc label{display:block;font-size:.85rem;font-weight:600;color:var(--text);margin:0 0 14px}
+.ltc-calc input{width:100%;margin-top:.4rem;padding:.75rem .9rem;border-radius:8px;border:1px solid #3d4f7c;background:var(--navy);color:#fff;font-size:1rem;font-family:'DM Sans',sans-serif}
+.ltc-calc input:focus{border-color:var(--cyan);outline:none}
+.ltc-calc input:disabled{color:var(--muted);opacity:.7}
+.ltc-calc button{width:100%;padding:.95rem;border:none;border-radius:8px;background:var(--gold);color:#000;font-weight:700;font-size:16px;cursor:pointer;margin-top:.4rem;transition:transform .15s}
+.ltc-calc button:hover{transform:translateY(-1px)}
+.ltc-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:.85rem 0;border-bottom:1px solid #1c2747}
+.ltc-row span{color:var(--muted);font-size:.95rem}
+.ltc-row b{color:#fff;font-weight:700;white-space:nowrap}
+.ltc-row.hot b{color:var(--gold);font-size:1.15rem}
+.ltc-row.big{border-bottom:none;padding-top:1rem}
+.ltc-row.big span{color:var(--white);font-weight:600}
+.ltc-row.big b{color:var(--cyan);font-size:1.6rem;font-family:'Bebas Neue',sans-serif;letter-spacing:1px}
+#ltc-results{margin-top:1.5rem}
+.ltc-gate{background:rgba(0,191,255,.06);border:1px solid rgba(0,191,255,.18);border-radius:12px;padding:1.25rem;margin-top:1.25rem}
+.ltc-locked{color:var(--text);font-size:.95rem;margin-bottom:1rem;line-height:1.6}
+.ltc-locked b{color:var(--white)}
+.ltc-consent{display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;color:var(--muted);margin:1rem 0;text-align:left;line-height:1.5}
+.ltc-consent input[type=checkbox]{margin-top:.2rem;min-width:17px;accent-color:var(--cyan)}
+.ltc-consent a{color:var(--cyan);text-decoration:none}
+.ltc-consent a:hover{text-decoration:underline}
+.ltc-cta{display:block;text-align:center;margin-top:1.25rem}
+.model-note{max-width:560px;margin:1.25rem auto 0;font-size:.8rem;color:var(--muted);opacity:.85;line-height:1.6;text-align:center}
+
+/* Stats + proof */
+.stats-block{background:var(--navy2);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px;margin-top:8px}
+.stats-block h3{font-size:20px;margin-bottom:18px}
+.stats-block ul{list-style:none;padding:0}
+.stats-block li{position:relative;padding-left:26px;margin-bottom:14px;color:var(--text);font-size:.97rem;line-height:1.7}
+.stats-block li::before{content:"▸";position:absolute;left:0;color:var(--cyan)}
+.stats-block li strong{color:var(--white)}
+.stats-block .source{color:var(--muted);font-size:.82rem}
+.stats-block .disclaimer{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06);font-size:.82rem;color:var(--muted)}
+.result-box{background:linear-gradient(135deg,rgba(0,191,255,0.1),rgba(37,99,235,0.06));border:1px solid rgba(0,191,255,0.25);border-radius:12px;padding:28px;margin-top:40px;text-align:center}
+.result-box .bebas{font-size:56px;color:var(--cyan);display:block;line-height:1}
+.result-box p{color:var(--muted);font-size:15px;margin-top:8px}
+
+.cta-section{background:linear-gradient(135deg,var(--navy2),var(--navy3));border-top:1px solid rgba(0,191,255,0.15);border-bottom:1px solid rgba(0,191,255,0.15);text-align:center;padding:72px 24px}
+.cta-section h2{font-size:clamp(26px,4vw,40px);margin-bottom:20px}
+.cta-section p{color:var(--muted);font-size:17px;max-width:560px;margin:0 auto 36px}
+.cta-email{display:block;color:var(--muted);font-size:14px;margin-top:20px}
+.cta-email a{color:var(--gold);text-decoration:none}
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.06);padding:32px 24px;text-align:center;color:var(--muted);font-size:14px}
+footer a{color:var(--gold);text-decoration:none}
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.hidden{display:none}
+@media(max-width:640px){
+  .ltc-calc{padding:1.5rem}
+  .result-box .bebas{font-size:42px}
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: #fff;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background: var(--navy);
+  padding: 2rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-bottom: 1px solid rgba(37,99,235,0.15);
+  z-index: 99;
+}
+.mobile-nav.open {
+  display: flex;
+}
+.mobile-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.mobile-cta {
+  background: var(--blue);
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff !important;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">🎯 Target<span>Digital</span></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/funnel.html">Lead Gen Engine</a>
+    <a href="/outbound.html">Outbound Call Engine</a>
+  </div>
+  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="nav-cta" style="text-decoration:none">Book a Call</a>
+  <div class="hamburger" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/">Home</a>
+  <a href="/funnel.html">Lead Gen Engine</a>
+  <a href="/outbound.html">Outbound Call Engine</a>
+  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="mobile-cta">Book a Call</a>
+</div>
+
+<script>
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+</script>
+
+<section class="hero">
+  <div class="hero-badge">Free 60-Second Calculator</div>
+  <h1>Most businesses lose <span class="accent">$50,000+ a year</span> to slow lead follow-up. What's your number?</h1>
+  <p class="hero-sub">Plug in 4 numbers you already know. See exactly how much revenue is leaking out of your pipeline because leads go cold before anyone calls — and what recovering it is worth.</p>
+  <p class="hero-trust">Free · No spam · Your numbers stay yours</p>
+</section>
+
+<section style="padding-top:48px">
+  <div class="ltc-calc fade-up">
+    <h3>Calculate your lost revenue</h3>
+    <p class="ltc-help">Honest averages are fine — round numbers work.</p>
+    <form id="ltc-form">
+      <label>Monthly leads
+        <input id="ltc-leads" type="number" min="0" value="100" required></label>
+      <label>Current lead response time (hours)
+        <input id="ltc-rt" type="number" min="0" step="0.1" value="24" required>
+      </label>
+      <label>Current conversion rate (%)
+        <input id="ltc-cr" type="number" min="0" max="100" step="0.1" value="6" required></label>
+      <label>Average deal size ($)
+        <input id="ltc-deal" type="number" min="0" value="3000" required></label>
+      <label>Target response time
+        <input value="5 minutes" disabled></label>
+      <button type="submit">Calculate my number →</button>
+    </form>
+
+    <div id="ltc-results" class="hidden">
+      <div class="ltc-row"><span>Current monthly revenue</span><b id="ltc-cur">–</b></div>
+      <div class="ltc-row"><span>Revenue at 5-minute response</span><b id="ltc-fast">–</b></div>
+      <div class="ltc-row hot"><span>Additional revenue / month</span><b id="ltc-mo">–</b></div>
+
+      <!-- EMAIL GATE: the annual number stays locked until they opt in -->
+      <div class="ltc-gate" id="ltc-gate">
+        <p class="ltc-locked">🔒 Your <b>additional revenue per year</b> is calculated. Enter your email to unlock it — plus the 3 fastest ways to close the gap for your numbers.</p>
+        <form id="ltc-unlock">
+          <label style="margin-bottom:0">Work email
+            <input id="ltc-email" type="email" placeholder="you@company.com" required></label>
+          <label class="ltc-consent">
+            <input type="checkbox" id="ltc-consent" required>
+            <span>I agree to receive my result and related follow-up from Target Digital, and accept the
+              <a href="/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and
+              <a href="/terms.html" target="_blank" rel="noopener">Terms</a>. Opt out anytime.</span>
+          </label>
+          <button type="submit">Unlock my annual number →</button>
+        </form>
+      </div>
+
+      <div id="ltc-year" class="ltc-row big hidden"><span>Additional revenue / year</span><b id="ltc-yr">–</b></div>
+      <a id="ltc-cta" href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-primary ltc-cta hidden">Close this gap → Book a Call</a>
+    </div>
+  </div>
+
+  <p class="model-note">
+    Illustrative estimate. The conversion uplift is modelled conservatively — well below what the cited research implies — and capped, so the figure is a realistic floor, not a promise. Results vary by industry, lead quality, and execution; not guaranteed.
+  </p>
+</section>
+
+<section style="background:var(--navy2);padding-top:56px">
+  <div class="container">
+    <div class="section-label">Why this gap is real</div>
+    <h2 class="section-h2 fade-up">You're not losing leads. You're losing the ones you already paid for.</h2>
+    <div class="stats-block fade-up">
+      <ul>
+        <li><strong>Speed wins.</strong> Respond within 5 minutes and you're up to <strong>21× more likely to qualify</strong> a lead than if you wait 30 minutes. <span class="source">— Harvard Business Review, Lead Response Management Study</span></li>
+        <li><strong>The gap is huge.</strong> Only ~7% of companies respond within 5 minutes; the average B2B response takes over <strong>47 hours.</strong> <span class="source">— Drift Lead Response Report</span></li>
+        <li><strong>First responder wins the deal.</strong> 78% of buyers go with whoever responds first. <span class="source">— Vendasta</span></li>
+        <li><strong>How you actually hit 5 minutes</strong> (a description, not a promise): the AI Outbound Call Engine calls every lead in under 60 seconds, qualifies by voice, transfers hot leads live, books the warm ones, and retries no-answers for 3 days.</li>
+      </ul>
+      <div class="disclaimer">Figures reflect published third-party research and one client outcome. The "$50,000+" headline is an illustrative floor anchored by a worked example, not a measured average. Results vary and are not guaranteed.</div>
+    </div>
+
+    <div class="result-box fade-up">
+      <span class="bebas">3–8 Calls/Week</span>
+      <p>Brijesh Singh — Robotics For Sure, Brisbane — with an engine calling and qualifying every lead in seconds</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2 class="fade-up">There's exactly one way to hit a 5-minute response<br><span class="accent">on every lead, every hour.</span></h2>
+    <p class="fade-up">Automate the call. Book a free AI Growth Audit and we'll map the engine to your lead sources — and stress-test every assumption in your calculator result, live.</p>
+    <a href="https://calendly.com/targetdigital/growth-audit" class="btn-primary fade-up">Claim Your Free Growth Audit →</a>
+    <span class="cta-email fade-up">Questions? Email <a href="mailto:rop@targetdigital.com.au">rop@targetdigital.com.au</a></span>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Target Digital. All rights reserved. |
+    <a href="/privacy-policy.html">Privacy Policy</a> ·
+    <a href="/terms.html">Terms</a> ·
+    <a href="mailto:rop@targetdigital.com.au">rop@targetdigital.com.au</a></p>
+</footer>
+
+<script>
+// ── Calculator (conservative tiered "lost revenue from slow follow-up" model) ──
+function ltcMultiplier(rt){
+  if (rt <= 0.0833) return 1;     // already <= 5 min
+  if (rt <= 1)  return 1.35;
+  if (rt <= 24) return 1.8;
+  if (rt <= 72) return 2.2;
+  return 2.5;                      // capped
+}
+function fmt(n){ return '$' + Math.round(n).toLocaleString(); }
+
+// ⚠️ REPLACE before launch with your real n8n endpoint. Until then the calculator
+// reveals the number but capture FAILS LOUDLY in the console (never silently).
+const WEBHOOK_URL = 'https://your-n8n-webhook.com/lead-magnet-calculator';
+
+let LTC = {}; // cache results for the email gate + webhook payload
+
+document.getElementById('ltc-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  const leads = +document.getElementById('ltc-leads').value || 0;
+  const rt    = +document.getElementById('ltc-rt').value   || 0;
+  const cr    = (+document.getElementById('ltc-cr').value  || 0) / 100;
+  const deal  = +document.getElementById('ltc-deal').value || 0;
+
+  const m       = ltcMultiplier(rt);
+  const crFast  = Math.min(cr * m, 0.75);          // realistic ceiling
+  const curMo   = leads * cr * deal;
+  const fastMo  = leads * crFast * deal;
+  const addMo   = Math.max(0, fastMo - curMo);     // never show a negative "gain"
+  const addYr   = addMo * 12;
+  LTC = { leads, rt, cr, deal, curMo, fastMo, addMo, addYr };
+
+  document.getElementById('ltc-cur').textContent  = fmt(curMo);
+  document.getElementById('ltc-fast').textContent = fmt(fastMo);
+  document.getElementById('ltc-mo').textContent   = addMo > 0 ? fmt(addMo) : '$0 — you already respond fast 🎯';
+  document.getElementById('ltc-results').classList.remove('hidden');
+  document.getElementById('ltc-results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+
+document.getElementById('ltc-unlock').addEventListener('submit', function(e){
+  e.preventDefault();
+  const email = document.getElementById('ltc-email').value.trim();
+  if (!/.+@.+\..+/.test(email)) { alert('Enter a valid email'); return; }
+  if (!document.getElementById('ltc-consent').checked) {
+    alert('Please tick consent so we can send your result.'); return;
+  }
+
+  // Capture the lead. Fails loudly (console) if the endpoint isn't wired yet.
+  if (!WEBHOOK_URL || WEBHOOK_URL.includes('your-n8n-webhook.com')) {
+    console.warn('[LTC] WEBHOOK_URL is still the placeholder — lead NOT captured. Wire your n8n endpoint before launch.');
+  } else {
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source: 'lead-pipeline-calculator', consent: true, ...LTC })
+    }).catch(err => console.error('[LTC] capture failed:', err));
+  }
+
+  document.getElementById('ltc-yr').textContent = fmt(LTC.addYr);
+  document.getElementById('ltc-year').classList.remove('hidden');
+  document.getElementById('ltc-cta').classList.remove('hidden');
+  document.getElementById('ltc-gate').classList.add('hidden');
+});
+
+// ── Scroll reveal ──
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+setTimeout(() => document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible')), 1500);
+</script>
+</body>
+</html>
