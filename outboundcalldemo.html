@@ -70,6 +70,7 @@ footer a{color:var(--gold);text-decoration:none}
     <a href="/">Home</a>
     <a href="/funnel.html">Lead Gen Engine</a>
     <a href="/outbound.html">Outbound Call Engine</a>
+    <a href="/demos.html">Demos</a>
     <a href="/lead-pipeline-calculator.html">ROI Calculator</a>
   </div>
   <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="nav-cta" style="text-decoration:none">Book a Call</a>
@@ -79,6 +80,7 @@ footer a{color:var(--gold);text-decoration:none}
   <a href="/">Home</a>
   <a href="/funnel.html">Lead Gen Engine</a>
   <a href="/outbound.html">Outbound Call Engine</a>
+    <a href="/demos.html">Demos</a>
   <a href="/lead-pipeline-calculator.html">ROI Calculator</a>
   <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="mobile-cta">Book a Call</a>
 </div>
@@ -134,10 +136,10 @@ footer a{color:var(--gold);text-decoration:none}
 
 <script>
 // ── Real calls go through a SERVER proxy that holds the Vapi key. ──
-// NEVER put a Vapi private key in this file — it's public. Stand up a tiny
-// endpoint (Railway function / serverless / n8n webhook) that receives
-// {name, phone} and triggers the Vapi outbound call server-side, then put its
-// URL here. Until then, REAL_CALL stays false and the demo simulates the flow.
+// NEVER put a Vapi private key in this file — it's public. The proxy is built
+// and ready in /call-proxy (see call-proxy/README.md): deploy it on any Node
+// host, then paste its /api/demo-call URL below. Until then, REAL_CALL stays
+// false and the demo simulates the flow.
 const CALL_PROXY_URL = ''; // e.g. 'https://your-app.up.railway.app/api/demo-call'
 const REAL_CALL = !!CALL_PROXY_URL;
 

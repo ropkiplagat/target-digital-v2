@@ -1,0 +1,17 @@
+{
+  "name": "targetdigital-call-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Server-side proxy that places Vapi outbound calls for the outbound demo. Holds the Vapi private key so it never ships in public site files.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

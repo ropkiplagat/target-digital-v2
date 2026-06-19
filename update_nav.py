@@ -12,7 +12,10 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).parent
 HTML_FILES = [
     "index.html", "funnel.html", "outbound.html",
-    "lead-magnet-funnel.html", "lead-magnet-outbound.html"
+    "lead-magnet-funnel.html", "lead-magnet-outbound.html",
+    "lead-pipeline-calculator.html", "demos.html",
+    "leadgendemo.html", "documentautomationdemo.html", "outboundcalldemo.html",
+    "privacy-policy.html", "terms.html",
 ]
 
 CALENDLY = "https://calendly.com/targetdigital/growth-audit"
@@ -23,6 +26,8 @@ NEW_NAV = '''<nav>
     <a href="/">Home</a>
     <a href="/funnel.html">Lead Gen Engine</a>
     <a href="/outbound.html">Outbound Call Engine</a>
+    <a href="/demos.html">Demos</a>
+    <a href="/lead-pipeline-calculator.html">ROI Calculator</a>
   </div>
   <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="nav-cta" style="text-decoration:none">Book a Call</a>
   <div class="hamburger" onclick="toggleMobileNav()">
@@ -33,6 +38,8 @@ NEW_NAV = '''<nav>
   <a href="/">Home</a>
   <a href="/funnel.html">Lead Gen Engine</a>
   <a href="/outbound.html">Outbound Call Engine</a>
+  <a href="/demos.html">Demos</a>
+  <a href="/lead-pipeline-calculator.html">ROI Calculator</a>
   <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="mobile-cta">Book a Call</a>
 </div>
 
