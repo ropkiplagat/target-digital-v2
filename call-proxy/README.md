@@ -12,11 +12,22 @@ browser demo  --POST {name,phone}-->  this proxy  --Vapi API-->  outbound call
               (no key in browser)     (holds key)
 ```
 
-## Deploy (Railway / Render / Fly / any Node 18+ host)
-1. `cd call-proxy && npm install`
-2. Copy `.env.example` → `.env` and fill in the three Vapi values from the Vapi
-   dashboard (private key, assistant id, phone-number id). **Do not commit `.env`.**
-3. Deploy the folder. Confirm `GET /healthz` returns `{ "ok": true }`.
+## One-click deploy configs (pick one)
+This folder ships ready-made configs so you don't write any:
+- **Render** — `render.yaml` blueprint. Render → New → Blueprint → this repo;
+  it provisions the service and prompts for the 3 secret env vars.
+- **Railway** — `railway.json` (Nixpacks, healthcheck). New Project → Deploy from
+  repo, set root dir to `call-proxy/`, add the env vars.
+- **Fly / Cloud Run / any container** — `Dockerfile` (+ `.dockerignore`).
+- **Heroku-style** — `Procfile`.
+
+All of them just need the 3 Vapi env vars set in the host dashboard (see below).
+
+## Deploy steps
+1. (local check) `cd call-proxy && npm install && npm start`
+2. Set env vars on the host from `.env.example` — the three Vapi values from the
+   Vapi dashboard (private key, assistant id, phone-number id). **Never commit `.env`.**
+3. Deploy. Confirm `GET /healthz` returns `{ "ok": true }`.
 4. Copy the public URL of `POST /api/demo-call` (e.g.
    `https://your-app.up.railway.app/api/demo-call`).
 5. In `outboundcalldemo.html`, set:
