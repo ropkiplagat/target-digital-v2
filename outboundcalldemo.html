@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Demo — AI Outbound Calling | Target Digital</title>
+<meta name="description" content="Experience the AI Outbound Call Engine: enter your phone number and the AI calls you, qualifies you, and transfers to a live rep.">
+<link rel="canonical" href="https://targetdigital.com.au/outboundcalldemo.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#06091a;--navy2:#0c1130;--navy3:#111a3e;--blue:#2563eb;--gold:#f0c040;--cyan:#00BFFF;--white:#fff;--muted:#94a3b8;--text:#cbd5e1;--green:#34d399}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'DM Sans',sans-serif;font-size:17px;line-height:1.7}
+h1,h2,h3{font-family:'Syne',sans-serif;color:var(--white)}
+.accent{color:var(--cyan)}
+nav{background:var(--navy);border-bottom:1px solid rgba(255,255,255,0.06);padding:18px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--white)}
+.nav-logo span{color:var(--gold)}
+.nav-cta{background:var(--gold);color:#000;font-weight:700;padding:10px 22px;border-radius:6px;text-decoration:none;font-size:14px}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:25px;height:3px;background:#fff;border-radius:2px}
+.mobile-nav{display:none;position:fixed;top:70px;left:0;right:0;background:var(--navy);padding:2rem;flex-direction:column;gap:1.5rem;border-bottom:1px solid rgba(37,99,235,.15);z-index:99}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:var(--text);text-decoration:none;font-size:1.1rem}
+.mobile-cta{background:var(--blue);padding:.75rem;border-radius:8px;text-align:center;color:#fff!important;font-weight:600}
+@media (max-width:768px){.nav-links{display:none}.hamburger{display:flex}}
+.hero{text-align:center;padding:64px 24px 32px;border-bottom:1px solid rgba(0,191,255,.15)}
+.hero-badge{display:inline-block;background:rgba(0,191,255,.1);border:1px solid rgba(0,191,255,.3);color:var(--cyan);padding:8px 20px;border-radius:40px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(28px,5vw,46px);font-weight:800;line-height:1.12;max-width:760px;margin:0 auto 16px}
+.hero p{color:var(--muted);max-width:560px;margin:0 auto;font-size:18px}
+section{padding:48px 24px}
+.demo-card{max-width:560px;margin:0 auto;background:var(--navy2);border:1px solid rgba(0,191,255,.2);border-radius:16px;padding:2rem}
+.demo-card h3{font-size:22px;margin-bottom:6px}
+.demo-card .sub{color:var(--muted);font-size:14px;margin-bottom:20px}
+label{display:block;font-size:.85rem;font-weight:600;color:var(--text);margin:0 0 14px}
+input{width:100%;margin-top:.4rem;padding:.75rem .9rem;border-radius:8px;border:1px solid #3d4f7c;background:var(--navy);color:#fff;font-size:1rem;font-family:'DM Sans',sans-serif}
+input:focus{border-color:var(--cyan);outline:none}
+.consent{display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;color:var(--muted);margin:.5rem 0 1rem;line-height:1.5}
+.consent input[type=checkbox]{width:auto;margin-top:.2rem;min-width:17px;accent-color:var(--cyan)}
+.consent a{color:var(--cyan);text-decoration:none}
+button.go{width:100%;padding:.95rem;border:none;border-radius:8px;background:var(--gold);color:#000;font-weight:700;font-size:16px;cursor:pointer;margin-top:.4rem}
+.sim-banner{font-size:.78rem;text-align:center;color:var(--gold);background:rgba(240,192,64,.08);border:1px solid rgba(240,192,64,.25);border-radius:8px;padding:.6rem .8rem;margin-bottom:1rem}
+.callflow{margin-top:.5rem}
+.cstep{display:flex;align-items:center;gap:12px;padding:.85rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,.06);background:var(--navy3);margin-bottom:10px;opacity:.35;transition:opacity .3s,border-color .3s}
+.cstep.active{opacity:1;border-color:rgba(0,191,255,.35)}
+.cstep.done{opacity:1;border-color:rgba(52,211,153,.35)}
+.cicon{font-size:20px;width:26px;text-align:center;flex:0 0 auto}
+.cstep .ctext{color:#fff;font-size:.95rem}
+.cstep small{display:block;color:var(--muted);font-size:.8rem}
+.pulse{animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+.btn-primary{display:inline-block;background:var(--gold);color:#000;font-weight:700;font-size:16px;padding:14px 30px;border-radius:8px;text-decoration:none;margin-top:18px}
+.btn-ghost{display:inline-block;border:1px solid rgba(255,255,255,.2);color:var(--text);padding:12px 26px;border-radius:8px;text-decoration:none;margin-top:10px;font-size:14px}
+.demo-note{max-width:560px;margin:18px auto 0;font-size:.8rem;color:var(--muted);text-align:center;opacity:.85;line-height:1.6}
+.hidden{display:none}
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:32px 24px;text-align:center;color:var(--muted);font-size:14px}
+footer a{color:var(--gold);text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">🎯 Target<span>Digital</span></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/funnel.html">Lead Gen Engine</a>
+    <a href="/outbound.html">Outbound Call Engine</a>
+    <a href="/lead-pipeline-calculator.html">ROI Calculator</a>
+  </div>
+  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="nav-cta" style="text-decoration:none">Book a Call</a>
+  <div class="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/">Home</a>
+  <a href="/funnel.html">Lead Gen Engine</a>
+  <a href="/outbound.html">Outbound Call Engine</a>
+  <a href="/lead-pipeline-calculator.html">ROI Calculator</a>
+  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="mobile-cta">Book a Call</a>
+</div>
+<script>function toggleMobileNav(){document.getElementById('mobileNav').classList.toggle('open')}</script>
+
+<section class="hero">
+  <div class="hero-badge">Live Interactive Demo</div>
+  <h1>Enter your number. The AI <span class="accent">actually calls you.</span></h1>
+  <p>This is the AI Outbound Call Engine. Give it your phone number and it rings you in seconds, qualifies you by voice, then transfers to a live rep — exactly what your leads would experience.</p>
+</section>
+
+<section>
+  <div class="demo-card">
+    <h3>Get a call from the AI</h3>
+    <p class="sub">Enter a number you can answer right now. The call comes in under a minute.</p>
+
+    <div class="sim-banner" id="sim-banner">Demo runs in <strong>simulation</strong> mode — the call flow plays out on screen. Wire a Vapi proxy to make it ring for real.</div>
+
+    <form id="callForm">
+      <label>Your name
+        <input id="cl-name" type="text" placeholder="Jordan" required></label>
+      <label>Phone number
+        <input id="cl-phone" type="tel" placeholder="+61 4XX XXX XXX" required></label>
+      <label class="consent">
+        <input type="checkbox" id="cl-consent" required>
+        <span>I consent to receive an automated demo call at this number from Target Digital, and I confirm it's my own number. See <a href="/privacy-policy.html" target="_blank" rel="noopener">Privacy</a> &amp; <a href="/terms.html" target="_blank" rel="noopener">Terms</a>.</span>
+      </label>
+      <button type="submit" class="go">Call me now →</button>
+    </form>
+
+    <div id="cl-flow" class="callflow hidden">
+      <div class="cstep" id="cs-1"><div class="cicon">📞</div><div><span class="ctext">Placing the call…</span><small>Dialing your number now</small></div></div>
+      <div class="cstep" id="cs-2"><div class="cicon">🎙️</div><div><span class="ctext">AI is qualifying</span><small>Asking about your needs, budget, and timeline</small></div></div>
+      <div class="cstep" id="cs-3"><div class="cicon">🔥</div><div><span class="ctext">Hot lead — transferring live</span><small>Connecting you to a rep, warm-introduced</small></div></div>
+      <div class="cstep" id="cs-4"><div class="cicon">✅</div><div><span class="ctext">Logged &amp; booked</span><small>Outcome written to the CRM; follow-up scheduled</small></div></div>
+    </div>
+
+    <div id="cl-result" class="hidden" style="text-align:center">
+      <p style="color:var(--white);font-weight:600;margin-top:1rem">That's the whole flow — under 60 seconds, every lead, around the clock.</p>
+      <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-primary">Want this calling your leads? Book a Call</a><br>
+      <a href="#" class="btn-ghost" onclick="location.reload();return false;">Run it again</a>
+    </div>
+  </div>
+  <p class="demo-note" id="demo-note">Interactive demo. For a real call, the page posts to a secure server endpoint that holds your Vapi credentials — the API key never lives in this page. Until that proxy is set, the flow is simulated. Real calls require the recipient's prior consent (TCPA/Spam Act) and DNC scrubbing.</p>
+</section>
+
+<footer>
+  <p>© 2026 Target Digital. All rights reserved. |
+    <a href="/privacy-policy.html">Privacy Policy</a> ·
+    <a href="/terms.html">Terms</a> ·
+    <a href="mailto:rop@targetdigital.com.au">rop@targetdigital.com.au</a></p>
+</footer>
+
+<script>
+// ── Real calls go through a SERVER proxy that holds the Vapi key. ──
+// NEVER put a Vapi private key in this file — it's public. Stand up a tiny
+// endpoint (Railway function / serverless / n8n webhook) that receives
+// {name, phone} and triggers the Vapi outbound call server-side, then put its
+// URL here. Until then, REAL_CALL stays false and the demo simulates the flow.
+const CALL_PROXY_URL = ''; // e.g. 'https://your-app.up.railway.app/api/demo-call'
+const REAL_CALL = !!CALL_PROXY_URL;
+
+if (REAL_CALL) document.getElementById('sim-banner').classList.add('hidden');
+
+document.getElementById('callForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('cl-name').value.trim();
+  const phone = document.getElementById('cl-phone').value.trim();
+  if (!document.getElementById('cl-consent').checked){ alert('Please tick consent — we can only call a number you own and approve.'); return; }
+
+  // Fire the real call via the server proxy (never expose the key client-side).
+  if (REAL_CALL){
+    fetch(CALL_PROXY_URL, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ name, phone, source:'outboundcalldemo' })
+    }).catch(err => console.error('[demo-call] proxy request failed:', err));
+  } else {
+    console.warn('[demo-call] CALL_PROXY_URL not set — simulating. Wire a Vapi proxy to place real calls.');
+  }
+
+  // Play the visible call flow (same for real + simulated; the steps mirror the engine).
+  document.getElementById('callForm').classList.add('hidden');
+  document.getElementById('cl-flow').classList.remove('hidden');
+  const steps = ['cs-1','cs-2','cs-3','cs-4'];
+  function run(i){
+    if (i >= steps.length){
+      document.getElementById('cl-result').classList.remove('hidden');
+      document.getElementById('cl-result').scrollIntoView({behavior:'smooth',block:'nearest'});
+      return;
+    }
+    const el = document.getElementById(steps[i]);
+    el.classList.add('active'); el.querySelector('.cicon').classList.add('pulse');
+    setTimeout(()=>{
+      el.querySelector('.cicon').classList.remove('pulse');
+      el.classList.remove('active'); el.classList.add('done');
+      run(i+1);
+    }, 1400);
+  }
+  run(0);
+});
+</script>
+</body>
+</html>
