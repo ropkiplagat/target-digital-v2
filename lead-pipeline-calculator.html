@@ -317,7 +317,7 @@ function fmt(n){ return '$' + Math.round(n).toLocaleString(); }
 
 // ⚠️ REPLACE before launch with your real n8n endpoint. Until then the calculator
 // reveals the number but capture FAILS LOUDLY in the console (never silently).
-const WEBHOOK_URL = 'https://your-n8n-webhook.com/lead-magnet-calculator';
+const WEBHOOK_URL = 'https://n8n-production-8e98.up.railway.app/webhook/lead-magnet-calculator';
 
 // Lead capture switches ON automatically once a real webhook is wired above.
 // Until then we DON'T gate the result behind an email we can't store — the
