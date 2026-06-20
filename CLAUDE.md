@@ -11,7 +11,7 @@ Static marketing site for **Target Digital AI** — a GTM agency selling **two A
 Both are pitched as working for any industry. Conversion is a Calendly booking — there is **no backend and no forms** on this site.
 
 ## Where it runs
-- **Source:** `C:\Users\HP\targetdigital-v2` (git, branch `main`).
+- **Source:** `C:\Users\cc\targetdigital-v2` (git, branch `main`).
 - **Hosting:** **GitHub Pages** — repo `github.com/ropkiplagat/target-digital-v2`, custom domain **targetdigital.com.au** (via `CNAME`). Pushing to `main` deploys. ⚠️ GitHub Pages serves from Linux/case-sensitive storage: asset filenames must match references exactly or they 404.
 - **No build step.** Open the `.html` files directly; all CSS/JS is inline or via CDN (Three.js, GSAP, Lenis, Google Fonts).
 - **Booking:** all CTAs point to `https://calendly.com/targetdigital/growth-audit`.
