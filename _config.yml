@@ -1,0 +1,10 @@
+# GitHub Pages (Jekyll) config.
+# Keep source-only / internal files in git but OUT of the public site build.
+# (Without this, everything in the repo is served at targetdigital.com.au/... )
+exclude:
+  - email-templates/   # email source templates — internal, not for public crawl
+  - call-proxy/        # deployable Node service, not a web page
+  - brand/             # strategy / competitor docs
+  - CLAUDE.md          # internal project doc
+  - check_site.py      # boundary test
+  - update_nav.py      # nav generator
