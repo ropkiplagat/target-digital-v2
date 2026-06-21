@@ -24,12 +24,33 @@ Replace these in n8n before sending (a Set / Edit-Fields node, or the Gmail node
 > Note: the calculator currently captures **email + consent only**, not first name.
 > Until first name is collected, either remove `{{first_name}}` greetings or default them to "there".
 
+## Two versions of each template
+- `emailN.html` — **clean source of truth.** Uses readable tokens (`{{first_name}}` etc.).
+  Edit copy here.
+- `emailN.n8n.html` — **paste-ready for n8n.** Tokens pre-swapped to live n8n expressions
+  so personalization works with no extra nodes. Regenerate these whenever you edit the
+  clean source. Bakes in: real webhook node name, `$`-formatted numbers, a mailto unsubscribe.
+
+Token → expression mapping used in the `.n8n.html` files (webhook node assumed to be
+named `Webhook - Calculator Capture` — rename if yours differs):
+
+| Token | n8n expression |
+|-------|----------------|
+| `{{first_name}}` | `{{ $('Webhook - Calculator Capture').item.json.body.first_name }}` |
+| `{{addMo}}` | `{{ '$' + Math.round($('Webhook - Calculator Capture').item.json.body.addMo).toLocaleString('en-US') }}` |
+| `{{addYr}}` | `{{ '$' + Math.round($('Webhook - Calculator Capture').item.json.body.addYr).toLocaleString('en-US') }}` |
+| `{{unsubscribe_url}}` | `mailto:unsubscribe@targetdigital.com.au?subject=Unsubscribe` (demo) — swap for a hosted one-click page at volume |
+
 ## DEMO setup (current)
 - **Delivery:** Gmail node in n8n.
-- **How:** paste the contents of each file into the matching Gmail node's **Body (HTML)** field.
-  No Google Drive step — these live in git, not Drive.
+- **How:** paste the contents of each **`.n8n.html`** file into the matching Gmail node's
+  **Body (HTML)** field. No Google Drive step — these live in git, not Drive.
 - **Trigger:** the calculator POSTs to the n8n webhook (`/webhook/lead-magnet-calculator`),
   which starts the sequence.
+- **Gmail node config:** Resource = **Message**, Operation = **Send** (NOT Draft);
+  To = `{{ $('Webhook - Calculator Capture').item.json.body.email }}`.
+- **Test:** see "How to test personalization" — use n8n's live expression preview, then
+  one real send with the Wait nodes temporarily shortened.
 
 ## PRODUCTION (when there are paying clients — to build later)
 Replace the Gmail node with a real email-sending API. Gmail is fine to prove the flow but
