@@ -245,6 +245,8 @@ function toggleMobileNav() {
       <div class="ltc-gate" id="ltc-gate">
         <p class="ltc-locked">🔒 Your <b>additional revenue per year</b> is calculated. Enter your email to unlock it — plus the 3 fastest ways to close the gap for your numbers.</p>
         <form id="ltc-unlock">
+          <label style="margin-bottom:0">Your first name
+            <input id="ltc-name" type="text" placeholder="e.g. Sarah" autocomplete="given-name" required></label>
           <label style="margin-bottom:0">Work email
             <input id="ltc-email" type="email" placeholder="you@company.com" required></label>
           <label class="ltc-consent">
@@ -363,7 +365,9 @@ function revealAnnual(){
 
 document.getElementById('ltc-unlock').addEventListener('submit', function(e){
   e.preventDefault();
+  const name = document.getElementById('ltc-name').value.trim();
   const email = document.getElementById('ltc-email').value.trim();
+  if (!name) { alert('Enter your first name'); return; }
   if (!/.+@.+\..+/.test(email)) { alert('Enter a valid email'); return; }
   if (!document.getElementById('ltc-consent').checked) {
     alert('Please tick consent so we can send your result.'); return;
@@ -376,7 +380,7 @@ document.getElementById('ltc-unlock').addEventListener('submit', function(e){
     fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, source: 'lead-pipeline-calculator', consent: true, ...LTC })
+      body: JSON.stringify({ first_name: name, email, source: 'lead-pipeline-calculator', consent: true, ...LTC })
     }).catch(err => console.error('[LTC] capture failed:', err));
   }
 
