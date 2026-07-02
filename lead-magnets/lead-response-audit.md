@@ -180,7 +180,7 @@ You've measured the gap. Now see exactly what closing it is worth for *your* num
 
 **→ Book a free 30-minute call.** We'll review your audit score, map the engine to your lead sources, and show you the revenue you're leaving on the table.
 
-**[Book a Call →](https://calendly.com/targetdigital/growth-audit)**
+**[Book a Call →](https://calendly.com/ropkiplagat/intro-to-sales-target-digital)**
 
 *No sales pressure. Just a clear plan and your real ROI.*
 
