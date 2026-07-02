@@ -67,5 +67,5 @@ will not scale or stay deliverable for client volume.
 - Proof: **Brijesh Singh — Robotics For Sure, Brisbane** (Outbound result); Joan R. — Imani
   Mental Health (Lead Gen result). Don't invent metrics beyond what the site states.
 - Pricing: Starter $2,000+$500/mo · Growth $4,500+$1,500/mo · Scale $7,500+$3,000/mo.
-- CTA: `https://calendly.com/targetdigital/growth-audit`.
+- CTA: `https://calendly.com/ropkiplagat/intro-to-sales-target-digital`.
 - Colours: cyan `#00BFFF`, ink `#0b0f14`.

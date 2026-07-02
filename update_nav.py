@@ -18,7 +18,7 @@ HTML_FILES = [
     "privacy-policy.html", "terms.html",
 ]
 
-CALENDLY = "https://calendly.com/targetdigital/growth-audit"
+CALENDLY = "https://calendly.com/ropkiplagat/intro-to-sales-target-digital"
 
 NEW_NAV = '''<nav>
   <div class="nav-logo">🎯 Target<span>Digital</span></div>
@@ -29,7 +29,7 @@ NEW_NAV = '''<nav>
     <a href="/demos.html">Demos</a>
     <a href="/lead-pipeline-calculator.html">ROI Calculator</a>
   </div>
-  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="nav-cta" style="text-decoration:none">Book a Call</a>
+  <a href="https://calendly.com/ropkiplagat/intro-to-sales-target-digital" target="_blank" rel="noopener" class="nav-cta" style="text-decoration:none">Book a Call</a>
   <div class="hamburger" onclick="toggleMobileNav()">
     <span></span><span></span><span></span>
   </div>
@@ -40,7 +40,7 @@ NEW_NAV = '''<nav>
   <a href="/outbound.html">Outbound Call Engine</a>
   <a href="/demos.html">Demos</a>
   <a href="/lead-pipeline-calculator.html">ROI Calculator</a>
-  <a href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="mobile-cta">Book a Call</a>
+  <a href="https://calendly.com/ropkiplagat/intro-to-sales-target-digital" target="_blank" rel="noopener" class="mobile-cta">Book a Call</a>
 </div>
 
 <script>

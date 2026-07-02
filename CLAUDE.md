@@ -14,7 +14,7 @@ Both are pitched as working for any industry. Conversion is a Calendly booking �
 - **Source:** `C:\Users\cc\targetdigital-v2` (git, branch `main`).
 - **Hosting:** **GitHub Pages** — repo `github.com/ropkiplagat/target-digital-v2`, custom domain **targetdigital.com.au** (via `CNAME`). Pushing to `main` deploys. ⚠️ GitHub Pages serves from Linux/case-sensitive storage: asset filenames must match references exactly or they 404.
 - **No build step.** Open the `.html` files directly; all CSS/JS is inline or via CDN (Three.js, GSAP, Lenis, Google Fonts).
-- **Booking:** all CTAs point to `https://calendly.com/targetdigital/growth-audit`.
+- **Booking:** all CTAs point to `https://calendly.com/ropkiplagat/intro-to-sales-target-digital`.
 
 ## Pages (12 ship)
 | File | Purpose |

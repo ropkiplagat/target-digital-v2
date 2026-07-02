@@ -111,7 +111,7 @@ Build it as an on-page interactive widget (mirrors the existing `lead-magnet-rep
       <button onclick="unlockPipeline()">Unlock my annual number →</button>
     </div>
     <div id="ltc-year" hidden class="ltc-row big"><span>Additional revenue / year</span><b id="ltc-yr">–</b></div>
-    <a id="ltc-cta" hidden href="https://calendly.com/targetdigital/growth-audit" target="_blank" rel="noopener" class="btn-gold">Close this gap → Book a Call</a>
+    <a id="ltc-cta" hidden href="https://calendly.com/ropkiplagat/intro-to-sales-target-digital" target="_blank" rel="noopener" class="btn-gold">Close this gap → Book a Call</a>
   </div>
 </div>
 
