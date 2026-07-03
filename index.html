@@ -33,13 +33,13 @@ body{background:var(--navy);color:var(--text);font-family:'DM Sans',sans-serif;o
 
 /* NAV */
 nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px);background:rgba(6,9,26,0.8);border-bottom:1px solid rgba(37,99,235,0.15)}
-.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:#fff;letter-spacing:-0.5px}
+.nav-logo{display:inline-flex;align-items:center}.nav-logo img{height:34px;width:auto;display:block;background:#fff;padding:5px 9px;border-radius:8px}
 .nav-logo span{color:var(--gold)}
 .nav-cta{background:var(--blue);color:#fff;border:none;padding:0.55rem 1.3rem;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;cursor:pointer;transition:background 0.2s}
 .nav-cta:hover{background:var(--blue-light)}
 
 /* HERO */
-#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:110px 1.5rem 70px;box-sizing:border-box}
 #hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1}
 .hero-content{position:relative;z-index:3;text-align:center;max-width:860px;padding:60px;border-radius:20px;background:radial-gradient(ellipse at center,rgba(1,13,31,0.4) 0%,transparent 70%)}
 .hero-badge{display:inline-block;background:var(--gold-dim);border:1px solid rgba(240,192,64,0.4);color:var(--gold);font-size:0.78rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:0.4rem 1rem;border-radius:100px;margin-bottom:1.5rem}
@@ -265,7 +265,7 @@ footer .footer-logo span{color:var(--gold)}
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">🎯 Target<span>Digital</span></div>
+  <div class="nav-logo"><img src="/target-digital-logo.png" alt="Target Digital Media"></div>
   <div class="nav-links">
     <a href="/">Home</a>
     <a href="/funnel.html">Lead Gen Engine</a>
