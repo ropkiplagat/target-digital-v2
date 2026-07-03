@@ -49,7 +49,7 @@ body{background:var(--navy);color:var(--text);font-family:'DM Sans',sans-serif;o
 
 /* NAV */
 nav{position:fixed;top:0;left:0;width:100%;z-index:200;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(14px);background:rgba(6,9,26,0.88);border-bottom:1px solid rgba(37,99,235,0.15)}
-.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:-0.5px;text-decoration:none}
+.nav-logo{display:inline-flex;align-items:center}.nav-logo img{height:34px;width:auto;display:block;background:#fff;padding:5px 9px;border-radius:8px}
 .nav-logo .gold{color:var(--gold)}
 .nav-logo .white{color:#fff}
 .nav-cta{background:var(--gold);color:#06091a;border:none;padding:0.55rem 1.4rem;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.2s;white-space:nowrap}
@@ -191,7 +191,7 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
 
 @media(max-width:768px){
   nav{padding:0.8rem 1rem}
-  .nav-logo{font-size:1rem}
+  .nav-logo{display:inline-flex;align-items:center}.nav-logo img{height:34px;width:auto;display:block;background:#fff;padding:5px 9px;border-radius:8px}
   #hero{padding:7rem 1.2rem 4rem}
   .hero-h1{font-size:clamp(1.8rem,7vw,2.6rem);letter-spacing:-0.5px}
   .hero-sub{font-size:1rem}
@@ -298,7 +298,7 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">🎯 Target<span>Digital</span></div>
+  <div class="nav-logo"><img src="/target-digital-logo.png" alt="Target Digital Media"></div>
   <div class="nav-links">
     <a href="/">Home</a>
     <a href="/funnel.html">Lead Gen Engine</a>
