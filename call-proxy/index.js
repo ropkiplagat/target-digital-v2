@@ -25,6 +25,8 @@ const {
   ALLOWED_ORIGIN = "https://targetdigital.com.au",
   RATE_LIMIT_MAX = "5",
   RATE_LIMIT_WINDOW_MS = "3600000", // 1 hour
+  MAX_CALLS_PER_DAY = "25", // global backstop so IP rotation can't run up the bill
+  ALLOWED_COUNTRY_PREFIXES = "+61", // comma list; toll-fraud dials expensive foreign numbers
   PORT = "3000",
 } = process.env;
 
@@ -40,6 +42,10 @@ for (const [k, v] of Object.entries({
 }
 
 const app = express();
+// Trust exactly one proxy hop (the host's load balancer) so req.ip is the real
+// client IP. Without this, the rate limiter keyed off a client-controlled
+// X-Forwarded-For header — trivially spoofable to bypass the per-IP cap.
+app.set("trust proxy", 1);
 app.use(express.json({ limit: "8kb" }));
 
 // --- CORS: only the live site may call this proxy ---
@@ -72,11 +78,31 @@ function rateLimited(ip, now) {
 // E.164: +, country digit 1-9, up to 14 more digits.
 const E164 = /^\+[1-9]\d{6,14}$/;
 
+// Country allowlist — only numbers starting with one of these prefixes are
+// dialed. Blocks the classic toll-fraud vector (premium/expensive foreign
+// numbers). Configure via ALLOWED_COUNTRY_PREFIXES (comma-separated, e.g. "+61,+64").
+const COUNTRY_PREFIXES = ALLOWED_COUNTRY_PREFIXES.split(",")
+  .map((p) => p.trim())
+  .filter(Boolean);
+
+// Global daily cap — a hard ceiling on real calls per UTC day, independent of
+// IP. The per-IP limit doesn't stop an attacker rotating IPs; this does.
+const DAILY_MAX = parseInt(MAX_CALLS_PER_DAY, 10);
+let dailyCount = 0;
+let dailyKey = "";
+function overDailyCap(now) {
+  const key = new Date(now).toISOString().slice(0, 10); // YYYY-MM-DD (UTC)
+  if (key !== dailyKey) {
+    dailyKey = key;
+    dailyCount = 0;
+  }
+  if (dailyCount >= DAILY_MAX) return true;
+  dailyCount += 1;
+  return false;
+}
+
 app.post("/api/demo-call", async (req, res) => {
-  const ip =
-    (req.headers["x-forwarded-for"] || "").split(",")[0].trim() ||
-    req.socket.remoteAddress ||
-    "unknown";
+  const ip = req.ip || "unknown";
   const now = Date.now();
 
   if (rateLimited(ip, now)) {
@@ -89,6 +115,18 @@ app.post("/api/demo-call", async (req, res) => {
     return res
       .status(400)
       .json({ error: "Phone must be E.164 format, e.g. +61412345678." });
+  }
+  if (!COUNTRY_PREFIXES.some((p) => cleanPhone.startsWith(p))) {
+    return res
+      .status(400)
+      .json({ error: "That country isn't supported for the demo." });
+  }
+  // Reserve a daily slot only now that we know the request is valid + dialable,
+  // so rejected requests don't burn the global cap.
+  if (overDailyCap(now)) {
+    return res
+      .status(429)
+      .json({ error: "Daily demo-call limit reached. Try again tomorrow." });
   }
   const cleanName =
     typeof name === "string" ? name.trim().slice(0, 80) : "Demo prospect";
