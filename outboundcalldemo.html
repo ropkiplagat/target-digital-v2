@@ -140,7 +140,7 @@ footer a{color:var(--gold);text-decoration:none}
 // and ready in /call-proxy (see call-proxy/README.md): deploy it on any Node
 // host, then paste its /api/demo-call URL below. Until then, REAL_CALL stays
 // false and the demo simulates the flow.
-const CALL_PROXY_URL = ''; // e.g. 'https://your-app.up.railway.app/api/demo-call'
+const CALL_PROXY_URL = 'https://target-digital-v2-production.up.railway.app/api/demo-call';
 const REAL_CALL = !!CALL_PROXY_URL;
 
 if (REAL_CALL) document.getElementById('sim-banner').classList.add('hidden');
