@@ -55,9 +55,12 @@ One-time **setup** + monthly retainer:
 
 ## How to test it works (run before shipping)
 ```
-py check_site.py        # use:  PYTHONIOENCODING=utf-8 PYTHONUTF8=1 py check_site.py  on Windows
+PYTHONIOENCODING=utf-8 PYTHONUTF8=1 py check.py    # the gatekeeper — run after EVERY ticket
+PYTHONIOENCODING=utf-8 PYTHONUTF8=1 py check_site.py   # site boundary test (also wrapped by check.py G13)
 ```
-`check_site.py` is the boundary test. It fails the build on: broken internal links, dangling `#anchors`, missing/case-mismatched assets, dead CTA buttons, and duplicated nav/mobile-menu/CSS. Exit 0 = clear to ship.
+**`check.py` is the gatekeeper — run it after every ticket. Any hard-stop → work stops, no deferring.** It exits non-zero on any HARD gate and runs a fixed set (denylist/citation-precise gates hard-stop; judgment-based checks warn). Gates: G1 secrets · G2 client isolation · G4 evidence-backed claims (blank source = fail) · G5 retired proof · G7 regulated claims (NDIS/gov/guarantee) · G8 email Spam-Act (unsub+sender) · G9 blog format · G10 placeholders · G11 merge-token integrity · G12 Calendly canon + retired price · G13 wraps `check_site.py` · plus WARN gates G3 PII, G6 fabrication smell, G12w pricing drift, G14 AU English. Config lives in the CONFIG block at the top of `check.py`. `--strict` treats warnings as failures too. Client work is namespaced under `clients/<slug>/` with a per-client `evidence.yml` (see `clients/README.md`) — every metric/testimonial in client copy must trace to a sourced entry there.
+
+`check_site.py` is the site boundary test. It fails on: broken internal links, dangling `#anchors`, missing/case-mismatched assets, dead CTA buttons, and duplicated nav/mobile-menu/CSS. Exit 0 = clear to ship.
 
 ## Recent major changes
 0. **2026-06-19 — Linked the 3 live demos + built the call proxy.** Added `demos.html` hub; made nav uniform across all 12 pages (added Demos + ROI Calculator everywhere) and updated `update_nav.py` to match. Built `call-proxy/` (Node/Express) so `outboundcalldemo.html` can place real Vapi calls without exposing the key — deploy it + set `CALL_PROXY_URL` to go live; until then the demo stays in safe simulation.

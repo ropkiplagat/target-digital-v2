@@ -1,0 +1,20 @@
+# Client registry — the source of truth for WHO the gatekeeper knows about.
+#
+# check.py uses this to enforce:
+#   G2 (client isolation) — one client's deliverables must never mention another
+#                           client's slug / domain / aliases.
+#   G4 (evidence-backed claims) — every client folder is expected to carry its own
+#                           clients/<slug>/evidence.yml (see clients/README.md).
+#
+# Layout convention (Option 1): each client gets clients/<slug>/ with its own
+# deliverables + evidence.yml. Register the client here so the gates can see it.
+# An empty list is valid — the client gates simply no-op until real clients land.
+#
+# Schema (flat, so it parses without PyYAML):
+#   clients:
+#     - slug: acme-roofing          # must match the clients/<slug>/ folder name
+#       name: Acme Roofing          # display name
+#       domain: acmeroofing.com.au  # their domain (used for isolation checks)
+#       aliases: Acme, Acme Roofing Co   # comma-separated other names to guard on
+
+clients: []

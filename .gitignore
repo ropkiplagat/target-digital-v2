@@ -27,3 +27,6 @@
 .windsurf/skills/
 .zencoder/skills/
 /skills/
+
+# Python bytecode cache (from check.py)
+__pycache__/
