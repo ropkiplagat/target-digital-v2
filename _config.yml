@@ -7,4 +7,6 @@ exclude:
   - brand/             # strategy / competitor docs
   - CLAUDE.md          # internal project doc
   - check_site.py      # boundary test
+  - check.py           # content gatekeeper — internal tooling
   - update_nav.py      # nav generator
+  - clients/           # per-client evidence + deliverables — MUST NOT be public
