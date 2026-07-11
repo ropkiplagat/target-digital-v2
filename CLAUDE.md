@@ -16,7 +16,7 @@ Both are pitched as working for any industry. Conversion is a Calendly booking �
 - **No build step.** Open the `.html` files directly; all CSS/JS is inline or via CDN (Three.js, GSAP, Lenis, Google Fonts).
 - **Booking:** all CTAs point to `https://calendly.com/ropkiplagat/intro-to-sales-target-digital`.
 
-## Pages (12 ship)
+## Pages (13 ship)
 | File | Purpose |
 |------|---------|
 | `index.html` | Homepage — both products side by side, proof, 3-tier pricing |
@@ -27,8 +27,9 @@ Both are pitched as working for any industry. Conversion is a Calendly booking �
 | `lead-pipeline-calculator.html` | Lead-to-Call ROI calculator (webhook not yet wired) |
 | `demos.html` | Hub linking the 3 live interactive demos |
 | `leadgendemo.html` | Live demo — AI lead qualification (fully working) |
-| `documentautomationdemo.html` | Live demo — document automation pipeline (fully working) |
-| `outboundcalldemo.html` | Demo — AI outbound call flow; **simulation** until `CALL_PROXY_URL` set |
+| `documentautomationdemo.html` | Live demo — document automation (lease generate → e-sign → sync) |
+| `invoiceautomationdemo.html` | Live demo — supplier invoice → OCR extract → GST split → draft bill in Xero |
+| `outboundcalldemo.html` | Live demo — AI outbound call flow; places **real Vapi calls** (proxy deployed) |
 | `privacy-policy.html` / `terms.html` | Legal placeholders |
 
 `brand/competitor-intelligence.md` and `competitor-hero-research.md` are strategy docs, not pages.
