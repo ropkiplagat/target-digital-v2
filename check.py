@@ -52,8 +52,11 @@ SECRET_PLACEHOLDERS = ("your-", "xxx", "changeme", "example", "placeholder",
 # G5 — retired / forbidden proof. Exact strings we have banned. HARD.
 # Claims registry: anything here is NOT VERIFIED and must never appear in content.
 RETIRED_CLAIMS = ["500,000%", "500000%", "500,000 %", "[metric]", "XX%", "XXX leads",
-                  # NOT VERIFIED (flagged 2026-07-12): fabricated numbers, killed everywhere.
-                  "Brijesh", "Robotics For Sure"]
+                  # Brijesh Singh / Robotics For Sure IS a real client (email deliverability
+                  # campaign — true). What was FABRICATED (corrected 2026-07-18) were the
+                  # outbound-CALL metrics invented for him. Ban those numbers, not the name.
+                  "3–8 qualified", "3-8 qualified", "3–8 booked", "3-8 booked",
+                  "3–8 calls", "3-8 calls", "market in month two"]
 
 # G7 — regulated / unsubstantiated claim denylist (case-insensitive substrings). HARD.
 REGULATED_CLAIMS = [
