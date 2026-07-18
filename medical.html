@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Reception for Medical Practices | Target Digital</title>
+<meta name="description" content="An AI receptionist that answers every patient call — after hours and when the front desk is flat out. Books appointments, takes messages, escalates emergencies to 000. Never gives medical advice.">
+<link rel="canonical" href="https://targetdigital.com.au/medical.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#06091a;--navy2:#0c1130;--navy3:#111a3e;--blue:#2563eb;--gold:#f0c040;--cyan:#00BFFF;--white:#fff;--muted:#94a3b8;--text:#cbd5e1;--green:#34d399}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'DM Sans',sans-serif;font-size:17px;line-height:1.7}
+h1,h2,h3{font-family:'Syne',sans-serif;color:var(--white)}
+.accent{color:var(--cyan)}
+nav{background:var(--navy);border-bottom:1px solid rgba(255,255,255,0.06);padding:18px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-logo{display:inline-flex;align-items:center}.nav-logo img{height:34px;width:auto;display:block;background:#fff;padding:5px 9px;border-radius:8px}
+.nav-cta{background:var(--gold);color:#000;font-weight:700;padding:10px 22px;border-radius:6px;text-decoration:none;font-size:14px}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:25px;height:3px;background:#fff;border-radius:2px}
+.mobile-nav{display:none;position:fixed;top:70px;left:0;right:0;background:var(--navy);padding:2rem;flex-direction:column;gap:1.5rem;border-bottom:1px solid rgba(37,99,235,.15);z-index:99}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:var(--text);text-decoration:none;font-size:1.1rem}
+.mobile-cta{background:var(--blue);padding:.75rem;border-radius:8px;text-align:center;color:#fff!important;font-weight:600}
+@media (max-width:768px){.nav-links{display:none}.hamburger{display:flex}}
+.hero{text-align:center;padding:72px 24px 40px;border-bottom:1px solid rgba(0,191,255,.15)}
+.hero-badge{display:inline-block;background:rgba(0,191,255,.1);border:1px solid rgba(0,191,255,.3);color:var(--cyan);padding:8px 20px;border-radius:40px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(30px,5.5vw,52px);font-weight:800;line-height:1.1;max-width:820px;margin:0 auto 18px}
+.hero p{color:var(--muted);max-width:600px;margin:0 auto 28px;font-size:19px}
+.btn-primary{display:inline-block;background:var(--gold);color:#000;font-weight:700;font-size:16px;padding:15px 32px;border-radius:8px;text-decoration:none}
+.btn-ghost{display:inline-block;color:#fff;border:1px solid rgba(255,255,255,.25);font-weight:600;font-size:16px;padding:14px 28px;border-radius:8px;text-decoration:none;margin-left:10px}
+section{padding:56px 24px}
+.wrap{max-width:1040px;margin:0 auto}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 40px}
+.sec-head h2{font-size:clamp(26px,4vw,38px);margin-bottom:14px}
+.sec-head p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.card{background:var(--navy2);border:1px solid rgba(0,191,255,.15);border-radius:16px;padding:1.8rem}
+.card .icon{font-size:30px;margin-bottom:12px}
+.card h3{font-size:19px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:15px}
+.problem{background:var(--navy2);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.steps{counter-reset:step;display:grid;gap:18px;max-width:760px;margin:0 auto}
+.step{display:flex;gap:18px;align-items:flex-start;background:var(--navy2);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:1.3rem 1.5rem}
+.step::before{counter-increment:step;content:counter(step);flex:0 0 auto;width:38px;height:38px;border-radius:50%;background:var(--cyan);color:#04283a;font-weight:800;font-family:'Syne',sans-serif;display:flex;align-items:center;justify-content:center;font-size:18px}
+.step h3{font-size:18px;margin-bottom:4px}
+.step p{color:var(--muted);font-size:15px}
+.safety{background:linear-gradient(180deg,rgba(52,211,153,.06),transparent);border:1px solid rgba(52,211,153,.25);border-radius:18px;padding:2.2rem;max-width:900px;margin:0 auto}
+.safety h2{font-size:26px;margin-bottom:6px}
+.safety .lede{color:var(--muted);margin-bottom:22px}
+.safety ul{list-style:none;display:grid;gap:14px}
+.safety li{display:flex;gap:12px;font-size:15.5px;color:var(--text)}
+.safety li b{color:#fff}
+.check{color:var(--green);flex:0 0 auto;font-weight:800}
+.honest{max-width:760px;margin:0 auto;text-align:center;background:var(--navy2);border:1px dashed rgba(0,191,255,.3);border-radius:16px;padding:2rem}
+.honest h2{font-size:24px;margin-bottom:12px}
+.honest p{color:var(--muted)}
+.cta-band{text-align:center;max-width:680px;margin:0 auto}
+.cta-band h2{font-size:clamp(26px,4vw,36px);margin-bottom:14px}
+.cta-band p{color:var(--muted);margin-bottom:22px}
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:32px 24px;text-align:center;color:var(--muted);font-size:14px}
+footer a{color:var(--gold);text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><img src="/target-digital-logo.png" alt="Target Digital Media"></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/funnel.html">Lead Gen Engine</a>
+    <a href="/outbound.html">Outbound Call Engine</a>
+    <a href="/demos.html">Demos</a>
+    <a href="/lead-pipeline-calculator.html">ROI Calculator</a>
+  </div>
+  <a href="https://calendly.com/ropkiplagat/intro-to-sales-target-digital" target="_blank" rel="noopener" class="nav-cta" style="text-decoration:none">Book a Call</a>
+  <div class="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="/">Home</a>
+  <a href="/funnel.html">Lead Gen Engine</a>
+  <a href="/outbound.html">Outbound Call Engine</a>
+  <a href="/demos.html">Demos</a>
+  <a href="/lead-pipeline-calculator.html">ROI Calculator</a>
+  <a href="https://calendly.com/ropkiplagat/intro-to-sales-target-digital" target="_blank" rel="noopener" class="mobile-cta">Book a Call</a>
+</div>
+<script>function toggleMobileNav(){document.getElementById('mobileNav').classList.toggle('open')}</script>
+
+<section class="hero">
+  <div class="hero-badge">AI Reception for Medical Practices</div>
+  <h1>Every missed call is a patient who <span class="accent">booked somewhere else</span>.</h1>
+  <p>An AI receptionist that answers the calls your front desk can't — after hours, at lunch, when every line's ringing at once. It books appointments, takes messages, and sends the confirmation. Calmly, in plain Australian, day and night.</p>
+  <a href="https://calendly.com/ropkiplagat/intro-to-sales-target-digital" target="_blank" rel="noopener" class="btn-primary">Book a 15-min call</a>
+  <a href="tel:+61489263227" class="btn-ghost">Call the live demo → 0489 263 227</a>
+</section>
+
+<section class="problem">
+  <div class="wrap sec-head" style="margin-bottom:0">
+    <h2>The calls you never hear about</h2>
+    <p>The front desk can only pick up one line at a time. Everything else goes to voicemail — and most callers don't leave one. They ring the next practice. You never even know it happened.</p>
+  </div>
+  <div class="wrap grid" style="margin-top:36px">
+    <div class="card"><div class="icon">🌙</div><h3>After hours</h3><p>The evening and weekend calls — new patients ready to book, hitting a closed line.</p></div>
+    <div class="card"><div class="icon">📞</div><h3>Every line busy</h3><p>Reception's on with one patient while three more ring out and give up.</p></div>
+    <div class="card"><div class="icon">🍽️</div><h3>Lunch &amp; changeover</h3><p>The quiet gaps in the day when there's simply no one to answer.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>What the AI receptionist does</h2>
+    <p>It handles the practical work of the front desk — and knows exactly where its limits are.</p>
+  </div>
+  <div class="wrap grid">
+    <div class="card"><div class="icon">📅</div><h3>Books &amp; reschedules</h3><p>Offers real available times, books the appointment, and reschedules or cancels on request.</p></div>
+    <div class="card"><div class="icon">✉️</div><h3>Confirms in writing</h3><p>Every booking gets an email confirmation with the time — so nothing's lost or misheard.</p></div>
+    <div class="card"><div class="icon">📝</div><h3>Takes messages</h3><p>Captures name and callback number, and passes the message to the practice.</p></div>
+    <div class="card"><div class="icon">🔁</div><h3>Books the callback</h3><p>If no one's free, it captures the best time to reach them and lines up a callback — no one falls through.</p></div>
+    <div class="card"><div class="icon">🙋</div><h3>Hands to a human</h3><p>Urgent or complex? It transfers to your team, or books the earliest slot and flags it.</p></div>
+    <div class="card"><div class="icon">🇦🇺</div><h3>Sounds like a person</h3><p>Warm, patient, plain Australian. Slower with elderly or anxious callers. Never a robot script.</p></div>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="sec-head"><h2>How it works</h2></div>
+  <div class="steps">
+    <div class="step"><div><h3>A patient calls</h3><p>The AI answers on the first ring — after hours, or when the desk is flat out.</p></div></div>
+    <div class="step"><div><h3>It sorts what they need</h3><p>Book, reschedule, cancel, a message, or a question. One thing at a time, no interrogation.</p></div></div>
+    <div class="step"><div><h3>It books into your calendar</h3><p>Offers a real open slot, takes the details, and locks it in — then reads the number and time back to confirm.</p></div></div>
+    <div class="step"><div><h3>Everyone gets the confirmation</h3><p>The patient gets an email, the booking lands in your system, and your team sees it in the morning.</p></div></div>
+    <div class="step"><div><h3>Urgent goes to a human</h3><p>Needs to be seen today? It transfers to your team — or books the earliest slot and flags it urgent.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="safety">
+    <h2>Built for medical — with the lines it will never cross</h2>
+    <p class="lede">A receptionist for a medical practice can't behave like a chatbot. These aren't features — they're hard rules, baked in.</p>
+    <ul>
+      <li><span class="check">✓</span><span><b>Emergencies go to 000.</b> If a caller describes anything urgent, it stops and tells them to hang up and call triple zero straight away. It won't try to book or chat.</span></li>
+      <li><span class="check">✓</span><span><b>It never gives medical advice.</b> No symptoms, no diagnosis, no medication or results guidance — ever. Clinical questions go to a message for the practice.</span></li>
+      <li><span class="check">✓</span><span><b>It only takes what's needed to book.</b> Name, a contact, the appointment type, and a preferred time — no date of birth, no reason-for-visit, no symptoms. Built with patient privacy in mind: booking details only, no medical data captured.</span></li>
+      <li><span class="check">✓</span><span><b>It's honest that it's an AI.</b> If asked, it says so, and offers to put the caller through to a person.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="honest">
+    <h2>It's the overflow catcher — not a replacement for your team</h2>
+    <p>Your front desk stays exactly as it is. The AI simply catches the calls that are currently going to voicemail or ringing out. You keep the patients you're already losing — nothing changes about the ones you already answer.</p>
+  </div>
+</section>
+
+<section>
+  <div class="cta-band">
+    <h2>See it answer a call</h2>
+    <p>The fastest way to get it is to hear it. Call our live demo line — you'll reach Aria, the AI receptionist for a sample practice we've set up (Smiles Clinic). Try booking an appointment or asking a question, and hear how it handles it. Or book a quick call and we'll set it up for your practice.</p>
+    <a href="tel:+61489263227" class="btn-primary">Call the live demo — 0489 263 227</a>
+    <a href="https://calendly.com/ropkiplagat/intro-to-sales-target-digital" target="_blank" rel="noopener" class="btn-ghost">Book a 15-min call →</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Target Digital. All rights reserved. |
+    <a href="/privacy-policy.html">Privacy Policy</a> ·
+    <a href="/terms.html">Terms</a> ·
+    <a href="mailto:rop@targetdigital.com.au">rop@targetdigital.com.au</a></p>
+</footer>
+
+</body>
+</html>
