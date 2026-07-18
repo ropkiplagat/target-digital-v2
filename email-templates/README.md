@@ -8,7 +8,7 @@ These files are the **source of truth** (versioned in git) — not Google Drive.
 | `email1.html` | Here's your Lead-to-Call ROI report | Deliver the result, set up the sequence |
 | `email2.html` | Why 5 minutes changes everything | Speed-to-lead principle |
 | `email3.html` | The #1 mistake killing your pipeline | Agitate: leads go cold |
-| `email4.html` | How Brijesh booked 3–8 calls a week — no ads, no BDR | Proof (Outbound Call Engine) |
+| `email4.html` | Live in 4 days: what "we build it for you" looks like | Proof (Wilson W. / Imani Car Sales — verified) |
 | `email5.html` | Want us to build this for you? | Final CTA → growth audit + pricing |
 
 ## Merge tokens
@@ -64,8 +64,10 @@ will not scale or stay deliverable for client volume.
   set per client from git.
 
 ## Brand facts baked in (keep consistent with the site)
-- Proof: **Brijesh Singh — Robotics For Sure, Brisbane** (Outbound result); Joan R. — Imani
-  Mental Health (Lead Gen result). Don't invent metrics beyond what the site states.
+- Proof (VERIFIED only): **Wilson W. — Imani Car Sales, Brisbane** (invoice processing 93% faster,
+  live in 4 days); Joan R. — Imani Mental Health (Lead Gen result). The old outbound testimonial is
+  NOT VERIFIED (fabricated) and banned — see `check.py` RETIRED_CLAIMS for the exact strings.
+  Never invent metrics.
 - Pricing: Starter $2,000+$500/mo · Growth $4,500+$1,500/mo · Scale $7,500+$3,000/mo.
 - CTA: `https://calendly.com/ropkiplagat/intro-to-sales-target-digital`.
 - Colours: cyan `#00BFFF`, ink `#0b0f14`.
