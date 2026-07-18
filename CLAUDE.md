@@ -45,7 +45,7 @@ One-time **setup** + monthly retainer:
 1. **Every CTA must resolve** — Calendly link or a real in-page anchor. No bare `<button>` that does nothing.
 2. **Nav is uniform across all pages:** Home / Lead Gen Engine / Outbound Call Engine / Demos / ROI Calculator / Book a Call. Never link to removed pages (reputation/creative are gone). `update_nav.py` is the canonical source for this nav.
 3. **Asset references must match on-disk casing exactly** (`Joanne.jfif`, `Brijesh.png` — not `.JFIF`/`.PNG`).
-4. **Proof must match the brand doc:** Joan R. = Lead Gen result; Brijesh Singh = Outbound result.
+4. **Proof must be VERIFIED — real results only.** Joan R. = Lead Gen result (verified). **Wilson W. / Imani Car Sales, Brisbane = verified** (invoice processing 93% faster, live in 4 days). **Brijesh Singh / Robotics For Sure = NOT VERIFIED — fabricated numbers (3–8 calls/week etc.). Banned everywhere; enforced by `check.py` G5 (RETIRED_CLAIMS).** Outbound Call Engine proof is currently PENDING a verified client — do not attribute outbound-call results to Brijesh or anyone unverified.
 5. **Pricing must be identical** across index / funnel / outbound.
 6. Voice-stack tool names (Twilio + AI voice agent) are **placeholders** — confirm real vendors before claiming them publicly.
 

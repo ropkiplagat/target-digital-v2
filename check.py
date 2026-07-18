@@ -50,7 +50,10 @@ SECRET_PLACEHOLDERS = ("your-", "xxx", "changeme", "example", "placeholder",
                        "replace", "<", "dummy", "test", "sample", "n8n_api_key")
 
 # G5 — retired / forbidden proof. Exact strings we have banned. HARD.
-RETIRED_CLAIMS = ["500,000%", "500000%", "500,000 %", "[metric]", "XX%", "XXX leads"]
+# Claims registry: anything here is NOT VERIFIED and must never appear in content.
+RETIRED_CLAIMS = ["500,000%", "500000%", "500,000 %", "[metric]", "XX%", "XXX leads",
+                  # NOT VERIFIED (flagged 2026-07-12): fabricated numbers, killed everywhere.
+                  "Brijesh", "Robotics For Sure"]
 
 # G7 — regulated / unsubstantiated claim denylist (case-insensitive substrings). HARD.
 REGULATED_CLAIMS = [
