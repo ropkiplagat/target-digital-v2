@@ -95,6 +95,62 @@ for page in PAGES:
             problems.append((page.name, f"duplicated {label}: found {n} (expected {limit})"))
 
 
+# 6. sitemap coverage — this is what silently rotted: the sitemap sat at the
+#    5 pages of the June restructure while the site grew to 14, so 8 live pages
+#    were never offered to Google. A page must be either IN the sitemap or
+#    explicitly listed here, so adding a page forces a yes/no rather than
+#    letting it drop out unnoticed.
+SITEMAP_EXCLUDE = {
+    # Unlisted Smiles Clinic demo — direct-link only, promoted via
+    # utm_campaign=aria_article, deliberately kept out of nav AND search.
+    "medical.html",
+}
+BASE = "https://targetdigital.com.au/"
+sitemap = ROOT / "sitemap.xml"
+
+if not sitemap.exists():
+    problems.append(("sitemap.xml", "missing — robots.txt points at it"))
+else:
+    sm = sitemap.read_text(encoding="utf-8")
+    locs = re.findall(r"<loc>([^<]+)</loc>", sm)
+    listed = set()
+    for loc in locs:
+        if not loc.startswith(BASE):
+            problems.append(("sitemap.xml", f"URL not on the canonical domain: {loc}"))
+            continue
+        name = loc[len(BASE):] or "index.html"
+        if name in listed:
+            problems.append(("sitemap.xml", f"duplicate URL: {loc}"))
+        listed.add(name)
+        if not (ROOT / name).exists():
+            problems.append(("sitemap.xml", f"URL has no page on disk: {loc}"))
+
+    for page in PAGES:
+        if page.name not in listed and page.name not in SITEMAP_EXCLUDE:
+            problems.append(("sitemap.xml", f"{page.name} ships but is not in the sitemap "
+                                            "(add it, or add it to SITEMAP_EXCLUDE on purpose)"))
+    for name in SITEMAP_EXCLUDE:
+        if name in listed:
+            problems.append(("sitemap.xml", f"{name} is meant to be unlisted but IS in the sitemap"))
+
+    # robots.txt is public: naming an unlisted page there would advertise it.
+    robots = ROOT / "robots.txt"
+    if robots.exists():
+        txt = robots.read_text(encoding="utf-8")
+        if "sitemap.xml" not in txt.lower():
+            problems.append(("robots.txt", "does not point at sitemap.xml"))
+        for name in SITEMAP_EXCLUDE:
+            if name in txt:
+                problems.append(("robots.txt", f"names the unlisted page {name} — robots.txt is "
+                                               "public, so this advertises what it's hiding"))
+
+# 7. every page needs a canonical (index.html answers to both / and /index.html)
+for page in PAGES:
+    html = page.read_text(encoding="utf-8", errors="replace")
+    if 'rel="canonical"' not in html:
+        problems.append((page.name, "no rel=canonical link"))
+
+
 print(f"Boundary test — {len(PAGES)} pages checked\n")
 if warnings:
     print(f"⚠  {len(warnings)} warning(s):")

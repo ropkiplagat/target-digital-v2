@@ -1,8 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Every page that should be findable in search. Kept in sync by hand — there is
+  no jekyll-sitemap plugin, so this file is the only thing Google reads.
+  check_site.py check 6 fails the build if a shipping page is missing here.
+
+  medical.html is DELIBERATELY ABSENT. It's the unlisted Smiles Clinic demo,
+  promoted by direct link via utm_campaign=aria_article and kept out of the nav
+  on purpose. A sitemap entry is an explicit "please crawl this", which is the
+  opposite of that intent. Note it is also deliberately NOT listed in robots.txt:
+  robots.txt is public, so a Disallow line there would advertise the very page
+  we're keeping quiet, and it would not stop the URL being indexed anyway.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
   <url><loc>https://targetdigital.com.au/</loc></url>
+
+  <!-- The two products -->
   <url><loc>https://targetdigital.com.au/funnel.html</loc></url>
   <url><loc>https://targetdigital.com.au/outbound.html</loc></url>
+
+  <!-- Demo hub + the four live demos -->
+  <url><loc>https://targetdigital.com.au/demos.html</loc></url>
+  <url><loc>https://targetdigital.com.au/leadgendemo.html</loc></url>
+  <url><loc>https://targetdigital.com.au/outboundcalldemo.html</loc></url>
+  <url><loc>https://targetdigital.com.au/invoiceautomationdemo.html</loc></url>
+  <url><loc>https://targetdigital.com.au/documentautomationdemo.html</loc></url>
+
+  <!-- Tools + lead magnets -->
+  <url><loc>https://targetdigital.com.au/lead-pipeline-calculator.html</loc></url>
   <url><loc>https://targetdigital.com.au/lead-magnet-funnel.html</loc></url>
   <url><loc>https://targetdigital.com.au/lead-magnet-outbound.html</loc></url>
+
+  <!-- Legal -->
+  <url><loc>https://targetdigital.com.au/privacy-policy.html</loc></url>
+  <url><loc>https://targetdigital.com.au/terms.html</loc></url>
 </urlset>
