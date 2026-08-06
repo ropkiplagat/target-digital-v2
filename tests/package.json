@@ -1,0 +1,11 @@
+{
+  "name": "targetdigital-tests",
+  "private": true,
+  "description": "Runtime tests for the static site. Not shipped — GitHub Pages serves the repo root only.",
+  "scripts": {
+    "test": "node test_ga4_events.js"
+  },
+  "devDependencies": {
+    "jsdom": "^30.0.1"
+  }
+}

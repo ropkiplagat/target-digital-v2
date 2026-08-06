@@ -30,3 +30,7 @@
 
 # Python bytecode cache (from check.py)
 __pycache__/
+
+# Node deps — call-proxy is deployed separately, tests/ is dev-only. Neither
+# belongs in a repo GitHub Pages serves as a static site.
+node_modules/
