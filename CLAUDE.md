@@ -25,7 +25,7 @@ Both are pitched as working for any industry. Conversion is a Calendly booking �
 | `lead-magnet-funnel.html` | Lead Gen lead magnet (AI Lead Leak Audit) |
 | `lead-magnet-outbound.html` | Outbound lead magnet (Cold Outbound Playbook) |
 | `lead-pipeline-calculator.html` | Lead-to-Call ROI calculator (webhook not yet wired) |
-| `demos.html` | Hub linking the 3 live interactive demos |
+| `demos.html` | Hub linking the 4 live interactive demos |
 | `leadgendemo.html` | Live demo — AI lead qualification (fully working) |
 | `documentautomationdemo.html` | Live demo — document automation (lease generate → e-sign → sync) |
 | `invoiceautomationdemo.html` | Live demo — supplier invoice → OCR extract → GST split → draft bill in Xero |
@@ -65,6 +65,12 @@ All events also carry `cta_text`, `cta_location`, `page_id`. **`cta_location`** 
 
 `faq_click` deliberately fires on *every* click and reports state in a param, rather than only on opens. The accordion's `open` class is set by a script sharing a block with the Lenis/Three.js CDN init — if that CDN is blocked (ad blocker) or the WebGL hero throws, the accordion never binds. Gating the event on that class would kill FAQ tracking silently; this way an all-`closed` report is itself the signal that the accordion broke for real visitors.
 
+## Search / indexing
+- **`sitemap.xml` is hand-maintained** — there is no `jekyll-sitemap` plugin, so this file is the only thing Google reads. It lists **13 of the 14 pages**. `robots.txt` points at it.
+- **`medical.html` is deliberately excluded** from the sitemap (unlisted demo, direct-link only via `utm_campaign=aria_article`). It is *also* deliberately **not** named in `robots.txt` — that file is public, so a `Disallow` line would advertise the page it's hiding, and wouldn't prevent indexing anyway.
+- **Every page needs `rel="canonical"`.** The homepage's points at `/` (not `/index.html`) — it answers to both URLs, and without a canonical Google can split the domain's strongest page in two.
+- `check_site.py` checks 6 + 7 enforce all of the above: a new page must be **either in the sitemap or explicitly in `SITEMAP_EXCLUDE`**, so adding a page forces a yes/no instead of silently dropping out of search. That's how the sitemap sat at 5 URLs while the site grew to 14.
+
 ## Critical rules (don't break these)
 1. **Every CTA must resolve** — Calendly link or a real in-page anchor. No bare `<button>` that does nothing.
 2. **Nav is uniform across all pages:** Home / Lead Gen Engine / Outbound Call Engine / Demos / ROI Calculator / Book a Call. Never link to removed pages (reputation/creative are gone). `update_nav.py` is the canonical source for this nav.
@@ -91,8 +97,9 @@ cd tests && npm install && npm test        # GA4 events actually fire (jsdom, 65
 `check_site.py` is the site boundary test. It fails on: broken internal links, dangling `#anchors`, missing/case-mismatched assets, dead CTA buttons, and duplicated nav/mobile-menu/CSS. Exit 0 = clear to ship.
 
 ## Recent major changes
-0. **2026-08-06 — GA4 event tracking on every button.** Added `add_ga4_events.py` (delegated listener, injected site-wide, idempotent, page list auto-discovered) and `tests/test_ga4_events.js` (jsdom, 65 assertions driving the real CTAs). The test caught a real coupling bug: `faq_open` was gated on a CSS class set by a script that dies when the Lenis/Three.js CDN is blocked — now `faq_click` fires unconditionally and reports state in a param. Remaining manual step: mark `generate_lead` as a Key Event + register the custom dimensions in the GA4 UI.
-1. **2026-06-19 — Linked the 3 live demos + built the call proxy.** Added `demos.html` hub; made nav uniform across all 12 pages (added Demos + ROI Calculator everywhere) and updated `update_nav.py` to match. Built `call-proxy/` (Node/Express) so `outboundcalldemo.html` can place real Vapi calls without exposing the key — deploy it + set `CALL_PROXY_URL` to go live; until then the demo stays in safe simulation.
-2. **2026-06-16 — Restructured to the two-product GTM model.** Removed reputation/creative pages + their lead magnets; rewrote homepage (two engines, Joan/Brijesh proof, 3-tier setup+monthly pricing, all CTAs → Calendly); rewrote `outbound.html` from an email outbound engine into the AI Outbound Call Engine (form→SMS→AI call→qualify→hot transfer/warm booking/no-answer retry); aligned funnel pricing; nav reduced to Home / Lead Gen Engine / Outbound Call Engine + Book a Call. (commit `2b47aa8`)
-3. **2026-06-16 — Centralized nav + mobile menu** across pages via `update_nav.py` (commit `5bdf769`); fixed a double-CSS-injection bug.
-4. **2026-06-18 — Added `check_site.py` boundary test;** it caught 9 image case-mismatch bugs (`Joanne.JFIF`/`Brijesh.PNG` → lowercase) that would have 404'd on Linux hosting.
+0. **2026-08-07 — Search Console prep: sitemap rebuilt, canonical fixed, drift gated.** `sitemap.xml` was still the 5 URLs of the June restructure — 8 live pages (all 4 demos, the hub, calculator, both legal pages) were never offered to Google. Now 13 URLs; `medical.html` stays out on purpose. `index.html` had no `rel="canonical"` (the only page missing one). Added `check_site.py` checks 6 + 7 so neither can rot again. GSC verification itself is console-side — see the Search / indexing section.
+1. **2026-08-06 — GA4 event tracking on every button.** Added `add_ga4_events.py` (delegated listener, injected site-wide, idempotent, page list auto-discovered) and `tests/test_ga4_events.js` (jsdom, 65 assertions driving the real CTAs). The test caught a real coupling bug: `faq_open` was gated on a CSS class set by a script that dies when the Lenis/Three.js CDN is blocked — now `faq_click` fires unconditionally and reports state in a param. Remaining manual step: mark `generate_lead` as a Key Event + register the custom dimensions in the GA4 UI.
+2. **2026-06-19 — Linked the 3 live demos + built the call proxy.** Added `demos.html` hub; made nav uniform across all 12 pages (added Demos + ROI Calculator everywhere) and updated `update_nav.py` to match. Built `call-proxy/` (Node/Express) so `outboundcalldemo.html` can place real Vapi calls without exposing the key — deploy it + set `CALL_PROXY_URL` to go live; until then the demo stays in safe simulation.
+3. **2026-06-16 — Restructured to the two-product GTM model.** Removed reputation/creative pages + their lead magnets; rewrote homepage (two engines, Joan/Brijesh proof, 3-tier setup+monthly pricing, all CTAs → Calendly); rewrote `outbound.html` from an email outbound engine into the AI Outbound Call Engine (form→SMS→AI call→qualify→hot transfer/warm booking/no-answer retry); aligned funnel pricing; nav reduced to Home / Lead Gen Engine / Outbound Call Engine + Book a Call. (commit `2b47aa8`)
+4. **2026-06-16 — Centralized nav + mobile menu** across pages via `update_nav.py` (commit `5bdf769`); fixed a double-CSS-injection bug.
+5. **2026-06-18 — Added `check_site.py` boundary test;** it caught 9 image case-mismatch bugs (`Joanne.JFIF`/`Brijesh.PNG` → lowercase) that would have 404'd on Linux hosting.
