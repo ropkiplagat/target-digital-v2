@@ -102,6 +102,13 @@ SAFE_EMAILS = {"hello@targetdigital.com.au", "support@targetdigital.com.au",
                "rop@targetdigital.com.au", "unsubscribe@targetdigital.com.au",
                "ropkiplagat@gmail.com"}
 
+# G3 — phone numbers we publish ON PURPOSE. Stored as digits only; compare via
+# _norm_phone so "0489 263 227", "0489263227" and "+61489263227" all match.
+# A number here is a deliberate CTA, not leaked PII. Add sparingly.
+SAFE_PHONES = {
+    "0489263227",   # the live Aria demo line — medical.html's primary CTA ("Call the live demo")
+}
+
 # G9 — blog format contract thresholds.
 BLOG_MIN_WORDS = 1000
 META_LEN = (120, 155)
@@ -288,6 +295,14 @@ def g2_client_isolation(z, clients):
                            f"references another client '{c['slug']}' via '{ident}'")
 
 
+def _norm_phone(s):
+    """AU mobile -> bare national digits, so spacing and +61 don't defeat SAFE_PHONES."""
+    d = re.sub(r"\D", "", s)
+    if d.startswith("61"):
+        d = "0" + d[2:]
+    return d
+
+
 def g3_pii(z):
     email_re = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
     phone_re = re.compile(r"(?:\+?61[\s-]?4|\b04)\d{2}[\s-]?\d{3}[\s-]?\d{3}")
@@ -302,7 +317,8 @@ def g3_pii(z):
             if em.lower() not in SAFE_EMAILS:
                 report("G3", WARN, p, line_of(txt, em), f"email address in copy: {em}")
         for ph in set(phone_re.findall(vis)):
-            report("G3", WARN, p, line_of(txt, ph), f"AU mobile number in copy: {ph}")
+            if _norm_phone(ph) not in SAFE_PHONES:
+                report("G3", WARN, p, line_of(txt, ph), f"AU mobile number in copy: {ph}")
 
 
 def g4_evidence(z, clients):
