@@ -528,7 +528,16 @@ def g13_site_integrity():
 
 
 def g14_au_english(z):
-    word_re = {w: re.compile(r"\b" + re.escape(w) + r"\b", re.I) for w in US_SPELLINGS}
+    # Match inflections, not just the bare word. A plain \boptimize\b misses
+    # "optimization" and \banalyze\b misses "analyzes" -- both shipped on the
+    # homepage for weeks while this gate reported a single hit and looked fine.
+    # -ze words become a stem ("optimize" -> "optimiz") so every ending is caught;
+    # the rest allow the common noun/verb endings.
+    def rx_for(w):
+        if w.endswith("ze"):
+            return re.compile(r"\b" + re.escape(w[:-1]) + r"(?:e|es|ed|ing|ation|ations|er|ers)\b", re.I)
+        return re.compile(r"\b" + re.escape(w) + r"(?:s|ed|ing)?\b", re.I)
+    word_re = {w: rx_for(w) for w in US_SPELLINGS}
     for p in z["A"] + z["email"] + z["blog"] + z["clients"]:
         if not (p.endswith(".html") or p.endswith(".md")):
             continue
