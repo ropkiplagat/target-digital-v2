@@ -28,7 +28,7 @@ Replace these in n8n before sending (a Set / Edit-Fields node, or the Gmail node
 - `emailN.html` — **clean source of truth.** Uses readable tokens (`{{first_name}}` etc.).
   Edit copy here.
 - `emailN.n8n.html` — **paste-ready for n8n.** Tokens pre-swapped to live n8n expressions
-  so personalization works with no extra nodes. Regenerate these whenever you edit the
+  so personalisation works with no extra nodes. Regenerate these whenever you edit the
   clean source. Bakes in: real webhook node name, `$`-formatted numbers, a mailto unsubscribe.
 
 Token → expression mapping used in the `.n8n.html` files (webhook node assumed to be
@@ -49,7 +49,7 @@ named `Webhook - Calculator Capture` — rename if yours differs):
   which starts the sequence.
 - **Gmail node config:** Resource = **Message**, Operation = **Send** (NOT Draft);
   To = `{{ $('Webhook - Calculator Capture').item.json.body.email }}`.
-- **Test:** see "How to test personalization" — use n8n's live expression preview, then
+- **Test:** use n8n's live expression preview to confirm the tokens resolve, then do
   one real send with the Wait nodes temporarily shortened.
 
 ## PRODUCTION (when there are paying clients — to build later)

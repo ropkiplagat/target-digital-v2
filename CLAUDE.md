@@ -24,7 +24,7 @@ Both are pitched as working for any industry. Conversion is a Calendly booking �
 | `outbound.html` | Outbound Call Engine product page |
 | `lead-magnet-funnel.html` | Lead Gen lead magnet (AI Lead Leak Audit) |
 | `lead-magnet-outbound.html` | Outbound lead magnet (Cold Outbound Playbook) |
-| `lead-pipeline-calculator.html` | Lead-to-Call ROI calculator (webhook not yet wired) |
+| `lead-pipeline-calculator.html` | Lead-to-Call ROI calculator — email gate POSTs to the live n8n webhook (capture working) |
 | `demos.html` | Hub linking the 4 live interactive demos |
 | `leadgendemo.html` | Live demo — AI lead qualification (fully working) |
 | `documentautomationdemo.html` | Live demo — document automation (lease generate → e-sign → sync) |
@@ -59,9 +59,11 @@ Two layers, both auto-installed:
 
 All events also carry `cta_text`, `cta_location`, `page_id`. **`cta_location`** is the nearest landmark (`nav`, `mobile_nav`, `footer`, or the enclosing `<section id>` — `hero`, `pricing`, `cta-final`…), which is the only way to tell the seven identical "Book a Call" CTAs apart.
 
-⚠️ **Two things must be done once in the GA4 UI or the data is invisible:**
-- Mark **`generate_lead` as a Key Event** (Admin → Events).
-- Register `cta_text`, `cta_location`, `page_id`, `method`, `demo_name`, `expanded` as **custom dimensions** (Admin → Custom definitions). They're collected either way, but won't appear in reports until registered.
+**GA4 property = `properties/516327460`** ("Target Digital"). Two console-side steps were required:
+- ✅ **Custom dimensions registered** — all six (`cta_text`, `cta_location`, `page_id`, `method`, `demo_name`, `expanded`) confirmed present via the Admin API on 2026-08-09.
+- ❓ **Mark `generate_lead` as a Key Event** (Admin → Events) — *still unconfirmed.* This cannot be verified from here: the Data API only reports key-event status for events that have data, and `generate_lead` has never fired. Check it in the GA4 UI. Do **not** fire a test conversion to find out — that pollutes the conversion record permanently.
+
+⚠️ **No custom event has EVER been recorded** (as of 2026-08-09). This is a traffic problem, not a tracking bug: the tracker is verified live on the deployed site, but the property has only ~3 page views in a rolling 4 days, so nothing has been clicked. Don't "fix" the tracker on this evidence — the first real diagnosis is that nobody is visiting.
 
 `faq_click` deliberately fires on *every* click and reports state in a param, rather than only on opens. The accordion's `open` class is set by a script sharing a block with the Lenis/Three.js CDN init — if that CDN is blocked (ad blocker) or the WebGL hero throws, the accordion never binds. Gating the event on that class would kill FAQ tracking silently; this way an all-`closed` report is itself the signal that the accordion broke for real visitors.
 
