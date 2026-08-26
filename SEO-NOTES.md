@@ -124,3 +124,53 @@ the retired name is on the social card.
 This is the correct behaviour (the generator must not invent copy), but it means
 **the copy fix and the OG refresh are one task**: when the title is rewritten,
 re-run `py add_og_tags.py` in the same commit or the card stays stale.
+
+## Browser verification (27 Aug 2026, live site, post-deploy)
+
+No static gate can see whether a page still *behaves*, so this was checked in a
+real browser after deploy. All three animated pages: **zero console errors,
+zero console messages at all.**
+
+| | index.html | funnel.html | outbound.html |
+|---|---|---|---|
+| libs in `<head>` | 0 | 0 | 0 |
+| libs in `<body>` | 2 | 2 | 2 |
+| library loaded | THREE ✓ Lenis ✓ | gsap ✓ ScrollTrigger ✓ | gsap ✓ ScrollTrigger ✓ |
+| hero canvas | 1366×543, WebGL context alive | 1366×543 | — |
+| ScrollTrigger instances | — | **1** (pinned scroll bound) | **0** |
+| FAQ accordion | toggles `faq-item` → `faq-item open` | — | — |
+| smooth scroll | `scrollTo(0,800)` left `scrollY` at 0 — Lenis intercepted | — | — |
+
+The FAQ toggle is the load-bearing check: it proves the inline block actually
+ran. That block is where `new Lenis()` lives, so if the move had broken load
+order it would have thrown before binding the accordion.
+
+**outbound.html's 0 ScrollTrigger instances is pre-existing, not a regression.**
+Source confirms the only call on that page is `gsap.registerPlugin(ScrollTrigger)`
+with no consumer — see the correction section above.
+
+## Incident, same day: internal docs took the site's deploy down
+
+The Pages build failed on two consecutive commits and **the site did not deploy
+for ~4 hours**, while `git push` reported success each time. `git push` cannot
+tell you this; only the Pages API can:
+
+```
+gh api repos/ropkiplagat/target-digital-v2/pages/builds/latest \
+  --jq '{status,sha:.commit[0:7],err:.error.message}'
+```
+
+Cause: Jekyll runs Liquid over every root `.md` it processes, and this file was
+not excluded. The line above documenting that no page contains Liquid tags
+spelled the delimiters out — which made this file contain one. An unclosed tag
+fails the **entire build**, not just the offending file.
+
+Behind it sat a larger gap: `exclude:` named only four files, so everything
+added since was public and returning 200 — `add_ga4_events.py`,
+`competitor-hero-research.md`, this file, and `lead-magnets/` (the source copy
+for pages that are gated behind an email form). Jekyll serves what it is not
+told to hide, so a partial exclude list is not a partial defence.
+
+Now gated by **`check_site.py` check 8**: every root `.py`/`.md`/`.json` must be
+matched in `exclude:`, and any `.md` carrying Liquid delimiters must be excluded
+or it takes the build down. Break-tested in both directions.
