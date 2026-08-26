@@ -1,12 +1,41 @@
 # GitHub Pages (Jekyll) config.
 # Keep source-only / internal files in git but OUT of the public site build.
 # (Without this, everything in the repo is served at targetdigital.com.au/... )
+#
+# Two separate reasons a file belongs here:
+#   1. EXPOSURE — it is internal and must not be public. Jekyll serves anything
+#      it does not exclude, and renders root .md files into public .html pages.
+#   2. BUILD SAFETY — Jekyll runs Liquid over every .md it processes. A doc that
+#      merely *mentions* a Liquid delimiter is an unclosed tag and fails the
+#      whole build, taking the live site's next deploy down with it.
+#
+# check_site.py check 8 enforces this: every root-level .py / .md / .json must
+# be matched here, so a new tooling script cannot silently become public.
 exclude:
+  # --- internal docs (also rule 2: these discuss Liquid syntax) ---
+  - CLAUDE.md          # internal project doc
+  - SEO-NOTES.md       # head-tag ledger — MUST stay excluded, contains Liquid delimiters
+  - competitor-hero-research.md   # competitor strategy notes
+  # --- repo tooling ---
+  - check.py           # content gatekeeper
+  - check_site.py      # boundary test
+  - update_nav.py      # nav generator
+  - add_ga4_events.py  # GA4 event tracker installer
+  - add_og_tags.py     # Open Graph / twitter:card installer
+  - fix_hero_images.py
+  - hero_bg_upgrade.py
+  - pm_all4.py
+  - pm_creative.py
+  - pm_leadmagnets.py
+  - skills-lock.json
+  # --- source-only directories ---
   - email-templates/   # email source templates — internal, not for public crawl
   - call-proxy/        # deployable Node service, not a web page
   - brand/             # strategy / competitor docs
-  - CLAUDE.md          # internal project doc
-  - check_site.py      # boundary test
-  - check.py           # content gatekeeper — internal tooling
-  - update_nav.py      # nav generator
   - clients/           # per-client evidence + deliverables — MUST NOT be public
+  - lead-magnets/      # lead-magnet source copy; the gated .html pages are the product
+  - tests/             # dev-only jsdom suite (+ node_modules)
+  # --- belt and braces: anything new of these types is internal by default ---
+  - "*.py"
+  - "*.md"
+  - "*.json"
