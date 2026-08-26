@@ -151,6 +151,44 @@ for page in PAGES:
         problems.append((page.name, "no rel=canonical link"))
 
 
+# 8. no internal file may leak into the public build.
+#    Jekyll serves whatever it is not told to exclude, and renders root .md
+#    files into public .html pages. It also runs Liquid over every .md it
+#    processes, so an internal doc that merely MENTIONS a Liquid delimiter is
+#    an unclosed tag and fails the ENTIRE site build. Both failures are silent
+#    from inside the repo: the files look local, and the build error surfaces
+#    only in the Pages API. Checked here so neither can drift back.
+config = ROOT / "_config.yml"
+if not config.exists():
+    problems.append(("_config.yml", "missing - without it the whole repo is served publicly"))
+else:
+    cfg = config.read_text(encoding="utf-8")
+    excluded, in_block = set(), False
+    for line in cfg.splitlines():
+        if line.startswith("exclude:"):
+            in_block = True
+            continue
+        if in_block:
+            stripped = line.strip()
+            if stripped.startswith("- "):
+                excluded.add(stripped[2:].split("#")[0].strip().strip('"').strip("'"))
+            elif stripped and not stripped.startswith("#"):
+                break
+
+    def is_excluded(name):
+        return name in excluded or ("*" + Path(name).suffix) in excluded
+
+    for f in sorted(ROOT.iterdir()):
+        if f.is_file() and f.suffix in {".py", ".md", ".json"} and not is_excluded(f.name):
+            problems.append((f.name, "not excluded in _config.yml - Jekyll will serve it "
+                                     "publicly (add it to exclude:, or say why it is public)"))
+
+    for f in sorted(ROOT.glob("*.md")):
+        txt = f.read_text(encoding="utf-8", errors="replace")
+        if ("{%" in txt or "{{" in txt) and not is_excluded(f.name):
+            problems.append((f.name, "contains Liquid delimiters and is NOT excluded - "
+                                     "this fails the entire Pages build, not just this file"))
+
 print(f"Boundary test — {len(PAGES)} pages checked\n")
 if warnings:
     print(f"⚠  {len(warnings)} warning(s):")
