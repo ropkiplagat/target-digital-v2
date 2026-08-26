@@ -68,6 +68,8 @@ All events also carry `cta_text`, `cta_location`, `page_id`. **`cta_location`** 
 `faq_click` deliberately fires on *every* click and reports state in a param, rather than only on opens. The accordion's `open` class is set by a script sharing a block with the Lenis/Three.js CDN init — if that CDN is blocked (ad blocker) or the WebGL hero throws, the accordion never binds. Gating the event on that class would kill FAQ tracking silently; this way an all-`closed` report is itself the signal that the accordion broke for real visitors.
 
 ## Search / indexing
+> **`SEO-NOTES.md` is the head-tag ledger - read it before rebuilding or bulk-editing any `<head>`.** It separates what is live and must be preserved (canonical, gtag, sitemap) from what is *not yet live* and must be created on a rebuild (OG/twitter cards, JSON-LD @graph, medical.html noindex, fonts.gstatic preconnect).
+
 - **`sitemap.xml` is hand-maintained** — there is no `jekyll-sitemap` plugin, so this file is the only thing Google reads. It lists **13 of the 14 pages**. `robots.txt` points at it.
 - **`medical.html` is deliberately excluded** from the sitemap (unlisted demo, direct-link only via `utm_campaign=aria_article`). It is *also* deliberately **not** named in `robots.txt` — that file is public, so a `Disallow` line would advertise the page it's hiding, and wouldn't prevent indexing anyway.
 - **Every page needs `rel="canonical"`.** The homepage's points at `/` (not `/index.html`) — it answers to both URLs, and without a canonical Google can split the domain's strongest page in two.
