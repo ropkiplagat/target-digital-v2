@@ -174,3 +174,32 @@ told to hide, so a partial exclude list is not a partial defence.
 Now gated by **`check_site.py` check 8**: every root `.py`/`.md`/`.json` must be
 matched in `exclude:`, and any `.md` carrying Liquid delimiters must be excluded
 or it takes the build down. Break-tested in both directions.
+
+## Domain-level finding: leads.targetdigital.com.au is a second, orphaned site
+
+Checked 27 Aug 2026 after a report of a "www / non-www / leads" trifurcation.
+
+**www/non-www is NOT split.** All four variants — http/https × www/apex — already
+land on `https://targetdigital.com.au/`. GitHub Pages handles it and `CNAME` is
+correct. Nothing to fix.
+
+**`leads.targetdigital.com.au` is a different site on different infrastructure**,
+not a duplicate of this one:
+
+- brand **"Target Leads"** — *B2B Lead Generation Australia | Cold Email
+  Campaigns Sydney*. Overlaps this site's AI Lead Gen Engine on intent.
+- served by **Cloudflare**, not GitHub Pages. Not in this repo.
+- a **client-rendered SPA**: 3.2KB of HTML, zero server-rendered body copy.
+- **no `rel="canonical"`, no meta description, no OG tags.**
+- its own `robots.txt` + `sitemap.xml`, actively inviting indexing.
+- **zero inbound links from this site** — not in any page, not in `sitemap.xml`.
+  Nothing here points at it and nothing there points back.
+
+⚠️ **It runs a SEPARATE GA4 property: `G-V09QR4W4W7`** (this site is
+`G-DVJVMK97NH`, property 516327460). Worth holding against the standing
+"no custom event has ever been recorded" note above — traffic sent to `leads.`
+lands in a different property entirely and would never appear in 516327460.
+Check both before concluding the tracker is broken.
+
+Not actioned: `leads.` is outside this repo, and whether Target Leads is meant
+to be a separate brand or folded in is a positioning decision, not an SEO fix.
