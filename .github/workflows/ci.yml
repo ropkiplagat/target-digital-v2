@@ -1,0 +1,65 @@
+# CI: the gates CLAUDE.md "How to test it works" already lists, on a clean runner.
+# No secrets are configured and none are needed. Nothing here calls a live or paid service.
+#
+# EXCLUDED, deliberately:
+#   - call-proxy/ - a deployable service that places REAL Vapi calls with a private key; it has
+#     no offline test, and starting it here would need the key. Not run.
+#   - GA4 console state (Key Event, custom dimensions) and live-site checks - these live in
+#     Google's UI / on the served site, not in the repo; verified by hand per CLAUDE.md.
+#   - Deploy - GitHub Pages builds from main on its own; this workflow does not deploy.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONIOENCODING: utf-8
+      PYTHONUTF8: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # jsdom 30 requires node ^22.22.2 || ^24.15.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: tests/package-lock.json
+
+      # mcp-server/ imports mcp.server.mcpserver (the 2.x API).
+      - name: Install Python deps
+        run: python -m pip install --quiet "mcp==2.2.0"
+
+      - name: check.py (gatekeeper; G13 wraps check_site.py)
+        run: python check.py
+
+      - name: check_site.py (site boundary test)
+        run: python check_site.py
+
+      - name: GA4 tracker present and current on every page
+        run: python add_ga4_events.py --check
+
+      - name: GA4 events fire (jsdom)
+        working-directory: tests
+        run: |
+          npm ci
+          npm test
+
+      - name: MCP server tests
+        run: |
+          python mcp-server/test_canon.py
+          python mcp-server/server.py --selftest
+          python mcp-server/test_stdio.py
