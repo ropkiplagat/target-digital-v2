@@ -210,4 +210,5 @@ to be a separate brand or folded in is a positioning decision, not an SEO fix.
 - **Legacy WordPress URLs** `/seo/ /paid-ads/ /contact-us/ /web-development/ /portfolio_cat/seoservices/` are meta-refresh + canonical stubs (`<dir>/index.html`; Pages cannot 301). They stay OUT of the sitemap.
 - **`404.html`** branded, noindex, in `SITEMAP_EXCLUDE`.
 - **Footer** links every sitemap page via `add_footer_links.py` (reads sitemap.xml; re-run after adding a page).
+- Titles, descriptions, homepage hero line and 3 homepage H2s rewritten around searched terms + "Australia" (4 Oct 2026); lead-magnet titles untouched.
 - Logo alt is "Target Digital" everywhere (update_nav.py too). Still open: Joanne.jfif -> WebP.
