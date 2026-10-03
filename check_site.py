@@ -104,6 +104,8 @@ SITEMAP_EXCLUDE = {
     # Unlisted Smiles Clinic demo — direct-link only, promoted via
     # utm_campaign=aria_article, deliberately kept out of nav AND search.
     "medical.html",
+    # Branded GitHub Pages 404 — served for dead URLs, noindexed, never a sitemap page.
+    "404.html",
 }
 BASE = "https://targetdigital.com.au/"
 sitemap = ROOT / "sitemap.xml"

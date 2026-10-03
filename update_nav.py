@@ -21,7 +21,7 @@ HTML_FILES = [
 CALENDLY = "https://calendly.com/ropkiplagat/intro-to-sales-target-digital"
 
 NEW_NAV = '''<nav>
-  <div class="nav-logo"><img src="/target-digital-logo.png" alt="Target Digital Media"></div>
+  <div class="nav-logo"><img src="/target-digital-logo.png" alt="Target Digital"></div>
   <div class="nav-links">
     <a href="/">Home</a>
     <a href="/funnel.html">Lead Gen Engine</a>

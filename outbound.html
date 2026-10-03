@@ -36,17 +36,85 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Target Digital",
-  "url": "https://targetdigital.com.au",
-  "description": "The AI Outbound Call Engine: form submit triggers an instant SMS and AI phone call that qualifies leads by voice, transfers hot leads live to sales, and books the rest automatically.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Brisbane",
-    "addressRegion": "QLD",
-    "addressCountry": "AU"
-  },
-  "email": "rop@targetdigital.com.au"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://targetdigital.com.au/#org",
+      "name": "Target Digital",
+      "url": "https://targetdigital.com.au/",
+      "logo": "https://targetdigital.com.au/target-digital-logo.png",
+      "email": "rop@targetdigital.com.au",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Australia"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Brisbane",
+        "addressRegion": "QLD",
+        "addressCountry": "AU"
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "AI Outbound Call Engine",
+      "serviceType": "AI Outbound Call Engine",
+      "url": "https://targetdigital.com.au/outbound.html",
+      "description": "The moment a lead submits a form, they get an instant SMS and an AI phone call. The AI qualifies by voice, transfers hot leads live to your sales team, and books the rest — automatically.",
+      "provider": {
+        "@id": "https://targetdigital.com.au/#org"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Australia"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the AI sound robotic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The voice agent uses natural, conversational speech with realistic pacing and interruption handling — most leads can't tell. It's tuned to your business, opens by referencing the exact form they just submitted, and is upfront that it's an AI assistant calling to help. The goal is a fast, helpful first conversation, not a trick."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this compliant? What about consent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The engine only calls leads who just submitted your form requesting contact — that's inbound, opted-in interest, not cold dialling. We configure the SMS and call to identify your business and the AI assistant, honour opt-outs, and respect calling-hour rules for your region. We'll walk through the compliance setup for your jurisdiction on the call."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if the lead doesn't answer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The engine retries on a smart schedule across the next 3 days — varying the time of day to maximise pickup — and sends follow-up SMS between attempts. It keeps trying until the lead connects, books, or the retry window is exhausted. No lead is dropped after one missed call."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a sales team to use this?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The engine qualifies leads and books appointments on your calendar either way. If you do have a sales team, hot leads are transferred to them live; if you don't, every qualified lead is simply booked for you to take yourself. Many of our clients are founder-led with no dedicated sales function."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will it connect to my existing forms and CRM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The engine connects to your landing pages, ad lead forms, and website via webhook, and can log every call outcome and recording into your CRM. If you can capture a lead's name and phone number, we can plug the engine in — usually within 48 hours."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 <style>
@@ -321,7 +389,7 @@ footer{background:var(--navy2);border-top:1px solid var(--muted2);padding:2.5rem
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo"><img src="/target-digital-logo.png" alt="Target Digital Media"></div>
+  <div class="nav-logo"><img src="/target-digital-logo.png" alt="Target Digital"></div>
   <div class="nav-links">
     <a href="/">Home</a>
     <a href="/funnel.html">Lead Gen Engine</a>
@@ -668,6 +736,7 @@ function toggleMobileNav() {
     <a href="mailto:rop@targetdigital.com.au">rop@targetdigital.com.au</a>
   </div>
   <p>© 2026 Target Digital AI. All rights reserved. | Outbound Call Engine built on Railway + Claude Code.</p>
+<!-- footer-links:start --><div style="text-align:center;line-height:2;margin:1rem 0;font-size:.85rem"><a href="/" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Home</a><a href="/funnel.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">AI Lead Gen Engine</a><a href="/outbound.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">AI Outbound Call Engine</a><a href="/demos.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Demos</a><a href="/leadgendemo.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Lead Qualification Demo</a><a href="/outboundcalldemo.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">AI Call Demo</a><a href="/invoiceautomationdemo.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Invoice Automation Demo</a><a href="/documentautomationdemo.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Document Automation Demo</a><a href="/lead-pipeline-calculator.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">ROI Calculator</a><a href="/lead-magnet-funnel.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Lead Leak Audit</a><a href="/lead-magnet-outbound.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Cold Outbound Playbook</a><a href="/privacy-policy.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Privacy Policy</a><a href="/terms.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Terms</a></div><!-- footer-links:end -->
 </footer>
 
 <!-- MOBILE STICKY CTA -->

@@ -36,6 +36,95 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://targetdigital.com.au/#org",
+      "name": "Target Digital",
+      "url": "https://targetdigital.com.au/",
+      "logo": "https://targetdigital.com.au/target-digital-logo.png",
+      "email": "rop@targetdigital.com.au",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Australia"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Brisbane",
+        "addressRegion": "QLD",
+        "addressCountry": "AU"
+      },
+      "description": "Capture leads. AI qualifies them. Outbound calls book sales calls. Two AI-powered engines that turn inbound leads into booked sales calls — automatically, for any industry."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://targetdigital.com.au/#site",
+      "url": "https://targetdigital.com.au/",
+      "name": "Target Digital",
+      "publisher": {
+        "@id": "https://targetdigital.com.au/#org"
+      },
+      "inLanguage": "en-AU"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long until I see results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both engines go live within 48 hours. Most clients see their first AI-qualified leads and booked sales calls within 7–14 days of launch. Full ROI typically shows within 30–60 days depending on your lead volume and current baseline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need any technical knowledge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "None at all. We handle everything — setup, integrations, monitoring, and optimisation. You just review the results in a simple dashboard we provide. If you can check email, you can manage this."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if it doesn't work for my industry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both engines work for any industry. We've deployed across home services, med spas, dental, legal, real estate, and B2B services. If you have leads to capture and prospects to call, the engines work. Before we start, we run a free audit to confirm fit — we won't take you on if we can't deliver."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does pricing work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A one-time setup fee builds and deploys your engine(s), then a flat monthly retainer covers running, monitoring, and optimisation: Starter ($2,000 + $500/mo), Growth ($4,500 + $1,500/mo), or Scale ($7,500 + $3,000/mo). Tool costs (Twilio, Apollo, Instantly, etc.) are typically $150–300/month paid directly. No lock-in."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes this different from hiring a marketing agency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Traditional agencies sell you ad spend and reports. We build you a machine you own — AI systems that run 24/7 without hourly fees or retainer bloat. Your ROI compounds over time instead of disappearing the moment you stop paying."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from hiring a marketing team?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The best AI-first teams are already running with a fraction of traditional headcount — parallel AI agents doing the work of a much larger team. We do the same for your business, but you don't need to manage any of it. We are the agent jockeys. You get the results."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -271,28 +360,12 @@ footer .footer-logo span{color:var(--gold)}
   .hamburger { display: flex; }
 }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Target Digital",
-  "url": "https://targetdigital.com.au",
-  "description": "Two AI-powered GTM engines: a Lead Gen Engine that captures and qualifies inbound leads, and an Outbound Call Engine that calls, qualifies and books sales calls automatically. Works for any industry.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Brisbane",
-    "addressRegion": "QLD",
-    "addressCountry": "AU"
-  },
-  "email": "rop@targetdigital.com.au"
-}
-</script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo"><img src="/target-digital-logo.png" alt="Target Digital Media"></div>
+  <div class="nav-logo"><img src="/target-digital-logo.png" alt="Target Digital"></div>
   <div class="nav-links">
     <a href="/">Home</a>
     <a href="/funnel.html">Lead Gen Engine</a>
@@ -454,7 +527,7 @@ function toggleMobileNav() {
         <div class="system-tag" style="margin-bottom:1rem">Lead Gen Engine</div>
         <p class="testi-quote">"Within 6 weeks of launching the AI Lead Gen Engine, we had 3 new commercial contracts worth over $80K. Leads get qualified and booked before I've even seen them. I honestly didn't believe it would work this fast."</p>
         <div class="testi-author">
-          <img src="Joanne.jfif" style="width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid #F59E0B;">
+          <img src="Joanne.jfif" alt="Joan R., Lead Gen Engine client" style="width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid #F59E0B;">
           <div>
             <div class="testi-name">Joan R.</div>
             <div class="testi-loc">Imani Mental Health — Arizona</div>
@@ -619,6 +692,7 @@ function toggleMobileNav() {
 <footer>
   <div class="footer-logo">Target<span>Digital</span></div>
   <p>© 2026 Target Digital. AI Lead Gen + Outbound Call Engines.</p>
+<!-- footer-links:start --><div style="text-align:center;line-height:2;margin:1rem 0;font-size:.85rem"><a href="/" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Home</a><a href="/funnel.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">AI Lead Gen Engine</a><a href="/outbound.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">AI Outbound Call Engine</a><a href="/demos.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Demos</a><a href="/leadgendemo.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Lead Qualification Demo</a><a href="/outboundcalldemo.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">AI Call Demo</a><a href="/invoiceautomationdemo.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Invoice Automation Demo</a><a href="/documentautomationdemo.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Document Automation Demo</a><a href="/lead-pipeline-calculator.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">ROI Calculator</a><a href="/lead-magnet-funnel.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Lead Leak Audit</a><a href="/lead-magnet-outbound.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Cold Outbound Playbook</a><a href="/privacy-policy.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Privacy Policy</a><a href="/terms.html" style="color:#7986b0;text-decoration:none;margin:0 .6rem;white-space:nowrap">Terms</a></div><!-- footer-links:end -->
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

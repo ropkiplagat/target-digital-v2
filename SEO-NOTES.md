@@ -203,3 +203,11 @@ Check both before concluding the tracker is broken.
 
 Not actioned: `leads.` is outside this repo, and whether Target Leads is meant
 to be a separate brand or folded in is a positioning decision, not an SEO fix.
+
+## Shipped 4 Oct 2026 (audit quick wins)
+
+- **JSON-LD @graph** on index / funnel / outbound via `add_jsonld.py` (Organization+logo+areaServed AU, WebSite, Service, FAQPage built from the page's own FAQ markup). `--check` fails if stale. Re-run after editing any FAQ or meta description. The "AI Funnel Machine" drift is fixed.
+- **Legacy WordPress URLs** `/seo/ /paid-ads/ /contact-us/ /web-development/ /portfolio_cat/seoservices/` are meta-refresh + canonical stubs (`<dir>/index.html`; Pages cannot 301). They stay OUT of the sitemap.
+- **`404.html`** branded, noindex, in `SITEMAP_EXCLUDE`.
+- **Footer** links every sitemap page via `add_footer_links.py` (reads sitemap.xml; re-run after adding a page).
+- Logo alt is "Target Digital" everywhere (update_nav.py too). Still open: Joanne.jfif -> WebP.
