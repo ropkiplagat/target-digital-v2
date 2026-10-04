@@ -16,7 +16,7 @@ Both are pitched as working for any industry. Conversion is a Calendly booking �
 - **No build step.** Open the `.html` files directly; all CSS/JS is inline or via CDN (Three.js, GSAP, Lenis, Google Fonts).
 - **Booking:** all CTAs point to `https://calendly.com/ropkiplagat/intro-to-sales-target-digital`.
 
-## Pages (14 ship + 404.html; legacy-redirect stubs live in seo/, paid-ads/, contact-us/, web-development/, portfolio_cat/ — see SEO-NOTES.md)
+## Pages (15 ship + 404.html; legacy-redirect stubs live in seo/, paid-ads/, contact-us/, web-development/, portfolio_cat/ — see SEO-NOTES.md)
 | File | Purpose |
 |------|---------|
 | `index.html` | Homepage — both products side by side, proof, 3-tier pricing |

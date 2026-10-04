@@ -5,7 +5,7 @@ Run: py add_footer_links.py"""
 import re
 from pathlib import Path
 ROOT = Path(__file__).parent
-LABELS = {"": "Home", "funnel.html": "AI Lead Gen Engine", "outbound.html": "AI Outbound Call Engine",
+LABELS = {"": "Home", "funnel.html": "AI Lead Gen Engine", "outbound.html": "AI Outbound Call Engine", "ai-lead-generation-brisbane.html": "Brisbane",
           "demos.html": "Demos", "lead-pipeline-calculator.html": "ROI Calculator",
           "lead-magnet-funnel.html": "Lead Leak Audit", "lead-magnet-outbound.html": "Cold Outbound Playbook",
           "leadgendemo.html": "Lead Qualification Demo", "outboundcalldemo.html": "AI Call Demo",

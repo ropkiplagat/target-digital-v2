@@ -15,7 +15,7 @@ HTML_FILES = [
     "lead-magnet-funnel.html", "lead-magnet-outbound.html",
     "lead-pipeline-calculator.html", "demos.html",
     "leadgendemo.html", "documentautomationdemo.html", "outboundcalldemo.html",
-    "privacy-policy.html", "terms.html",
+    "privacy-policy.html", "terms.html", "ai-lead-generation-brisbane.html",
 ]
 
 CALENDLY = "https://calendly.com/ropkiplagat/intro-to-sales-target-digital"

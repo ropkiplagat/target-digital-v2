@@ -212,3 +212,4 @@ to be a separate brand or folded in is a positioning decision, not an SEO fix.
 - **Footer** links every sitemap page via `add_footer_links.py` (reads sitemap.xml; re-run after adding a page).
 - Titles, descriptions, homepage hero line and 3 homepage H2s rewritten around searched terms + "Australia" (4 Oct 2026); lead-magnet titles untouched.
 - Logo alt is "Target Digital" everywhere (update_nav.py too). Joanne.jfif converted to WebP (5 Oct 2026).
+- **Brisbane page** `ai-lead-generation-brisbane.html` (5 Oct 2026): in the sitemap (now 14 URLs), Service JSON-LD via `add_jsonld.py`, footer-linked. Content uses only claims already on the site; no Brisbane client claims. Add cities only if they are real service areas.

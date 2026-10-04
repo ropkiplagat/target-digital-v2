@@ -14,8 +14,9 @@ SITE = "https://targetdigital.com.au"
 SERVICES = {
     "funnel.html": ("AI Lead Gen Engine", "/funnel.html"),
     "outbound.html": ("AI Outbound Call Engine", "/outbound.html"),
+    "ai-lead-generation-brisbane.html": ("AI lead generation and follow-up in Brisbane", "/ai-lead-generation-brisbane.html"),
 }
-PAGES = ["index.html", "funnel.html", "outbound.html"]
+PAGES = ["index.html", "funnel.html", "outbound.html", "ai-lead-generation-brisbane.html"]
 BLOCK = re.compile(r'<script type="application/ld\+json">.*?</script>\n?', re.S)
 ORG = {
     "@type": "Organization", "@id": SITE + "/#org", "name": "Target Digital", "url": SITE + "/",
