@@ -55,17 +55,8 @@ def front_matter(txt):
     return fm, txt[end + 4:].lstrip("\n")
 
 
-def head(title, desc, canon, img, extra=""):
-    return f"""<!DOCTYPE html>
-<html lang="en-AU">
-<head>
-<meta charset="UTF-8">
-{GA_HEAD}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{title}</title>
-<meta name="description" content="{desc}">
-<link rel="canonical" href="{canon}">
-<meta property="og:type" content="article">
+def head(title, desc, canon, img, extra="", og=True):
+    og = f"""<meta property="og:type" content="article">
 <meta property="og:site_name" content="Target Digital">
 <meta property="og:locale" content="en_AU">
 <meta property="og:url" content="{canon}">
@@ -78,7 +69,17 @@ def head(title, desc, canon, img, extra=""):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
-<meta name="twitter:image" content="{SITE}/{img}">
+<meta name="twitter:image" content="{SITE}/{img}">""" if og else ""  # root pages get theirs from add_og_tags.py
+    return f"""<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+{GA_HEAD}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<meta name="description" content="{desc}">
+<link rel="canonical" href="{canon}">
+{og}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -131,9 +132,32 @@ def build_index(posts):
 {items}
 </ul>
 <p><a class="btn" href="{CAL}" target="_blank" rel="noopener">Book a Call</a></p>"""
-    page = (head(title, desc, canon, "funnel-hero.png").replace('og:type" content="article"', 'og:type" content="website"')
+    page = (head(title, desc, canon, "funnel-hero.png", og=False)
             + NAV + '\n<main class="legal">\n' + body + "\n</main>\n\n" + FOOTER + "\n\n" + EVENTS + "\n</body>\n</html>\n")
     (ROOT / "blog.html").write_text(page, encoding="utf-8", newline="")
+
+
+def build_faq():
+    """faq.html from blog-src/_faq.json: [{"section","q","a"}], answers are inner HTML."""
+    import json
+    items = json.loads((ROOT / "blog-src" / "_faq.json").read_text(encoding="utf-8"))
+    title = "Lead Follow-Up and AI Calling FAQ | Target Digital"
+    desc = "Answers on speed to lead, AI receptionist and lead generation costs, how AI lead qualification works, and Australian calling rules, from Target Digital."
+    canon = SITE + "/faq.html"
+    plain = lambda h: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", h)).strip()
+    schema = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": i["q"], "acceptedAnswer": {"@type": "Answer", "text": plain(i["a"])}} for i in items]}
+    body, last = ['<h1>Lead follow-up and AI calling: <span class="accent">your questions</span></h1>',
+                  '<p class="updated">Short answers, each linked to the guide that backs it up. General information, not legal advice.</p>'], None
+    for i in items:
+        if i["section"] != last:
+            body.append(f"<h2>{i['section']}</h2>"); last = i["section"]
+        body.append(f"<h3>{i['q']}</h3>\n<p>{i['a']}</p>")
+    body.append(f'<p style="margin-top:28px"><a class="btn" href="{CAL}" target="_blank" rel="noopener">Book a Call</a></p>')
+    ld = '<script type="application/ld+json">\n' + json.dumps(schema, indent=2, ensure_ascii=False) + "\n</script>"
+    page = (head(title, desc, canon, "funnel-hero.png", ld, og=False)
+            + NAV + '\n<main class="legal">\n' + "\n".join(body) + "\n</main>\n\n" + FOOTER + "\n\n" + EVENTS + "\n</body>\n</html>\n")
+    (ROOT / "faq.html").write_text(page, encoding="utf-8", newline="")
 
 
 def add_sitemap(urls):
@@ -147,5 +171,7 @@ def add_sitemap(urls):
 
 posts = [build_post(p) for p in sorted((ROOT / "blog-src").glob("*.html"))]
 build_index(posts)
-add_sitemap([SITE + "/blog.html"] + [f"{SITE}/blog/{p['slug']}.html" for p in posts])
-print(f"built {len(posts)} post(s) + blog.html; sitemap updated")
+if (ROOT / "blog-src" / "_faq.json").exists():
+    build_faq()
+add_sitemap([SITE + "/blog.html", SITE + "/faq.html"] + [f"{SITE}/blog/{p['slug']}.html" for p in posts])
+print(f"built {len(posts)} post(s) + blog.html + faq.html; sitemap updated")
