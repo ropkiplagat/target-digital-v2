@@ -106,6 +106,9 @@ SITEMAP_EXCLUDE = {
     "medical.html",
     # Branded GitHub Pages 404 — served for dead URLs, noindexed, never a sitemap page.
     "404.html",
+    # Smartbot AI's products, not Target Digital's — redirect stubs so old links land on the demos hub.
+    "invoiceautomationdemo.html",
+    "documentautomationdemo.html",
 }
 BASE = "https://targetdigital.com.au/"
 sitemap = ROOT / "sitemap.xml"

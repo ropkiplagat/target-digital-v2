@@ -14,7 +14,7 @@ HTML_FILES = [
     "index.html", "funnel.html", "outbound.html",
     "lead-magnet-funnel.html", "lead-magnet-outbound.html",
     "lead-pipeline-calculator.html", "demos.html",
-    "leadgendemo.html", "documentautomationdemo.html", "outboundcalldemo.html",
+    "leadgendemo.html", "outboundcalldemo.html",
     "privacy-policy.html", "terms.html", "ai-lead-generation-brisbane.html",
 ]
 

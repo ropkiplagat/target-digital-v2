@@ -25,10 +25,8 @@ Both are pitched as working for any industry. Conversion is a Calendly booking �
 | `lead-magnet-funnel.html` | Lead Gen lead magnet (AI Lead Leak Audit) |
 | `lead-magnet-outbound.html` | Outbound lead magnet (Cold Outbound Playbook) |
 | `lead-pipeline-calculator.html` | Lead-to-Call ROI calculator — email gate POSTs to the live n8n webhook (capture working) |
-| `demos.html` | Hub linking the 4 live interactive demos |
+| `demos.html` | Hub linking the 2 live interactive demos (lead qualification, outbound call). Invoice/document automation are Smartbot AI's — their old URLs are redirect stubs to this hub |
 | `leadgendemo.html` | Live demo — AI lead qualification (fully working) |
-| `documentautomationdemo.html` | Live demo — document automation (lease generate → e-sign → sync) |
-| `invoiceautomationdemo.html` | Live demo — supplier invoice → OCR extract → GST split → draft bill in Xero |
 | `outboundcalldemo.html` | Live demo — AI outbound call flow; places **real Vapi calls** (proxy deployed) |
 | `medical.html` | Sales asset for the live Aria voice-reception demo (unlisted — promoted via UTM, `utm_campaign=aria_article`) |
 | `privacy-policy.html` / `terms.html` | Legal placeholders |
