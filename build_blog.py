@@ -38,6 +38,10 @@ EXTRA_CSS = """<style>
 .legal ol{margin:0 0 16px 22px;padding:0}.legal ol li{padding-left:6px;margin-bottom:12px}.legal ol li::before{content:none}
 .legal ul.posts{margin-top:8px}.legal ul.posts li::before{content:"→"}
 .legal .btn.ghost{margin-left:0}
+.legal table{width:100%;border-collapse:collapse;margin:8px 0 20px;font-size:15px}
+.legal th,.legal td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.1);vertical-align:top}
+.legal th{color:var(--white);font-family:'Syne',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+@media (max-width:640px){.legal table{display:block;overflow-x:auto}}
 </style>"""
 
 
