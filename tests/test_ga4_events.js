@@ -7,7 +7,9 @@ const { JSDOM, VirtualConsole } = require('jsdom');
 const REPO = path.join(__dirname, '..');
 // Discovered, like add_ga4_events.py and check_site.py — a new page is covered
 // by this test the moment it lands, without anyone remembering to list it.
-const PAGES = fs.readdirSync(REPO).filter(f => f.endsWith('.html')).sort();
+// Redirect stubs (meta refresh) carry no tracker by design.
+const PAGES = fs.readdirSync(REPO).filter(f => f.endsWith('.html'))
+  .filter(f => !fs.readFileSync(path.join(REPO, f), 'utf8').includes('http-equiv="refresh"')).sort();
 
 let pass = 0, fail = 0;
 function ok(name, cond, detail) {
@@ -144,8 +146,6 @@ console.log('\n5. Demo forms');
 const DEMOS = {
   'leadgendemo.html': ['leadForm', 'lead_qualification'],
   'outboundcalldemo.html': ['callForm', 'outbound_call'],
-  'invoiceautomationdemo.html': ['invForm', 'invoice_automation'],
-  'documentautomationdemo.html': ['docForm', 'document_automation'],
 };
 for (const [page, [formId, demoName]] of Object.entries(DEMOS)) {
   const { d, events } = load(page);

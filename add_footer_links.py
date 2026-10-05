@@ -9,6 +9,7 @@ LABELS = {"": "Home", "funnel.html": "AI Lead Gen Engine", "outbound.html": "AI 
           "demos.html": "Demos", "lead-pipeline-calculator.html": "ROI Calculator",
           "lead-magnet-funnel.html": "Lead Leak Audit", "lead-magnet-outbound.html": "Cold Outbound Playbook",
           "leadgendemo.html": "Lead Qualification Demo", "outboundcalldemo.html": "AI Call Demo",
+          "blog.html": "Blog", "blog/speed-to-lead-australia.html": "Speed to Lead Guide",
           "privacy-policy.html": "Privacy Policy", "terms.html": "Terms"}
 S, E = "<!-- footer-links:start -->", "<!-- footer-links:end -->"
 locs = re.findall(r"<loc>https://targetdigital.com.au/([^<]*)</loc>", (ROOT / "sitemap.xml").read_text(encoding="utf-8"))

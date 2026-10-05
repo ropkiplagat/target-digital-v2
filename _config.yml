@@ -34,6 +34,7 @@ exclude:
   - brand/             # strategy / competitor docs
   - clients/           # per-client evidence + deliverables — MUST NOT be public
   - lead-magnets/      # lead-magnet source copy; the gated .html pages are the product
+  - blog-src/          # blog post sources; build_blog.py renders them into blog/
   - tests/             # dev-only jsdom suite (+ node_modules)
   # --- belt and braces: anything new of these types is internal by default ---
   - "*.py"
