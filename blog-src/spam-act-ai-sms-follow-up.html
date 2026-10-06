@@ -1,0 +1,76 @@
+---
+title: Spam Act Rules for AI Text Message Follow-Up in Australia
+slug: spam-act-ai-sms-follow-up
+target_keyword: spam act
+meta_description: Spam Act rules for AI text follow-up: consent, identifying your business, unsubscribe within five working days, and the 2026 sender ID change.
+date: 2026-10-06
+og_image: outbound-hero.png
+---
+<h1>Spam Act rules for <span class="accent">AI text message follow-up</span> in Australia</h1>
+<p class="updated">Published 6 October 2026 · ACMA pages read on 5 and 6 October 2026 · By Target Digital · 8 minute read</p>
+
+<p>The Spam Act applies to AI text message follow-up in the same way as to a text typed by a person: you need consent, you must identify your business, and every marketing message needs a working way to unsubscribe. A system that sends texts for you on autopilot repeats any mistake in those three rules thousands of times.</p>
+
+<p>This guide sets out the rules from ACMA's own guidance, what changed for branded text messages in July 2026, and how to build an AI follow-up so it stays inside them. It is general information, not legal advice. Calls are a separate regime, covered in our <a href="/blog/ai-outbound-calling-compliance-australia.html">AI outbound calling compliance guide</a>.</p>
+
+<h2>Is your follow-up text covered by the Spam Act?</h2>
+<p>ACMA's <a href="https://www.acma.gov.au/avoid-sending-spam" target="_blank" rel="noopener">guidance on avoiding spam</a> applies to marketing messages and emails. A text that promotes your services is marketing, and a follow-up that adds an offer, a pitch or an upsell is more likely to be treated that way. We did not find ACMA's treatment of a purely factual message, such as a confirmation of a booking, on the pages we read, so we have not assumed a safe category. Treat any follow-up text that promotes your business as a marketing message, and take advice if you want to rely on an exception.</p>
+<p>The Spam Act also covers texts sent for you. ACMA says that even if someone else sends your marketing messages, you must still have consent from each person who will receive them. Using an AI platform does not move that duty.</p>
+
+<h2>What the Spam Act requires of an AI text follow-up</h2>
+<p>ACMA sets out three steps: get consent, identify yourself, and make it easy to unsubscribe.</p>
+
+<h3>1. Consent</h3>
+<p>There are two types, express and inferred.</p>
+<ul>
+  <li><strong>Express consent</strong> means the person knows and accepts they will receive marketing messages from you. ACMA calls this best practice. People can give it by filling in a form, ticking a box on a website, over the phone or face to face.</li>
+  <li><strong>Inferred consent</strong> is possible where the person has knowingly and directly given their number and it is reasonable to believe they would expect marketing from your business, usually through a provable, ongoing relationship where the marketing relates directly to it. ACMA says inferred consent is not as reliable as express consent and does not cover messages sent after someone has just bought something.</li>
+</ul>
+<p>Two points matter for automation. First, <strong>you cannot send a text to ask for consent</strong>, because ACMA says that would itself be a marketing message. Second, <strong>the burden is on you</strong>: keep a record of who gave consent, when and how, because under the Spam Act it is up to you to prove it.</p>
+<p>A lead who submits an enquiry form has asked about your service. Whether that gives you consent to send promotional follow-ups is the sort of argument you do not want to have. A tick box on the form, covered in <a href="/blog/facebook-lead-form-consent-to-call.html">our guide to consent from a lead form</a>, removes it.</p>
+
+<h3>2. Identify yourself</h3>
+<p>ACMA says the message must accurately identify your name or business name and include correct contact details. If someone else sends it for you, the message must still identify you as the business that authorised it, using your legal name or your name and ABN. This information must stay correct for at least 30 days after you send the message.</p>
+
+<h3>3. Unsubscribe</h3>
+<p>ACMA says every commercial message must contain an unsubscribe option that:</p>
+<ul>
+  <li>presents the instructions clearly;</li>
+  <li>honours a request within five working days;</li>
+  <li>does not require a fee, or cost more than the usual amount, such as a standard text charge;</li>
+  <li>works for at least 30 days after you send the message;</li>
+  <li>does not require extra personal information, a login or an account.</li>
+</ul>
+<p>ACMA's SMS examples are "Reply STOP" and "Unsub:" followed by a 1800 number. Its tip is the one most AI platforms trip over: alphanumeric message headers are generally not capable of receiving return messages. If you send from a branded name, put a phone number or link in the text.</p>
+
+<h2>The 2026 change: registered sender IDs</h2>
+<p>From 1 July 2026, texts sent with a business name at the top, called a sender ID, must have that sender ID registered. <a href="https://www.acma.gov.au/sending-text-messages-your-business-or-organisation-name" target="_blank" rel="noopener">ACMA says</a> an unregistered sender ID is replaced with "Unverified", and all "Unverified" texts are grouped in the same thread on a person's phone, with scam messages. You register through your telco or message provider. A sender ID must be two to eleven characters and must match your registered business name, company name, trademark or domain name if you have an ABN.</p>
+<p>If you send from a phone number, or do not use a sender ID, ACMA says you do not need to do anything. That has a side benefit: a normal number can receive "STOP" replies. If your follow-up texts arrive as "Unverified", the sender ID is the likely cause, so ask your provider.</p>
+
+<h2>What regulators do with breaches</h2>
+<p>ACMA publishes its penalties. In March 2026 it said <a href="https://www.acma.gov.au/articles/2026-03/lululemon-penalised-702k-spam-breaches" target="_blank" rel="noopener">Lululemon paid $702,900</a> for sending more than 370,000 emails with commercial content that had no unsubscribe option, and in April 2026 that <a href="https://www.acma.gov.au/articles/2026-04/latitude-finance-pays-396m-more-spam-breaches" target="_blank" rel="noopener">Latitude Finance paid $3.96 million</a> after it was found to have breached the spam laws more than 2.7 million times. Those are large businesses, but the pattern is the one to notice: automation turns a single missing line into hundreds of thousands of breaches.</p>
+
+<h2>Building an AI text follow-up that stays inside the rules</h2>
+<ol>
+  <li><strong>Check consent before every send.</strong> The system should read a consent flag, not assume one, and send nothing to a lead without it.</li>
+  <li><strong>Put identification in the template.</strong> Business name and a working contact detail in every message.</li>
+  <li><strong>Make STOP work everywhere.</strong> Treat a "STOP" reply as an opt-out across texts, and it is our recommendation to also stop calls to that number. Honour it faster than five working days: automation can do it at once.</li>
+  <li><strong>Use a number that can receive replies,</strong> or include a free number or link.</li>
+  <li><strong>Register your sender ID</strong> if you use one, through your message provider.</li>
+  <li><strong>Log everything:</strong> the consent wording, time and form, each message sent, and each opt-out.</li>
+</ol>
+<p>Our <a href="/outbound.html">AI Outbound Call Engine</a> sends an instant SMS and then an AI call. Texts come first for speed, and the reasons are in our <a href="/blog/speed-to-lead-australia.html">speed to lead</a> guide. Whichever platform sends yours, ask it to show you each of the six points above.</p>
+
+<h2>Spam Act: common questions</h2>
+<h3>Do I need consent to text leads under the Spam Act?</h3>
+<p>For marketing messages, yes. It can be express or inferred, and ACMA recommends express. You must be able to show it.</p>
+<h3>Can I text a lead to ask them to opt in?</h3>
+<p>No. ACMA says you cannot send an electronic message to ask for consent, because that is a marketing message. Collect it on the form, on the phone or face to face.</p>
+<h3>What changed in SMS rules in 2026?</h3>
+<p>From 1 July 2026, branded sender IDs must be registered or the text is labelled "Unverified". Texts from ordinary phone numbers are not affected.</p>
+<h3>How fast must I honour an unsubscribe?</h3>
+<p>Within five working days under ACMA's guidance. With an automated system there is no reason to wait.</p>
+
+<h2>Next step</h2>
+<p>If an AI is already texting your leads, a 30-minute call will check it against the list above: consent flag, identification, unsubscribe, sender ID. We will tell you what we would change. This is general information, not legal advice.</p>
+<p><a class="btn" href="https://calendly.com/ropkiplagat/intro-to-sales-target-digital" target="_blank" rel="noopener">Book a 30-minute intro call</a><a class="btn ghost" href="/outboundcalldemo.html">Have the AI call your phone</a></p>
