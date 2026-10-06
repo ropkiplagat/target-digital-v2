@@ -29,10 +29,10 @@ Both are pitched as working for any industry. Conversion is a Calendly booking �
 | `leadgendemo.html` | Live demo — AI lead qualification (fully working) |
 | `outboundcalldemo.html` | Live demo — AI outbound call flow; places **real Vapi calls** (proxy deployed) |
 | `medical.html` | Sales asset for the live Aria voice-reception demo (unlisted — promoted via UTM, `utm_campaign=aria_article`) |
-| `blog.html` + `blog/<slug>.html` | Blog index + posts. **Never hand-edit `blog/` or `blog.html`.** Write a source in `blog-src/<slug>.html` (front matter + article HTML) and run `py build_blog.py` then `py add_og_tags.py`, `py add_footer_links.py`, `py check.py` (stage the new files first: check.py only scans tracked files). G9 is the format contract. Add the post's footer label in `add_footer_links.py` LABELS. Competitor research + queue: `brand/competitor-watch.md`. Before pushing run `py blog_lint.py` (advisory prose tells) and `py blog_links.py` (external links; 403s are bot-blocks to verify by hand). Full procedure: the `targetdigital-blog-post` skill |
+| `blog.html` + `blog/<slug>.html` | Blog index + posts. **Never hand-edit `blog/` or `blog.html`.** Write a source in `blog-src/<slug>.html` (front matter + article HTML) and run `py build_blog.py` then `py add_og_tags.py`, `py add_footer_links.py`, `py check.py` (stage the new files first: check.py only scans tracked files). G9 is the format contract. Add the post's footer label in `add_footer_links.py` LABELS. Internal notes (competitor watch, keyword map, blog plan) are PRIVATE and live outside this public repo in `C:\Users\cc\targetdigital-private\brand\`. Before pushing run `py blog_lint.py` (advisory prose tells) and `py blog_links.py` (external links; 403s are bot-blocks to verify by hand). Full procedure: the `targetdigital-blog-post` skill |
 | `privacy-policy.html` / `terms.html` | Legal placeholders |
 
-`brand/competitor-intelligence.md` and `competitor-hero-research.md` are strategy docs, not pages.
+`competitor-hero-research.md` is a strategy doc, not a page. The `brand/` strategy docs were moved out of this public repo to `C:\Users\cc\targetdigital-private\brand\` (git-ignored here).
 `call-proxy/` is a deployable Node service (NOT served by Pages) — it places real Vapi calls for the outbound demo; see `call-proxy/README.md`.
 
 ## Pricing (single source of truth — keep all pages consistent)

@@ -34,3 +34,7 @@ __pycache__/
 # Node deps — call-proxy is deployed separately, tests/ is dev-only. Neither
 # belongs in a repo GitHub Pages serves as a static site.
 node_modules/
+
+# Internal strategy notes (competitors, keyword map, blog plan) live OUTSIDE this public repo,
+# in C:\Users\cc\targetdigital-private\brand\. Never commit them here.
+brand/

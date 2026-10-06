@@ -69,7 +69,7 @@ Jekyll *is* present (GitHub Pages runs it by default) but does nothing to these
 files. That is exactly why `sitemap.xml` is hand-maintained.
 
 ⚠️ **Do not use a rendered-text grep to test this.** Searching source for
-`STOP LOSING 70%` returns only `brand/competitor-intelligence.md` and MISSES
+`STOP LOSING 70%` returns only `competitor-intelligence.md` (now private, outside this repo) and MISSES
 `funnel.html`, which renders that headline at line 346 — inline markup splits
 the string (`STOP <span class="red">LOSING 70%</span> OF YOUR...`). A grep that
 matches the rendered page but not the source will tell you the HTML is
