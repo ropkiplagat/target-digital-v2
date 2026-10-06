@@ -9,7 +9,7 @@ LABELS = {"": "Home", "funnel.html": "AI Lead Gen Engine", "outbound.html": "AI 
           "demos.html": "Demos", "lead-pipeline-calculator.html": "ROI Calculator",
           "lead-magnet-funnel.html": "Lead Leak Audit", "lead-magnet-outbound.html": "Cold Outbound Playbook",
           "leadgendemo.html": "Lead Qualification Demo", "outboundcalldemo.html": "AI Call Demo",
-          "blog.html": "Blog", "faq.html": "FAQ", "blog/speed-to-lead-australia.html": "Speed to Lead Guide", "blog/ai-outbound-calling-compliance-australia.html": "AI Calling Compliance",
+          "blog.html": "Blog", "faq.html": "FAQ", "blog/speed-to-lead-australia.html": "Speed to Lead Guide", "blog/ai-outbound-calling-compliance-australia.html": "AI Calling Compliance", "blog/do-not-call-register-calling-leads.html": "Do Not Call Register",
           "blog/ai-receptionist-cost-australia.html": "AI Receptionist Cost", "blog/lead-generation-pricing-australia.html": "Lead Generation Pricing",
           "privacy-policy.html": "Privacy Policy", "terms.html": "Terms"}
 S, E = "<!-- footer-links:start -->", "<!-- footer-links:end -->"
