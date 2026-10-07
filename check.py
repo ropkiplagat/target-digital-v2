@@ -82,8 +82,9 @@ PLACEHOLDER_URLS = ["example.com", "your-domain", "yourdomain",
 TOKEN_ALLOWLIST = {"first_name", "addMo", "addYr", "unsubscribe_url"}
 
 # G12 — booking-link canon + pricing coherence.
-CANONICAL_CALENDLY = "calendly.com/ropkiplagat/intro-to-sales-target-digital"
-RETIRED_CALENDLY = ["calendly.com/targetdigital/growth-audit"]
+CANONICAL_CALENDLY = "calendly.com/saferoster/intro-to-sales-target-digital"
+RETIRED_CALENDLY = ["calendly.com/targetdigital/growth-audit",   # now a stranger's profile
+                    "calendly.com/ropkiplagat/intro-to-sales-target-digital"]   # dead: the account was renamed to saferoster
 RETIRED_PRICES = []                                   # add superseded prices here -> HARD
 CANONICAL_PRICES = {"$2,000", "$500", "$4,500", "$1,500", "$7,500", "$3,000"}
 KNOWN_NON_PRICE = {"$10", "$80", "$150"}              # ROI / example figures, not pricing

@@ -69,5 +69,5 @@ will not scale or stay deliverable for client volume.
   NOT VERIFIED (fabricated) and banned — see `check.py` RETIRED_CLAIMS for the exact strings.
   Never invent metrics.
 - Pricing: Starter $2,000+$500/mo · Growth $4,500+$1,500/mo · Scale $7,500+$3,000/mo.
-- CTA: `https://calendly.com/ropkiplagat/intro-to-sales-target-digital`.
+- CTA: `https://calendly.com/saferoster/intro-to-sales-target-digital`.
 - Colours: cyan `#00BFFF`, ink `#0b0f14`.

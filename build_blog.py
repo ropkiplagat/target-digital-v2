@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 SITE = "https://targetdigital.com.au"
 CHROME_SRC = ROOT / "ai-lead-generation-brisbane.html"
-CAL = "https://calendly.com/ropkiplagat/intro-to-sales-target-digital"
+CAL = "https://calendly.com/saferoster/intro-to-sales-target-digital"
 
 
 def read(p):

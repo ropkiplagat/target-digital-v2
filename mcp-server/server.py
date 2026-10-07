@@ -41,7 +41,7 @@ def get_ai_reception_overview() -> str:
         "safety_rules": safety_rules(),
         "try_it": "https://targetdigital.com.au/medical.html",
         "book_a_scoping_call":
-            "https://calendly.com/ropkiplagat/intro-to-sales-target-digital",
+            "https://calendly.com/saferoster/intro-to-sales-target-digital",
     }, indent=2)
 
 

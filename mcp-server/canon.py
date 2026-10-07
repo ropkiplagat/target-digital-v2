@@ -178,7 +178,7 @@ def assess_fit(appointment_led=None, misses_calls_after_hours=None,
         "honest_note": ("A fit assessment is not a promise of results. What can be said is "
                         "which calls are currently going unanswered; what that is worth is "
                         "the practice's own arithmetic, from its own numbers."),
-        "next_step": "Book a scoping call: https://calendly.com/ropkiplagat/intro-to-sales-target-digital",
+        "next_step": "Book a scoping call: https://calendly.com/saferoster/intro-to-sales-target-digital",
     }
 
 
