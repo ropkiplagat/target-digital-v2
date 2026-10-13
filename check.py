@@ -108,6 +108,7 @@ SAFE_EMAILS = {"hello@targetdigital.com.au", "support@targetdigital.com.au",
 # A number here is a deliberate CTA, not leaked PII. Add sparingly.
 SAFE_PHONES = {
     "0489263227",   # the live Aria demo line — medical.html's primary CTA ("Call the live demo")
+    "0431274377",   # Rop business number, published on every brand on purpose (brand.md decision 2026-10-09)
 }
 
 # G9 — blog format contract thresholds.
