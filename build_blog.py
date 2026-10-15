@@ -38,6 +38,7 @@ EXTRA_CSS = """<style>
 .legal ol{margin:0 0 16px 22px;padding:0}.legal ol li{padding-left:6px;margin-bottom:12px}.legal ol li::before{content:none}
 .legal ul.posts{margin-top:8px}.legal ul.posts li::before{content:"→"}
 .legal .btn.ghost{margin-left:0}
+.post-hero{margin:0 0 24px}.post-hero img{display:block;width:100%;height:auto;border-radius:12px}
 .legal table{width:100%;border-collapse:collapse;margin:8px 0 20px;font-size:15px}
 .legal th,.legal td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.1);vertical-align:top}
 .legal th{color:var(--white);font-family:'Syne',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.04em}
@@ -55,7 +56,7 @@ def front_matter(txt):
     return fm, txt[end + 4:].lstrip("\n")
 
 
-def head(title, desc, canon, img, extra="", og=True):
+def head(title, desc, canon, img, extra="", og=True, img_w="1456", img_h="822", img_alt="Target Digital AI"):
     og = f"""<meta property="og:type" content="article">
 <meta property="og:site_name" content="Target Digital">
 <meta property="og:locale" content="en_AU">
@@ -63,13 +64,14 @@ def head(title, desc, canon, img, extra="", og=True):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:image" content="{SITE}/{img}">
-<meta property="og:image:width" content="1456">
-<meta property="og:image:height" content="822">
-<meta property="og:image:alt" content="Target Digital AI">
+<meta property="og:image:width" content="{img_w}">
+<meta property="og:image:height" content="{img_h}">
+<meta property="og:image:alt" content="{img_alt}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
-<meta name="twitter:image" content="{SITE}/{img}">""" if og else ""  # root pages get theirs from add_og_tags.py
+<meta name="twitter:image" content="{SITE}/{img}">
+<meta name="twitter:image:alt" content="{img_alt}">""" if og else ""  # root pages get theirs from add_og_tags.py
     return f"""<!DOCTYPE html>
 <html lang="en-AU">
 <head>
@@ -101,6 +103,8 @@ def jsonld(fm, canon):
          "author": {"@type": "Organization", "name": "Target Digital", "url": SITE + "/"},
          "publisher": {"@type": "Organization", "name": "Target Digital", "url": SITE + "/",
                        "logo": {"@type": "ImageObject", "url": SITE + "/target-digital-logo.png"}}}
+    if fm.get("og_image_width"):
+        g["image"] = SITE + "/" + fm["og_image"]
     return '<script type="application/ld+json">\n' + json.dumps(g, indent=2) + "\n</script>"
 
 
@@ -111,7 +115,8 @@ def build_post(src_path):
     fm_block = (f"---\ntitle: {fm['title']}\nslug: {slug}\ntarget_keyword: {fm['target_keyword']}\n"
                 f"meta_description: {fm['meta_description']}\ndate: {fm['date']}\n---\n")
     page = (fm_block + head(fm["title"], fm["meta_description"], canon, fm.get("og_image", "funnel-hero.png"),
-                            jsonld(fm, canon))
+                            jsonld(fm, canon), img_w=fm.get("og_image_width", "1456"),
+                            img_h=fm.get("og_image_height", "822"), img_alt=fm.get("og_image_alt", "Target Digital AI"))
             + NAV + '\n<main class="legal">\n' + body.strip() + "\n</main>\n\n" + FOOTER + "\n\n" + EVENTS + "\n</body>\n</html>\n")
     out = ROOT / "blog" / f"{slug}.html"
     out.parent.mkdir(exist_ok=True)
