@@ -20,7 +20,7 @@ PAGES = ["index.html", "funnel.html", "outbound.html", "ai-lead-generation-brisb
 BLOCK = re.compile(r'<script type="application/ld\+json">.*?</script>\n?', re.S)
 ORG = {
     "@type": "Organization", "@id": SITE + "/#org", "name": "Target Digital", "url": SITE + "/",
-    "logo": SITE + "/target-digital-logo.png", "email": "rop@targetdigital.com.au",
+    "logo": SITE + "/target-digital-logo-1024.png", "email": "rop@targetdigital.com.au",
     "areaServed": {"@type": "Country", "name": "Australia"},
     "address": {"@type": "PostalAddress", "addressLocality": "Brisbane",
                 "addressRegion": "QLD", "addressCountry": "AU"},

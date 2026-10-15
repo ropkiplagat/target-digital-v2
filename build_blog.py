@@ -102,7 +102,7 @@ def jsonld(fm, canon):
          "mainEntityOfPage": canon, "inLanguage": "en-AU",
          "author": {"@type": "Organization", "name": "Target Digital", "url": SITE + "/"},
          "publisher": {"@type": "Organization", "name": "Target Digital", "url": SITE + "/",
-                       "logo": {"@type": "ImageObject", "url": SITE + "/target-digital-logo.png"}}}
+                       "logo": {"@type": "ImageObject", "url": SITE + "/target-digital-logo-1024.png"}}}
     if fm.get("og_image_width"):
         g["image"] = SITE + "/" + fm["og_image"]
     return '<script type="application/ld+json">\n' + json.dumps(g, indent=2) + "\n</script>"

@@ -21,7 +21,7 @@ HTML_FILES = [
 CALENDLY = "https://calendly.com/saferoster/intro-to-sales-target-digital"
 
 NEW_NAV = '''<nav>
-  <div class="nav-logo"><img src="/target-digital-logo.png" alt="Target Digital"></div>
+  <div class="nav-logo"><img src="/target-digital-logo-wide-white.svg" alt="Target Digital" width="108" height="56"></div>
   <div class="nav-links">
     <a href="/">Home</a>
     <a href="/funnel.html">Lead Gen Engine</a>
@@ -51,9 +51,9 @@ function toggleMobileNav() {
 </script>'''
 
 NEW_CSS = '''
-/* Nav logo (image on a white chip so its dark ink stays legible on the dark nav) */
+/* Nav logo (white SVG, made for the dark nav) */
 .nav-logo{display:inline-flex;align-items:center}
-.nav-logo img{height:34px;width:auto;display:block;background:#fff;padding:5px 9px;border-radius:8px}
+.nav-logo img{height:56px;width:auto;display:block}
 /* Nav links */
 .nav-links {
   display: flex;
